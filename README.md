@@ -72,6 +72,31 @@ O Sonitus não mapeará residências nem dados pessoais de pessoas com deficiên
 5. Adicionar relatos comunitários opcionais em uma versão posterior do protótipo.
 6. Testar a clareza da experiência com foco em acessibilidade sensorial e ajustar a interface.
 
+## Desenvolvimento
+
+### Desenvolvimento local
+
+```bash
+pnpm install
+pnpm dev
+```
+
+O terminal exibirá o endereço local fornecido pelo Vite (por padrão, `http://localhost:5173`).
+
+### Dev Container
+
+Para executar o projeto em um ambiente padronizado via VS Code:
+
+1. Instale a extensão **Dev Containers** no VS Code;
+2. Abra a pasta do projeto no VS Code;
+3. Execute `Dev Containers: Reopen in Container` (via `Ctrl+Shift+P` ou `Cmd+Shift+P`);
+4. Aguarde a instalação das dependências;
+5. No terminal integrado, execute:
+   ```bash
+   pnpm dev
+   ```
+6. Acesse a porta encaminhada do Sonitus (`http://localhost:5173`).
+
 ## Possibilidades futuras
 
 Depois de validado o protótipo, o Sonitus poderá explorar dados coletados por sensores públicos, indicadores históricos, rotas com menor exposição sonora, colaboração com instituições e recursos de apoio à gestão urbana. Esses caminhos ampliam o impacto da plataforma, mas não alteram sua prioridade: apoiar a autonomia das pessoas no planejamento do cotidiano.
