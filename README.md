@@ -45,15 +45,51 @@ Os dados simulados serão organizados para permitir demonstração realista de v
 
 Uma pessoa poderá buscar um destino, consultar o mapa e comparar os horários disponíveis. A interface deve priorizar linguagem direta, contraste adequado, classificação visual consistente e explicações fáceis de entender. O resultado desejado é apoiar uma decisão cotidiana, como escolher uma rota alternativa, remarcar um compromisso ou sair em um horário mais confortável.
 
-## Arquitetura conceitual
+## Três Dimensões da Entrega do Protótipo
 
-Na versão inicial, a aplicação web consumirá uma base local de dados simulados e exibirá as informações em mapa, filtros e detalhes por área/horário.
+Esta evolução do MVP acadêmico demonstra como o Sonitus se comportaria como uma plataforma urbana real através de três pilares integrados:
 
-Como possibilidade futura, uma rede de sensores IoT baseada em ESP32 poderia medir níveis de ruído em pontos públicos e enviar leituras a uma API. Essa arquitetura é apenas conceitual nesta etapa: não faz parte do funcionamento exigido pelo protótipo.
+1. **Monitoramento e Cartografia Urbana**:
+   - Centro de monitoramento acústico em tempo real simulado;
+   - Mapa acústico como protagonista com malha viária, distritos, heatmap suave de dispersão sonora e inspeção detalhada de sensores.
 
-## Privacidade e cuidado com os dados
+2. **Impacto Social e Saúde**:
+   - Mapeamento e proteção de zonas sensíveis (hospitais, clínicas de TEA, escolas e abrigos);
+   - Identificação de **Oásis de Conforto Acústico** (zonas calmas) para descompressão sensorial de pessoas autistas, hipersensíveis e idosos;
+   - Central de alertas conceituais para detecção de recorrência de ruído abusivo.
 
-O Sonitus não mapeará residências nem dados pessoais de pessoas com deficiência. Relatos comunitários devem ser opcionais e minimizados, sem exigir identificação pessoal. Em expansões futuras, a plataforma poderá destacar categorias públicas, como hospitais, clínicas, escolas e abrigos, sempre com atenção à utilidade pública e à privacidade.
+3. **Viabilidade Tecnológica**:
+   - Visão da futura rede de sensores IoT (telemetria simulada de 12 nós via LoRaWAN e NB-IoT);
+   - **Protótipo 3D Interativo do Hardware Sonitus Node v1.2** (construído em Three.js, com controles orbitais, detalhes de engenharia de borda e garantia de Privacidade por Concepção).
+
+---
+
+## Estrutura Atual do Protótipo
+
+A base de código foi refatorada de forma modular e tipada:
+
+```text
+src/
+├── types/          # Interfaces de domínio (Sensor, SensitiveZone, Alert, etc.)
+├── data/           # Base unificada de dados simulados (noiseData.ts)
+├── components/     # Componentes reutilizáveis (Header, Navigation, SoundBadge, SensorModel3D, MetricCard, Footer)
+├── sections/       # Telas funcionais (Overview, Map, SensitiveZones, Alerts, Sensors, Technology, About)
+├── styles.css      # Design system com tokens, acessibilidade, temas claro/escuro e redução de movimento
+├── App.tsx         # Shell de aplicação com lazy-loading e estado global
+└── main.tsx        # Ponto de montagem React 19
+```
+
+---
+
+## Arquitetura Conceitual e Privacidade por Concepção
+
+Na versão atual, a aplicação consome uma base local de dados simulados coerentes e os distribui por todos os módulos.
+
+O conceito tecnológico prevê que futuros nós de sensoriamento (Sonitus Node v1.2) baseados no microcontrolador **ESP32-S3** calculem as métricas de decibéis ponderados (dB LAeq) localmente na memória volátil, descartando o áudio bruto instantaneamente. **O Sonitus não grava, não armazena e não transmite conversas de voz humana**.
+
+Além disso, a plataforma preserva rigorosamente a dignidade de grupos vulneráveis: mapeia exclusivamente instalações de circulação pública, **jamais residências particulares ou indivíduos PCDs**.
+
+---
 
 ## Fora do escopo inicial
 
