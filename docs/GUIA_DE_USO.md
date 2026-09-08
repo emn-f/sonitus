@@ -1,162 +1,204 @@
 # Guia de Uso — Sonitus
 
-Bem-vindo ao **Sonitus**! Este guia foi preparado para ajudar qualquer pessoa a entender, navegar e utilizar a interface do Sonitus com tranquilidade, clareza e previsibilidade.
+Bem-vindo ao **Sonitus**! Este guia foi elaborado para apresentar todas as funcionalidades, seções, indicadores e conceitos do protótipo evoluído da plataforma de **monitoramento acústico inteligente urbano**.
 
 ---
 
-## O que é o Sonitus
+## 1. Visão Geral e Propósito
 
-O Sonitus é uma proposta de plataforma de **acessibilidade sensorial**, desenvolvida com foco especial em pessoas neurodivergentes (como pessoas no espectro autista, pessoas com TDAH ou com sensibilidade auditiva), pessoas idosas, cuidadores e qualquer pessoa que busque mais conforto sonoro no dia a dia.
-
-O objetivo é transformar estimativas de ruído em orientações práticas, permitindo planejar horários de saída, rotas de deslocamento e pausas com menor sobrecarga sensorial.
+O Sonitus é o conceito de uma plataforma urbana concebida para mapear, analisar e mitigar a poluição sonora nas cidades, integrando três dimensões complementares:
+1. **Monitoramento e Cartografia**: visualização de níveis sonoros, picos recorrentes e manchas de ruído (heatmap) por vias e bairros.
+2. **Impacto Social e Saúde**: foco prioritário na proteção de pessoas neurodivergentes (como autistas com hipersensibilidade auditiva), pacientes hospitalares, idosos e animais urbanos.
+3. **Viabilidade Tecnológica**: demonstração de uma arquitetura IoT com nós de sensoriamento baseados em ESP32-S3 e visualização 3D interativa do hardware conceitual.
 
 > [!IMPORTANT]
-> **Dados simulados e caráter demonstrativo**:
-> Os dados exibidos no Sonitus são **totalmente simulados** e **não representam medições em tempo real**. O sistema deve ser utilizado como uma demonstração interativa de como o planejamento sensorial pode apoiar decisões do cotidiano urbano.
+> **Dados 100% Simulados e Caráter Demonstrativo**:
+> Todos os sensores, valores em decibéis, curvas históricas e alertas apresentados são **simulados**. O sistema não possui sensores físicos em postes reais nesta entrega. Diferencie sempre **"monitoramento em tempo real simulado"** de captação física real.
 
 ---
 
-## Como acessar
+## 2. Como Executar e Acessar
 
-Existem duas formas principais de iniciar e visualizar o Sonitus no seu computador: diretamente via terminal local ou utilizando um Dev Container no VS Code.
+### Acesso Local (Terminal)
 
-### Acesso local (padrão)
+Requisitos: Node.js (versão 22 ou superior) e gerenciador `pnpm`.
 
-Certifique-se de ter o [Node.js](https://nodejs.org/) (versão 22 ou superior recomendada) e o gerenciador [pnpm](https://pnpm.io/) instalados.
+```bash
+pnpm install
+pnpm dev
+```
 
-1. Abra o terminal na pasta do projeto e instale as dependências:
-   ```bash
-   pnpm install
-   ```
-2. Inicie o servidor de desenvolvimento:
-   ```bash
-   pnpm dev
-   ```
-3. O terminal informará o endereço local do Vite, por padrão:
-   ```text
-   http://localhost:5173
-   ```
-4. Abra o navegador e digite esse endereço na barra de navegação.
-
-> [!WARNING]
-> **Não abra o arquivo `index.html` diretamente pelo navegador (via `file://`)**:
-> O Sonitus utiliza módulos JavaScript e recursos modernos empacotados pelo Vite. Para carregar corretamente os estilos e scripts, ele precisa ser servido através do comando `pnpm dev`.
+O terminal iniciará o servidor Vite estritamente na porta:
+```text
+http://localhost:5173
+```
+Se a porta 5173 estiver ocupada, o Vite falhará de forma clara sem trocar silenciosamente de porta (`strictPort: true`).
 
 ### Acesso via Dev Container (VS Code)
 
-Se preferir um ambiente isolado e padronizado, você pode abrir o Sonitus no Visual Studio Code com a extensão **Dev Containers**:
-
-1. Abra o diretório do projeto no VS Code.
-2. Quando solicitado (ou pressionando `Ctrl+Shift+P` / `Cmd+Shift+P` e digitando `Dev Containers: Reopen in Container`), reabra a pasta dentro do container.
-3. As dependências serão instaladas automaticamente durante a criação do ambiente.
-4. No terminal do VS Code dentro do container, execute:
-   ```bash
-   pnpm dev
-   ```
-5. O VS Code detectará a porta `5173` e abrirá o navegador automaticamente (ou você pode clicar na notificação de porta encaminhada).
+1. Abra a pasta do projeto no VS Code com a extensão **Dev Containers** instalada;
+2. Selecione `Dev Containers: Reopen in Container`;
+3. Execute `pnpm dev` no terminal integrado;
+4. O VS Code notificará a disponibilidade do endereço `http://localhost:5173`.
 
 ---
 
-## Entendendo a tela inicial
+## 3. Navegação da Plataforma
 
-Ao abrir o Sonitus, você verá uma tela organizada em blocos visuais claros, pensados para não sobrecarregar sua atenção:
+A aplicação é organizada através de uma barra de abas acessível no topo:
 
-1. **Barra superior**:
-   - Logotipo e atalho de retorno ao início;
-   - Botão **Reduzir movimento**: ativa ou desativa animações da interface;
-   - Botão **Tema claro / escuro**: alterna a paleta de cores entre modos diurno e noturno.
-
-2. **Cabeçalho introdutório**:
-   - Apresenta a mensagem principal e o seletor de períodos (Manhã, Tarde, Noite).
-
-3. **Cartões de resumo (Summary Grid)**:
-   - **Leitura agora**: exibe o local em foco no período atual, o valor numérico em decibéis (**dB**), a classificação sensorial (**Tranquilo**, **Moderado** ou **Intenso**) e uma breve observação contextual sobre o ambiente.
-   - **Melhor janela**: indica o intervalo de horário com menor probabilidade de sobrecarga sonora dentro daquele período (por exemplo, "8h às 9h").
-   - **Área mais tranquila**: destaca uma região ou bairro recomendado para momentos de pausa ou percursos com menor fluxo.
+- **Visão Geral**: centro de comando urbano com KPIs da cidade, radar de ruído, curva de 24 horas e atalhos rápidos.
+- **Mapa Acústico (Protagonista)**: mapa urbano ilustrativo com 12 sensores georreferenciados, heatmap dinâmico, camadas visuais, filtros e gaveta de inspeção detalhada.
+- **Zonas Sensíveis & Conforto**: instalações de saúde, escolas e abrigos protegidos, além do catálogo de **Oásis de Conforto Acústico** (zonas tranquilas) para descompressão sensorial.
+- **Alertas**: central de detecção de eventos e anomalias simuladas (picos repetitivos, violações de zonas de silêncio), com severidade, causas e ações recomendadas.
+- **Rede de Sensores**: telemetria técnica dos 12 nós (SNS-001 a SNS-012), conectividade (LoRaWAN, NB-IoT), nível de bateria e fontes de alimentação.
+- **Tecnologia & Hardware 3D**: visualizador tridimensional interativo do sensor conceitual (Sonitus Node v1.2), pipeline da arquitetura IoT ponta a ponta e garantias de privacidade.
+- **Sobre o Sonitus**: fundamentação acadêmica, neurodivergência e TEA, metodologia de simulação e roadmap de implantação piloto.
 
 ---
 
-## Selecionando o período
+## 4. Barra Superior (Header)
 
-No canto superior do painel principal, você encontra o seletor de turnos:
-
-- **Manhã**
-- **Tarde**
-- **Noite**
-
-Ao clicar em um dos botões, todos os elementos da interface se adaptam simultaneamente:
-- A leitura em destaque e as recomendações de horário se ajustam;
-- Os pontos do mapa acústico recalculam seus níveis sonoros e notas;
-- As barras do gráfico refletem o padrão acústico correspondente àquele período.
-
-Isso permite simular e comparar mentalmente o deslocamento em diferentes momentos do dia.
+A barra superior fixa acompanha toda a navegação e disponibiliza:
+- **Logomarca Sonitus**: atalho de retorno à tela inicial com ícone de ondas acústicas.
+- **Pílula de Status do Sistema**: indicador visual com pulso atestando "Rede Simulada Ativa".
+- **Seletor de Turno (Manhã / Tarde / Noite)**: altera simultaneamente os dados de toda a plataforma (sensores, mapa, gráficos e alertas).
+- **Botão Reduzir Movimento**: desativa imediatamente transições, rotações e animações (respeitando também `prefers-reduced-motion`).
+- **Botão Tema Claro / Escuro**: alterna a paleta de cores entre superfícies diurnas e noturnas com persistência em `localStorage`.
 
 ---
 
-## Usando o mapa acústico
+## 5. Centro de Monitoramento Urbano (Visão Geral)
 
-O painel **Mapa acústico** traz uma representação visual e esquemática de diferentes áreas de circulação:
-
-- **Pontos sonoros**: cada ponto colorido no mapa simboliza um local e sua faixa de intensidade acústica estimada.
-  - **Tranquilo (verde calmo)**: menor intensidade de som, entorno favorável ao repouso e concentração;
-  - **Moderado (âmbar suave)**: sons urbanos habituais, com movimento gradual que requer atenção leve;
-  - **Intenso (coral suave)**: fluxo elevado de tráfego, comércio ou aglomerações, com maior probabilidade de sobrecarga sensorial.
-- **Selecionando um local**: clique ou navegue via teclado até qualquer um dos pontos do mapa. O ponto selecionado receberá um anel de destaque e o cartão **Leitura agora** (assim como a caixa descritiva abaixo do mapa) atualizará imediatamente suas informações para mostrar o nome, os decibéis e a nota daquele ponto.
-- **Aviso esquemático**: o mapa é puramente conceitual e ilustrativo. As ruas e quadras representadas não correspondem a coordenadas geográficas de bairros reais.
-
----
-
-## Entendendo o gráfico de ruído
-
-O painel **Ritmo do dia** apresenta uma projeção de como a intensidade do ruído se comporta ao longo das horas:
-
-- **Colunas com valores em dB**: cada coluna representa um horário (como 7h, 9h, 11h, etc.) e mostra o nível em decibéis estimado no topo da barra.
-- **Cores por classificação**: as barras assumem cores correspondentes às faixas de intensidade (verde para tranquilo, âmbar para moderado e coral para intenso), permitindo identificar picos de ruído à primeira vista.
-- **Alternativa textual**: logo abaixo do gráfico, há um item expansível chamado **"Ver dados em texto"**. Ao clicar nele, todos os horários e valores são apresentados em formato de lista simples. Esse recurso garante acessibilidade para leitores de tela e oferece uma alternativa para quem prefere consumir dados de forma estritamente textual e linear.
+A Visão Geral funciona como o painel principal de inteligência acústica da cidade:
+- **Banner de Status da Cidade**: exibe a pressão sonora média atual em dB(A) e destaca o **Oásis de Silêncio do Momento** (local com menor decibel registrado).
+- **Cards de Indicadores Chave (KPIs)**:
+  - *Média Urbana*: média ponderada de todos os sensores no período;
+  - *Zonas Tranquilas*: quantidade de pontos abaixo de 55 dB e percentual da cidade;
+  - *Zonas em Atenção*: quantidade de pontos acima de 70 dB;
+  - *Rede de Sensores IoT*: contagem de nós simulados operacionais (12/12 online);
+  - *Alertas 24h*: quantidade de ocorrências críticas detectadas nas últimas 24 horas.
+- **Destaque do Mapa Acústico**: prévia clicável para navegar diretamente ao mapa interativo.
+- **Oásis de Conforto Acústico**: sugestões imediatas de refúgios sensoriais para pessoas com hipersensibilidade auditiva.
+- **Ritmo da Cidade (Curva de 24 Horas)**: gráfico temporal de colunas com linhas de referência para conforto (45 dB), limite diurno da OMS para áreas sensíveis (55 dB), comércio (65 dB) e zona crítica (75 dB).
+- **Distribuição Acústica da Cidade**: barra percentual proporcional segmentada entre Tranquilo, Moderado e Intenso.
+- **Tabela de Dados em Texto**: seção expansível com tabela acessível contendo os dados numéricos detalhados hora a hora por distrito.
 
 ---
 
-## Tema claro e escuro
+## 6. Mapa Acústico e Heatmap (O Protagonista)
 
-No canto superior direito da tela, você encontra o botão de tema:
+O mapa foi completamente redesenhado para simular uma planta urbana convincente:
 
-- **Tema claro**: fundo suave em tons neutros claros, superfícies delicadas e excelente legibilidade sob iluminação diurna.
-- **Tema escuro**: superfícies em camadas de azul ardósia profundo, evitando pretos absolutos e reduzindo o cansaço visual em ambientes com pouca luz.
+### Elementos Urbanos Representados
+- **Distritos e Bairros**: Centro Histórico & Comercial, Distrito Saúde & Bem-Estar, Jardim Aurora, Vila Serena, Eixo Leste / Mobilidade e Parque das Águas.
+- **Malha Viária**: avenidas expressas de pista dupla, vias coletoras, acessos hospitalares e calçadões de pedestres.
+- **Áreas Verdes e Recursos Hídricos**: cobertura vegetal densa e lago no Parque das Águas atuando como atenuadores de som.
+- **Ícones de Instalações Sensíveis**: cruzes hospitalares, escolas municipais e abrigos veterinários sinalizados no mapa.
 
-A sua preferência de tema é salva automaticamente no navegador (`localStorage`), de modo que em sua próxima visita a interface lembrará da sua escolha.
+### Camada de Calor Acústico (Heatmap)
+- Halos suaves com gradientes radiais projetados sobre os pontos emissores de ruído.
+- Gradientes controlados em verde (tranquilo), âmbar (moderado) e coral (intenso), comunicando visualmente a pressão acústica das artérias da cidade sem poluição visual.
 
----
+### Ferramentas e Filtros do Mapa
+- **Busca Textual**: filtre rapidamente por nome da rua, hospital, praça ou código do sensor (ex: "Hospital", "SNS-004", "Mercado").
+- **Filtro por Distrito**: visualize bairros específicos ou a cidade inteira.
+- **Filtro por Nível Sonoro**: isole locais em Tranquilo (< 55 dB), Moderado (55 a 70 dB) ou Intenso (> 70 dB).
+- **Filtro por Categoria**: filtre por Zonas Sensíveis, Áreas Verdes, Residenciais, Comerciais ou Arteriais.
+- **Controle de Camadas**: botões para ligar/desligar o Heatmap, as Zonas Sensíveis, os Rótulos de Texto e o modo de tela expandida.
 
-## Redução de movimento
-
-Acessibilidade sensorial vai além de som e cores. Para muitas pessoas, elementos em movimento, transições suaves ou animações dinâmicas podem provocar enjoo visual, fadiga, vertigem (desconforto vestibular) ou distração.
-
-- **Como acionar**: clique no botão **"Reduzir movimento"** na barra superior. O botão mudará de estado para **"Movimento reduzido: ativo"**.
-- **O que faz**: desativa de forma imediata todas as transições de altura de barras, efeitos de escala e variações graduais em toda a interface.
-- **Detecção automática**: se o seu sistema operacional já estiver configurado com a opção de preferência de redução de movimento (`prefers-reduced-motion: reduce`), o Sonitus ativará essa configuração por padrão logo na primeira inicialização.
-
----
-
-## Limitações do protótipo
-
-Para manter a transparência em relação ao estágio atual do Sonitus, é fundamental destacar o que este protótipo **não** possui:
-
-- **Sem sensores físicos reais**: os dados não são captados por microfones em postes ou equipamentos públicos;
-- **Sem rastreamento GPS**: a aplicação não sabe onde você está fisicamente;
-- **Sem dados em tempo real**: não há medição minuto a minuto de vias públicas;
-- **Sem backend ou servidores de banco de dados**: tudo roda localmente no seu navegador a partir do arquivo de simulação;
-- **Sem contas ou perfis de usuário**: não há cadastro, senhas nem coleta de nomes ou e-mails;
-- **Sem vínculo com fiscalização urbana**: o Sonitus não é ferramenta de denúncia ou aplicação de multas;
-- **Sem rastreamento de pessoas**: em hipótese alguma o protótipo monitora indivíduos ou trajetos pessoais.
+### Gaveta de Inspeção do Ponto Selecionado
+Ao clicar em qualquer sensor ou marcador no mapa, o painel lateral exibe:
+- Código do sensor (ex: SNS-001) e bairro correspondente;
+- Leitura instantânea em decibéis com badge sonoro e pico registrado no período;
+- Observação contextual do entorno urbano;
+- **Recomendação Sensorial & Neurodivergência**: orientações práticas para pessoas no espectro autista e hipersensíveis (uso de abafadores, percursos favoráveis);
+- **Diretrizes para Gestão Pública Urbana**: sugestões de intervenção para a prefeitura (escalonamento de carga/descarga, asfalto com absorção acústica, barreiras vegetais);
+- **Telemetria do Sensor**: versão do firmware, protocolo de comunicação (LoRaWAN/NB-IoT), percentual de bateria, tipo de alimentação e latência simulada.
 
 ---
 
-## Privacidade e respeito
+## 7. Zonas Sensíveis & Zonas de Conforto Acústico
 
-O projeto Sonitus adota o princípio de **privacidade por desenho**:
+Esta seção aprofunda o impacto social do Sonitus:
+- **Oásis de Conforto Acústico (Zonas Tranquilas)**: refúgios urbanos com níveis consistentemente abaixo de 50 dB (Parque das Águas, Bosque Vila Serena, Praça dos Ipês), com melhor janela de horário para caminhadas calmas e descompressão mental.
+- **Instalações Sensíveis**: hospitais, clínicas neuropediátricas de TEA, escolas municipais e abrigos de animais com comparativo numérico contra o teto acústico desejado (Normas ABNT NBR 10151 e diretrizes da OMS).
+- **Filtro por Categoria de Proteção**: navegue entre Oásis, Hospitais, Educação e Abrigos de Animais.
+- **Botão "Ver no Mapa"**: localiza imediatamente a instalação na cartografia acústica.
 
-- **Espaço público versus privacidade**: o Sonitus não mapeia residências, casas, apartamentos ou endereços particulares;
-- **Proteção a grupos vulneráveis**: não há associação entre níveis sonoros e moradia ou localização de pessoas neurodivergentes ou com deficiência;
-- **Simulação responsável**: todas as referências tratam de locais conceituais de circulação pública, assegurando que nenhum dado sensível seja exposto ou manipulado.
+---
 
-Esperamos que o Sonitus proporcione uma experiência acolhedora, tranquila e esclarecedora!
+## 8. Central de Alertas Simulados
+
+Demonstra como o Sonitus alertaria gestores públicos e cidadãos diante de anomalias acústicas:
+- **Classificação por Severidade**:
+  - *Crítica* (coral): picos graves sustentados acima de 75 dB em vias residenciais ou hospitalares;
+  - *Atenção* (âmbar): recorrência de tráfego pesado e buzinas em horários inadequados;
+  - *Informativa* (azul): eventos atípicos pontuais e avisos de retorno à normalidade.
+- **Status do Alerta**: Novo, Em análise ou Normalizado.
+- **Dados do Alerta**: código identificador, horário detectado, sensor de origem, localização, causa descrita pelo algoritmo e ação conceitual sugerida.
+- **Filtros Combinados**: filtre por gravidade e por status com contadores atualizados.
+
+---
+
+## 9. Rede de Sensores IoT
+
+Visão de engenharia da infraestrutura de monitoramento:
+- **Painel de Telemetria Geral**: contagem de nós conectados, distribuição dos protocolos de rede (LoRaWAN AU915, LTE NB-IoT e Wi-Fi Mesh) e saúde da rede.
+- **Cards dos Sensores (SNS-001 a SNS-012)**:
+  - Estado operacional (Online / Atenção / Offline);
+  - Leitura em dB no turno selecionado e pico do período;
+  - Tipo de conectividade e intensidade do sinal;
+  - Percentual de bateria e fonte de alimentação (Micro painel solar + Li-ion ou Rede de iluminação pública);
+  - Versão do firmware em execução;
+  - Tempo decorrido desde o último envio de pacote de telemetria.
+
+---
+
+## 10. Tecnologia & Protótipo 3D do Hardware Sonitus
+
+Esta seção materializa a viabilidade técnica da solução e explica como os dados seriam gerados na prática:
+
+### Protótipo Tridimensional Interativo
+- **Conceito Visual**: dispositivo em formato de luminária ambiental compacta para instalação em postes de iluminação ou fachadas cívicas.
+- **Controles Orbitais 3D**:
+  - Arraste com o mouse ou toque para rotacionar em qualquer ângulo;
+  - Use o scroll do mouse ou os botões de zoom para aproximar/afastar;
+  - Botão de rotação automática suave (pausada se o modo de redução de movimento estiver ativo);
+  - Botão de restauração do ângulo inicial.
+- **Ângulos Pré-definidos de Inspeção**:
+  - *Geral*: visão panorâmica do nó completo montado no poste;
+  - *Grade Acústica*: aproximação da câmara de 360° do microfone MEMS;
+  - *Fixação Poste*: detalhe da abraçadeira metálica e do amortecedor mecânico antivibração;
+  - *Cúpula Solar*: visualização superior do micro painel fotovoltaico de recarga.
+- **Detalhamento dos Componentes Técnicos**:
+  - *Microfone Ambiental MEMS (I2S)*: captação estrita de pressão sonora em decibéis, sem canal de áudio analógico para gravação;
+  - *ESP32-S3 (Edge AI)*: microcontrolador que calcula os índices LAeq localmente e descarta o buffer de sinal em nanossegundos;
+  - *Módulo LoRaWAN / NB-IoT*: envio de pacotes ultraleves de 8 bytes com baixo consumo energético e alcance urbano;
+  - *Cúpula e Grade IP66*: proteção contra poeira, chuva e raios UV com membrana acústica hidrofóbica;
+  - *Anel LED de Diagnóstico*: indicador luminoso circular suave para inspeção visual por equipes técnicas de campo;
+  - *Braço de Fixação Universal*: suporte articulado com elastômero para isolar trepidações mecânicas do trânsito.
+- **Fallback Acessível (Sem WebGL)**: caso o navegador ou sistema não suporte aceleração tridimensional por hardware, um diagrama esquemático vetorial em SVG de alta fidelidade é exibido automaticamente.
+
+### Fluxo de Dados Ponta a Ponta (Pipeline IoT)
+Diagrama visual de 5 etapas demonstrando o percurso do sinal:
+`Sensor Urbano (MEMS)` → `ESP32 / Processamento em Borda` → `Rede LoRaWAN / NB-IoT` → `Plataforma Sonitus (Nuvem)` → `Impacto Social & Gestão Pública`.
+
+---
+
+## 11. Princípios de Privacidade por Concepção (Privacy by Design)
+
+O projeto Sonitus estabelece garantias rigorosas:
+1. **Sem Gravação ou Transmissão de Voz**: os sensores processam exclusivamente a amplitude de pressão física (dB SPL) convertida em decibéis ponderados (dB(A)). O hardware não possui armazenamento de áudio nem capacidade técnica de reconstruir diálogos humanos.
+2. **Largura de Banda Restrita**: a rede LoRaWAN transmite apenas pacotes numéricos mínimos, tornando inviável o tráfego de qualquer fluxo de voz.
+3. **Sem Mapeamento de Indivíduos**: a plataforma monitora unicamente espaços públicos e instalações comunitárias, jamais mapeando residências particulares ou a localização individual de pessoas autistas ou com deficiência.
+
+---
+
+## 12. Acessibilidade Sensorial e Digital
+
+- **HTML Semântico**: uso rigoroso de `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<aside>`, tabelas com `<caption>`, `<thead>` e `<tbody>`.
+- **Navegação Total por Teclado**: todos os sensores do mapa, botões de filtro, abas de navegação e controles 3D possuem estados `:focus-visible` destacados com anel de alto contraste.
+- **Sem Dependência Exclusiva de Cor**: todas as leituras sonoras combinam cores acessíveis com ícones, valores numéricos em dB e rótulos textuais claros (Tranquilo, Moderado, Intenso).
+- **Controle de Redução de Movimento**: o botão "Reduzir movimento" (e a media query `prefers-reduced-motion: reduce`) neutraliza transições, animações de pulso nos sensores e a auto-rotação do modelo 3D.
+- **Alternativa Textual Completa**: todos os gráficos possuem visualizações correspondentes em texto e tabelas acessíveis.
