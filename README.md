@@ -8,7 +8,7 @@ O primeiro produto será um protótipo web interativo, baseado em dados simulado
 
 ## Protótipo web
 
-O protótipo foi construído com React, Vite, TypeScript e CSS puro. Para executá-lo após instalar as dependências, use `pnpm dev`. Para gerar a versão de produção, use `pnpm build`.
+O protótipo foi construído com React, Vite, TypeScript e CSS puro. Para entender como navegar pela interface, compreender os indicadores e utilizar os recursos de acessibilidade pelo ponto de vista do usuário, consulte o [Guia de Uso](docs/GUIA_DE_USO.md).
 
 ## Para quem é
 
