@@ -44,14 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
           <a className="brand" href="#conteudo" aria-label="Sonitus - Monitoramento Acústico Urbano, ir para conteúdo principal">
             <div className="brand-mark" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 10v4" />
-                <path d="M6 7v10" />
-                <path d="M10 4v16" />
-                <path d="M14 7v10" />
-                <path d="M18 9v6" />
-                <path d="M22 11v2" />
-              </svg>
+              <img src="/sonitus-logo.svg" alt="" />
             </div>
             <div className="brand-text">
               <span className="brand-name">Sonitus</span>
