@@ -136,8 +136,8 @@ export function App() {
         {activeTab === 'tecnologia' && (
           <Suspense
             fallback={
-              <div className="section-technology" style={{ padding: '3rem', textAlign: 'center' }}>
-                <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>
+              <div className="section-technology technology-loading-state">
+                <p className="technology-loading-copy">
                   Carregando ambiente tridimensional do hardware Sonitus...
                 </p>
               </div>

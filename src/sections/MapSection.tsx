@@ -69,7 +69,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
         level: r.level,
         decibels: r.decibels,
         peakDb: r.peakDb,
-        position: sensor.position,
         note: r.note,
         category: sensor.category,
         sensorId: sensor.id,
@@ -204,7 +203,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
               <option value="todas">Todas as Categorias</option>
               <option value="sensivel">Zonas Sensíveis (Saúde/Escola/Abrigo)</option>
               <option value="parque">Áreas Verdes & Parques</option>
-              <option value="residencial">Zonas Residenciais</option>
               <option value="comercial">Comércio & Serviços</option>
               <option value="arterial">Vias Arteriais / Trânsito</option>
             </select>
@@ -389,7 +387,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                 strokeWidth="1"
               />
               <text x="180" y="320" textAnchor="middle" fill="var(--color-calm)" fontSize="12" fontWeight="800" letterSpacing="1">
-                JARDIM AURORA (RESIDENCIAL)
+                JARDIM AURORA (ÁREA ARBORIZADA)
               </text>
             </g>
 
@@ -463,7 +461,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
               <path d="M 240 600 L 440 600" stroke="var(--color-surface)" strokeWidth="16" fill="none" strokeLinecap="round" />
               <path d="M 240 600 L 440 600" stroke="var(--color-border)" strokeWidth="16" fill="none" strokeLinecap="round" strokeOpacity="0.3" />
               <text x="290" y="594" fill="var(--color-calm)" fontSize="10" fontWeight="700">
-                Praça dos Ipês / Travessa do Sossego
+                Praça dos Ipês / Caminho Verde
               </text>
             </g>
 
@@ -471,8 +469,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
             {showHeatmap && (
               <g className="map-heatmap-layer" aria-hidden="true">
                 {filteredReadings.map((reading) => {
-                  const cx = reading.position.x * 10
-                  const cy = reading.position.y * 7
                   const r = reading.decibels > 75 ? 120 : reading.decibels > 60 ? 95 : 75
                   const gradId =
                     reading.level === 'intenso'
@@ -483,11 +479,9 @@ export const MapSection: React.FC<MapSectionProps> = ({
                   return (
                     <circle
                       key={`heat-${reading.name}`}
-                      cx={cx}
-                      cy={cy}
                       r={r}
                       fill={gradId}
-                      className="heat-spot"
+                      className={`heat-spot sensor-heat-${reading.sensorId.replace('SNS-', '')}`}
                     />
                   )
                 })}
@@ -548,11 +542,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                 <button
                   key={reading.sensorId}
                   type="button"
-                  className={`map-interactive-pin ${reading.level} ${isSelected ? 'selected' : ''}`}
-                  style={{
-                    left: `${reading.position.x}%`,
-                    top: `${reading.position.y}%`,
-                  }}
+                  className={`map-interactive-pin sensor-pin-${reading.sensorId.replace('SNS-', '')} ${reading.level} ${isSelected ? 'selected' : ''}`}
                   onClick={() => onSelectPlace(reading.name)}
                   aria-pressed={isSelected}
                   aria-label={`${reading.sensorId} - ${reading.name}: ${reading.decibels} decibéis, ${levelLabels[reading.level]}. ${reading.note}`}
