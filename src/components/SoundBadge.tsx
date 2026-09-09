@@ -1,7 +1,7 @@
 import React from 'react'
 import type { NoiseLevel } from '../types'
 import { levelLabels } from '../data/noiseData'
-import { Volume2, Volume1, VolumeX } from 'lucide-react'
+import { Volume2, Volume1 } from 'lucide-react'
 
 interface SoundBadgeProps {
   level: NoiseLevel

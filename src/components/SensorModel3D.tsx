@@ -7,8 +7,6 @@ import {
   ZoomOut,
   Maximize2,
   ShieldCheck,
-  Eye,
-  Info,
   CheckCircle2,
   AlertTriangle,
 } from 'lucide-react'
@@ -18,7 +16,7 @@ interface SensorModel3DProps {
   theme: 'light' | 'dark'
 }
 
-export type HardwareComponentId =
+type HardwareComponentId =
   | 'overview'
   | 'mic'
   | 'esp32'
@@ -36,7 +34,7 @@ interface ComponentDetail {
   privacyNote?: string
 }
 
-export const hardwareComponents: ComponentDetail[] = [
+const hardwareComponents: ComponentDetail[] = [
   {
     id: 'overview',
     title: 'Sensor Urbano Sonitus Node v1.2',
@@ -140,22 +138,16 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
   const animFrameIdRef = useRef<number | null>(null)
   const ledMeshRef = useRef<THREE.Mesh | null>(null)
 
-  const [hasWebGL, setHasWebGL] = useState(true)
-  const [selectedComp, setSelectedComp] = useState<HardwareComponentId>('overview')
-  const [isRotating, setIsRotating] = useState(!reducedMotion)
-
-  // Checagem de suporte a WebGL
-  useEffect(() => {
+  const [hasWebGL, setHasWebGL] = useState(() => {
     try {
       const canvas = document.createElement('canvas')
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
-      if (!gl) {
-        setHasWebGL(false)
-      }
+      return Boolean(canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
     } catch {
-      setHasWebGL(false)
+      return false
     }
-  }, [])
+  })
+  const [selectedComp, setSelectedComp] = useState<HardwareComponentId>('overview')
+  const [isRotating, setIsRotating] = useState(!reducedMotion)
 
   // Inicialização do Three.js
   useEffect(() => {
@@ -193,7 +185,7 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
       rendererRef.current = renderer
     } catch (err) {
       console.warn('WebGL falhou ao inicializar renderer:', err)
-      setHasWebGL(false)
+      queueMicrotask(() => setHasWebGL(false))
       return
     }
 
@@ -394,7 +386,7 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
     sensorGroup.position.set(0.6, -0.7, 0)
 
     // Loop de Animação
-    let clock = new THREE.Clock()
+    const clock = new THREE.Clock()
     const animate = () => {
       animFrameIdRef.current = requestAnimationFrame(animate)
 

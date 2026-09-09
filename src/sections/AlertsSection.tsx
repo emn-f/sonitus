@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { NavigationTab, Period } from '../types'
+import type { NavigationTab } from '../types'
 import { alertsList } from '../data/noiseData'
 import {
   AlertTriangle,
@@ -7,23 +7,18 @@ import {
   CheckCircle,
   Clock,
   ExternalLink,
-  Filter,
   Info,
-  Layers,
   MapPin,
   Radio,
-  RotateCcw,
   ShieldAlert,
 } from 'lucide-react'
 
 interface AlertsSectionProps {
-  period: Period
   onNavigate: (tab: NavigationTab) => void
   onSelectPlace: (placeName: string) => void
 }
 
 export const AlertsSection: React.FC<AlertsSectionProps> = ({
-  period,
   onNavigate,
   onSelectPlace,
 }) => {
@@ -37,7 +32,6 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
   })
 
   const newAlertsCount = alertsList.filter((a) => a.status === 'novo').length
-  const criticalCount = alertsList.filter((a) => a.severity === 'critica').length
 
   return (
     <div className="section-alerts">

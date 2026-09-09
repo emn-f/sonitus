@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import type { NavigationTab, Period } from './types'
 import { alertsList, sensorsList } from './data/noiseData'
 import { Header } from './components/Header'
@@ -28,6 +28,9 @@ export function App() {
   const [period, setPeriod] = useState<Period>('Manhã')
   const [activeTab, setActiveTab] = useState<NavigationTab>('visao-geral')
   const [selectedPlaceName, setSelectedPlaceName] = useState<string | null>(null)
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false)
+  const navigationTriggerRef = useRef<HTMLButtonElement>(null)
+  const mainContentRef = useRef<HTMLElement>(null)
   const [reducedMotion, setReducedMotion] = useState(() => {
     const saved = localStorage.getItem('sonitus-reduce-motion')
     if (saved !== null) return saved === 'true'
@@ -45,6 +48,20 @@ export function App() {
     document.documentElement.dataset.reduceMotion = String(reducedMotion)
     localStorage.setItem('sonitus-reduce-motion', String(reducedMotion))
   }, [reducedMotion])
+
+  useEffect(() => {
+    if (!isNavigationOpen) return
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsNavigationOpen(false)
+        queueMicrotask(() => navigationTriggerRef.current?.focus())
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isNavigationOpen])
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
@@ -67,7 +84,14 @@ export function App() {
 
   const handleNavigate = (tab: NavigationTab) => {
     setActiveTab(tab)
+    setIsNavigationOpen(false)
+    queueMicrotask(() => mainContentRef.current?.focus())
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
+  }
+
+  const closeNavigation = () => {
+    setIsNavigationOpen(false)
+    queueMicrotask(() => navigationTriggerRef.current?.focus())
   }
 
   return (
@@ -83,16 +107,22 @@ export function App() {
         onToggleReducedMotion={toggleReducedMotion}
         currentPeriod={period}
         onChangePeriod={setPeriod}
+        isNavigationOpen={isNavigationOpen}
+        onToggleNavigation={() => setIsNavigationOpen((value) => !value)}
+        navigationTriggerRef={navigationTriggerRef}
       />
 
-      <Navigation
-        activeTab={activeTab}
-        onSelectTab={handleNavigate}
-        alertsCount={alertsList.filter((a) => a.status === 'novo').length}
-        sensorsCount={sensorsList.length}
-      />
+      <div className="workspace-layout">
+        <Navigation
+          activeTab={activeTab}
+          onSelectTab={handleNavigate}
+          alertsCount={alertsList.filter((a) => a.status === 'novo').length}
+          sensorsCount={sensorsList.length}
+          isOpen={isNavigationOpen}
+          onClose={closeNavigation}
+        />
 
-      <main id="conteudo" className="main-content-area" role="region" aria-label="Conteúdo da seção selecionada">
+        <main ref={mainContentRef} id="conteudo" className="main-content-area" role="region" aria-label="Conteúdo da seção selecionada" tabIndex={-1}>
         {activeTab === 'visao-geral' && (
           <OverviewSection
             period={period}
@@ -119,7 +149,6 @@ export function App() {
 
         {activeTab === 'alertas' && (
           <AlertsSection
-            period={period}
             onNavigate={handleNavigate}
             onSelectPlace={handleSelectPlaceAndNavigate}
           />
@@ -143,18 +172,15 @@ export function App() {
               </div>
             }
           >
-            <TechnologySection
-              reducedMotion={reducedMotion}
-              theme={theme}
-              onNavigate={handleNavigate}
-            />
+            <TechnologySection reducedMotion={reducedMotion} theme={theme} />
           </Suspense>
         )}
 
         {activeTab === 'sobre' && (
-          <AboutSection onNavigate={handleNavigate} />
+          <AboutSection />
         )}
-      </main>
+        </main>
+      </div>
 
       <Footer />
     </div>

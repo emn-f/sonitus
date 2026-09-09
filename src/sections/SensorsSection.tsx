@@ -1,17 +1,11 @@
 import React, { useState } from 'react'
-import type { NavigationTab, Period, Sensor } from '../types'
+import type { NavigationTab, Period } from '../types'
 import { sensorsList } from '../data/noiseData'
 import { SoundBadge } from '../components/SoundBadge'
 import {
-  Battery,
-  BatteryCharging,
   Cpu,
-  Eye,
-  Filter,
-  Layers,
   MapPin,
   Radio,
-  RefreshCw,
   Search,
   Signal,
   Sun,

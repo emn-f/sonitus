@@ -129,6 +129,8 @@ Para executar o projeto em um ambiente padronizado via VS Code:
 4. Aguarde a instalação das dependências;
 5. No terminal integrado, execute:
    ```bash
+   pnpm lint
+   pnpm typecheck
    pnpm dev
    ```
 6. Acesse a porta encaminhada do Sonitus (`http://localhost:5173`).

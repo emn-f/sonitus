@@ -249,6 +249,10 @@ input:focus-visible,
   gap: 1.25rem;
 }
 
+.nav-menu-toggle {
+  display: none;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -408,33 +412,61 @@ input:focus-visible,
 }
 
 /* ==========================================================================
-   NAVIGATION TAB BAR
+   NAVEGAÇÃO LATERAL
    ========================================================================== */
-.main-navigation {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 61px;
-  z-index: 85;
-  box-shadow: var(--shadow-sm);
+.workspace-layout {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+  flex: 1;
 }
 
-.nav-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+.app-sidebar {
+  position: sticky;
+  top: 4.4rem;
+  align-self: start;
+  height: calc(100vh - 4.4rem);
+  padding: 1.25rem 1rem;
+  border-right: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+}
+
+.sidebar-navigation {
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  overflow-x: auto;
-  scrollbar-width: thin;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.sidebar-title {
+  margin: 0 0.5rem;
+  color: var(--color-text-subtle);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-overlay {
+  display: none;
 }
 
 .nav-tab-item {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.85rem 1rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: 0.7rem;
   border: none;
   background: transparent;
   color: var(--color-text-muted);
@@ -442,8 +474,8 @@ input:focus-visible,
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  border-bottom: 3px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  text-align: left;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .nav-tab-item:hover {
@@ -451,8 +483,8 @@ input:focus-visible,
 }
 
 .nav-tab-item.active {
+  background: var(--color-primary-soft);
   color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -3808,9 +3840,58 @@ input:focus-visible,
 }
 
 @media (max-width: 900px) {
-  .app-header,
-  .main-navigation {
-    position: static;
+  .workspace-layout {
+    display: block;
+  }
+
+  .nav-menu-toggle {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.7rem;
+    background: var(--color-surface-secondary);
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 110;
+    width: min(18rem, calc(100vw - 3rem));
+    height: 100dvh;
+    padding-top: 6.5rem;
+    border-right: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+    overflow-y: auto;
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 105;
+    display: block;
+    border: 0;
+    background: rgba(12, 17, 23, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .sidebar-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .city-status-banner,
@@ -3838,7 +3919,7 @@ input:focus-visible,
   }
 
   .header-brand-group {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .header-controls {

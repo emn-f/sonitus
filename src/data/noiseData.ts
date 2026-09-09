@@ -1,6 +1,5 @@
 import type {
   Alert,
-  DistrictId,
   DistrictInfo,
   HourlyReading,
   NoiseLevel,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import type { NavigationTab } from '../types'
 import {
   LayoutDashboard,
@@ -15,6 +15,8 @@ interface NavigationProps {
   onSelectTab: (tab: NavigationTab) => void
   alertsCount?: number
   sensorsCount?: number
+  isOpen: boolean
+  onClose: () => void
 }
 
 interface TabItem {
@@ -30,7 +32,14 @@ export const Navigation: React.FC<NavigationProps> = ({
   onSelectTab,
   alertsCount = 0,
   sensorsCount = 12,
+  isOpen,
+  onClose,
 }) => {
+  const activeItemRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (isOpen) activeItemRef.current?.focus()
+  }, [isOpen])
   const tabs: TabItem[] = [
     {
       id: 'visao-geral',
@@ -74,33 +83,37 @@ export const Navigation: React.FC<NavigationProps> = ({
   ]
 
   return (
-    <nav className="main-navigation" aria-label="Navegação da plataforma">
-      <div className="nav-inner" role="tablist">
+    <>
+      <button className={`sidebar-overlay ${isOpen ? 'visible' : ''}`} type="button" aria-label="Fechar menu de navegação" tabIndex={isOpen ? 0 : -1} onClick={onClose} />
+      <aside id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Menu lateral">
+        <nav className="sidebar-navigation" aria-label="Navegação da plataforma">
+          <p className="sidebar-title">Navegação</p>
+          <ul className="nav-list">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id
           return (
-            <button
-              key={tab.id}
-              role="tab"
-              type="button"
-              id={`tab-${tab.id}`}
-              aria-selected={isActive}
-              aria-controls={`panel-${tab.id}`}
-              tabIndex={isActive ? 0 : -1}
-              className={`nav-tab-item ${isActive ? 'active' : ''}`}
-              onClick={() => onSelectTab(tab.id)}
-            >
-              <span className="tab-icon">{tab.icon}</span>
-              <span className="tab-label">{tab.label}</span>
-              {tab.badge !== undefined && (
-                <span className={`tab-badge badge-${tab.badgeVariant || 'neutral'}`}>
-                  {tab.badge}
-                </span>
-              )}
-            </button>
+            <li key={tab.id}>
+              <button
+                ref={isActive ? activeItemRef : undefined}
+                type="button"
+                aria-current={isActive ? 'page' : undefined}
+                className={`nav-tab-item ${isActive ? 'active' : ''}`}
+                onClick={() => onSelectTab(tab.id)}
+              >
+                <span className="tab-icon">{tab.icon}</span>
+                <span className="tab-label">{tab.label}</span>
+                {tab.badge !== undefined && (
+                  <span className={`tab-badge badge-${tab.badgeVariant || 'neutral'}`}>
+                    {tab.badge}
+                  </span>
+                )}
+              </button>
+            </li>
           )
         })}
-      </div>
-    </nav>
+          </ul>
+        </nav>
+      </aside>
+    </>
   )
 }
