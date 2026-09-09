@@ -10,11 +10,9 @@ import {
   Trees,
   ShieldCheck,
   Compass,
-  Volume2,
   Clock,
   Sparkles,
   ArrowRight,
-  AlertCircle,
 } from 'lucide-react'
 
 interface SensitiveZonesSectionProps {

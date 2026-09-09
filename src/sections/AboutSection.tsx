@@ -1,26 +1,16 @@
 import React from 'react'
-import type { NavigationTab } from '../types'
 import {
   AlertCircle,
   BookOpen,
   Brain,
   CheckCircle2,
-  Heart,
   Hospital,
   Info,
-  Layers,
   PawPrint,
-  Radio,
-  ShieldCheck,
-  Sparkles,
   Users,
 } from 'lucide-react'
 
-interface AboutSectionProps {
-  onNavigate: (tab: NavigationTab) => void
-}
-
-export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
+export const AboutSection: React.FC = () => {
   return (
     <div className="section-about">
       {/* Hero */}

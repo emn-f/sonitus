@@ -1,9 +1,7 @@
 import React from 'react'
-import type { NavigationTab, Period, PlaceReading } from '../types'
+import type { NavigationTab, Period } from '../types'
 import {
   computeCityMetrics,
-  districtsList,
-  levelLabels,
   hourlyTrendHistory,
 } from '../data/noiseData'
 import { MetricCard } from '../components/MetricCard'
@@ -14,13 +12,9 @@ import {
   ArrowUpRight,
   Compass,
   Heart,
-  Layers,
-  MapPin,
   Radio,
-  Sparkles,
   Volume1,
   Volume2,
-  VolumeX,
 } from 'lucide-react'
 
 interface OverviewSectionProps {

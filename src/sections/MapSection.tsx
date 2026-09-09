@@ -1,38 +1,27 @@
 import React, { useState, useMemo } from 'react'
 import type {
-  DistrictId,
-  NoiseLevel,
   Period,
   PlaceReading,
-  SensorCategory,
 } from '../types'
 import {
   districtsList,
   levelLabels,
-  levelDescriptions,
   sensorsList,
-  sensitiveZonesList,
 } from '../data/noiseData'
 import { SoundBadge } from '../components/SoundBadge'
 import {
   Eye,
-  Filter,
   Flame,
   HeartHandshake,
   Hospital,
   Info,
-  Layers,
   MapPin,
   Maximize2,
   Minimize2,
   RotateCcw,
   Search,
   ShieldCheck,
-  Trees,
-  Volume1,
-  Volume2,
   X,
-  Zap,
 } from 'lucide-react'
 
 interface MapSectionProps {
@@ -111,12 +100,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
   // Sensor correspondente
   const activeSensor = useMemo(() => {
     return sensorsList.find((s) => s.id === activeReading?.sensorId)
-  }, [activeReading])
-
-  // Zonas sensíveis próximas ou correlatas
-  const relatedSensitiveZone = useMemo(() => {
-    if (!activeReading) return null
-    return sensitiveZonesList.find((sz) => sz.districtId === activeReading.districtId)
   }, [activeReading])
 
   const hasActiveFilters =

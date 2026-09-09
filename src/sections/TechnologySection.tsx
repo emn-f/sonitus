@@ -1,36 +1,27 @@
 import React from 'react'
-import type { NavigationTab } from '../types'
 import { SensorModel3D } from '../components/SensorModel3D'
 import {
   ArrowRight,
-  Boxes,
-  CheckCircle2,
   Cpu,
   EyeOff,
-  Globe,
   HardDrive,
-  Layers,
   Lock,
   Radio,
   Server,
   ShieldCheck,
-  Smartphone,
   Sparkles,
   Users,
   Wifi,
-  Zap,
 } from 'lucide-react'
 
 interface TechnologySectionProps {
   reducedMotion: boolean
   theme: 'light' | 'dark'
-  onNavigate: (tab: NavigationTab) => void
 }
 
 export const TechnologySection: React.FC<TechnologySectionProps> = ({
   reducedMotion,
   theme,
-  onNavigate,
 }) => {
   return (
     <div className="section-technology">

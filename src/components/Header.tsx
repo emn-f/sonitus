@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Period } from '../types'
-import { Activity, Moon, Sun, Wind } from 'lucide-react'
+import { Activity, Menu, Moon, Sun, Wind } from 'lucide-react'
 
 interface HeaderProps {
   theme: 'light' | 'dark'
@@ -9,6 +9,9 @@ interface HeaderProps {
   onToggleReducedMotion: () => void
   currentPeriod: Period
   onChangePeriod: (period: Period) => void
+  isNavigationOpen: boolean
+  onToggleNavigation: () => void
+  navigationTriggerRef: React.RefObject<HTMLButtonElement | null>
 }
 
 const periods: Period[] = ['Manhã', 'Tarde', 'Noite']
@@ -20,11 +23,25 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleReducedMotion,
   currentPeriod,
   onChangePeriod,
+  isNavigationOpen,
+  onToggleNavigation,
+  navigationTriggerRef,
 }) => {
   return (
     <header className="app-header" role="banner">
       <div className="header-inner">
         <div className="header-brand-group">
+          <button
+            type="button"
+            className="nav-menu-toggle"
+            ref={navigationTriggerRef}
+            aria-label={isNavigationOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+            aria-expanded={isNavigationOpen}
+            aria-controls="app-sidebar"
+            onClick={onToggleNavigation}
+          >
+            <Menu size={20} aria-hidden="true" />
+          </button>
           <a className="brand" href="#conteudo" aria-label="Sonitus - Monitoramento Acústico Urbano, ir para conteúdo principal">
             <div className="brand-mark" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
