@@ -23,6 +23,7 @@ interface TabItem {
   id: NavigationTab
   label: string
   icon: React.ReactNode
+  group: 'Planejar' | 'Área técnica'
   badge?: number | string
   badgeVariant?: 'critical' | 'neutral'
 }
@@ -36,30 +37,53 @@ export const Navigation: React.FC<NavigationProps> = ({
   onClose,
 }) => {
   const activeItemRef = useRef<HTMLButtonElement>(null)
+  const sidebarRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    if (isOpen) activeItemRef.current?.focus()
+    if (!isOpen) return
+
+    activeItemRef.current?.focus()
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return
+      const focusable = sidebarRef.current?.querySelectorAll<HTMLButtonElement>('button:not([disabled])')
+      if (!focusable?.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+    document.addEventListener('keydown', trapFocus)
+    return () => document.removeEventListener('keydown', trapFocus)
   }, [isOpen])
   const tabs: TabItem[] = [
     {
       id: 'visao-geral',
-      label: 'Visão Geral',
+      label: 'Planejar meu conforto',
       icon: <LayoutDashboard size={17} aria-hidden="true" />,
+      group: 'Planejar',
     },
     {
       id: 'mapa',
       label: 'Mapa Acústico',
       icon: <Map size={17} aria-hidden="true" />,
+      group: 'Planejar',
     },
     {
       id: 'zonas-sensiveis',
-      label: 'Zonas Sensíveis & Conforto',
+      label: 'Zonas tranquilas',
       icon: <HeartPulse size={17} aria-hidden="true" />,
+      group: 'Planejar',
     },
     {
       id: 'alertas',
       label: 'Alertas',
       icon: <Bell size={17} aria-hidden="true" />,
+      group: 'Área técnica',
       badge: alertsCount > 0 ? alertsCount : undefined,
       badgeVariant: 'critical',
     },
@@ -67,29 +91,34 @@ export const Navigation: React.FC<NavigationProps> = ({
       id: 'sensores',
       label: 'Rede de Sensores',
       icon: <Radio size={17} aria-hidden="true" />,
+      group: 'Área técnica',
       badge: `${sensorsCount}`,
       badgeVariant: 'neutral',
     },
     {
       id: 'tecnologia',
-      label: 'Tecnologia & Hardware 3D',
+      label: 'Como funciona',
       icon: <Cpu size={17} aria-hidden="true" />,
+      group: 'Área técnica',
     },
     {
       id: 'sobre',
       label: 'Sobre o Sonitus',
       icon: <Info size={17} aria-hidden="true" />,
+      group: 'Área técnica',
     },
   ]
 
   return (
     <>
       <button className={`sidebar-overlay ${isOpen ? 'visible' : ''}`} type="button" aria-label="Fechar menu de navegação" tabIndex={isOpen ? 0 : -1} onClick={onClose} />
-      <aside id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Menu lateral">
+      <aside ref={sidebarRef} id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Menu lateral">
         <nav className="sidebar-navigation" aria-label="Navegação da plataforma">
-          <p className="sidebar-title">Navegação</p>
-          <ul className="nav-list">
-        {tabs.map((tab) => {
+          {(['Planejar', 'Área técnica'] as const).map((group) => (
+            <section className="nav-group" key={group} aria-label={group}>
+              <p className="sidebar-title">{group}</p>
+              <ul className="nav-list">
+            {tabs.filter((tab) => tab.group === group).map((tab) => {
           const isActive = activeTab === tab.id
           return (
             <li key={tab.id}>
@@ -110,8 +139,10 @@ export const Navigation: React.FC<NavigationProps> = ({
               </button>
             </li>
           )
-        })}
-          </ul>
+            })}
+              </ul>
+            </section>
+          ))}
         </nav>
       </aside>
     </>

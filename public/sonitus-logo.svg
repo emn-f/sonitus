@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Sonitus</title>
+  <desc id="desc">Marca Sonitus: um ponto urbano monitorado por ondas sonoras.</desc>
+  <defs>
+    <linearGradient id="surface" x1="18" y1="14" x2="111" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25527e"/>
+      <stop offset="1" stop-color="#123755"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="31" y1="26" x2="98" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#65d9bd"/>
+      <stop offset="1" stop-color="#29a887"/>
+    </linearGradient>
+  </defs>
+  <rect x="7" y="7" width="114" height="114" rx="31" fill="url(#surface)"/>
+  <path d="M64 25c-21.54 0-39 17.46-39 39 0 25.48 30.58 42.4 39 47 8.42-4.6 39-21.52 39-47 0-21.54-17.46-39-39-39Z" fill="none" stroke="url(#signal)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M64 42c-12.15 0-22 9.85-22 22 0 12.59 14.55 23.02 22 27 7.45-3.98 22-14.41 22-27 0-12.15-9.85-22-22-22Z" fill="none" stroke="#d9fff4" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="64" cy="64" r="8" fill="#65d9bd"/>
+</svg>
