@@ -3808,12 +3808,6 @@ input:focus-visible,
 }
 
 @media (max-width: 900px) {
-  .app-top-chrome {
-    position: sticky;
-    top: 0;
-    z-index: 90;
-  }
-
   .app-header,
   .main-navigation {
     position: static;
