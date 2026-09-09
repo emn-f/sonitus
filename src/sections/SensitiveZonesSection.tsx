@@ -8,7 +8,6 @@ import {
   School,
   PawPrint,
   Trees,
-  Home,
   ShieldCheck,
   Compass,
   Volume2,
@@ -50,8 +49,6 @@ export const SensitiveZonesSection: React.FC<SensitiveZonesSectionProps> = ({
         return <PawPrint size={18} aria-hidden="true" />
       case 'parque':
         return <Trees size={18} aria-hidden="true" />
-      case 'residencial_calmo':
-        return <Home size={18} aria-hidden="true" />
     }
   }
 
@@ -155,9 +152,7 @@ export const SensitiveZonesSection: React.FC<SensitiveZonesSectionProps> = ({
                       ? 'Escola Municipal'
                       : zone.type === 'abrigo'
                       ? 'Abrigo Animal'
-                      : zone.type === 'parque'
-                      ? 'Parque / Oásis Natural'
-                      : 'Bairro Residencial Calmo'}
+                      : 'Parque / Oásis Natural'}
                   </span>
                 </div>
 

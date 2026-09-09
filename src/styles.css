@@ -48,6 +48,70 @@
   line-height: 1.5;
 }
 
+/* Valores visuais previsíveis, mantidos fora da marcação React. */
+.pin-quiet { left: 26%; top: 22%; }
+.pin-hospital { left: 42%; top: 32%; }
+.pin-loud { left: 72%; top: 65%; }
+
+.sensor-pin-001 { left: 68%; top: 32%; }
+.sensor-pin-002 { left: 52%; top: 46%; }
+.sensor-pin-003 { left: 60%; top: 22%; }
+.sensor-pin-004 { left: 42%; top: 28%; }
+.sensor-pin-005 { left: 36%; top: 38%; }
+.sensor-pin-006 { left: 48%; top: 16%; }
+.sensor-pin-007 { left: 26%; top: 18%; }
+.sensor-pin-008 { left: 18%; top: 35%; }
+.sensor-pin-009 { left: 14%; top: 52%; }
+.sensor-pin-010 { left: 28%; top: 74%; }
+.sensor-pin-011 { left: 40%; top: 84%; }
+.sensor-pin-012 { left: 78%; top: 70%; }
+
+.sensor-heat-001 { cx: 680px; cy: 224px; }
+.sensor-heat-002 { cx: 520px; cy: 322px; }
+.sensor-heat-003 { cx: 600px; cy: 154px; }
+.sensor-heat-004 { cx: 420px; cy: 196px; }
+.sensor-heat-005 { cx: 360px; cy: 266px; }
+.sensor-heat-006 { cx: 480px; cy: 112px; }
+.sensor-heat-007 { cx: 260px; cy: 126px; }
+.sensor-heat-008 { cx: 180px; cy: 245px; }
+.sensor-heat-009 { cx: 140px; cy: 364px; }
+.sensor-heat-010 { cx: 280px; cy: 518px; }
+.sensor-heat-011 { cx: 400px; cy: 588px; }
+.sensor-heat-012 { cx: 780px; cy: 490px; }
+
+.col-bar.hour-00 { height: 23.64%; }
+.col-bar.hour-02 { height: 20%; }
+.col-bar.hour-04 { height: 21.82%; }
+.col-bar.hour-06 { height: 41.82%; }
+.col-bar.hour-08 { height: 61.82%; }
+.col-bar.hour-10 { height: 58.18%; }
+.col-bar.hour-12 { height: 65.45%; }
+.col-bar.hour-14 { height: 67.27%; }
+.col-bar.hour-16 { height: 63.64%; }
+.col-bar.hour-18 { height: 69.09%; }
+.col-bar.hour-20 { height: 49.09%; }
+.col-bar.hour-22 { height: 34.55%; }
+
+.distribution-morning .calm { width: 50%; }
+.distribution-morning .moderate { width: 42%; }
+.distribution-morning .intense { width: 8%; }
+.distribution-afternoon .calm { width: 33%; }
+.distribution-afternoon .moderate { width: 42%; }
+.distribution-afternoon .intense { width: 25%; }
+.distribution-night .calm { width: 75%; }
+.distribution-night .moderate { width: 25%; }
+.distribution-night .intense { width: 0; }
+
+.technology-loading-state {
+  padding: 3rem;
+  text-align: center;
+}
+
+.technology-loading-copy {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
 :root[data-theme="dark"] {
   color-scheme: dark;
 

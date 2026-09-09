@@ -29,6 +29,12 @@ interface OverviewSectionProps {
   onSelectPlace: (placeName: string) => void
 }
 
+const distributionPeriodClass: Record<Period, string> = {
+  Manhã: 'morning',
+  Tarde: 'afternoon',
+  Noite: 'night',
+}
+
 export const OverviewSection: React.FC<OverviewSectionProps> = ({
   period,
   onNavigate,
@@ -162,15 +168,15 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
 
           <div className="map-teaser-preview" onClick={() => onNavigate('mapa')} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onNavigate('mapa')} aria-label="Visualização prévia do mapa. Clique para abrir">
             <div className="teaser-roads-preview" aria-hidden="true" />
-            <div className="teaser-pin pin-quiet" style={{ left: '26%', top: '22%' }}>
+            <div className="teaser-pin pin-quiet">
               <span className="pin-dot calm" />
               <span className="pin-label">Parque das Águas (44 dB)</span>
             </div>
-            <div className="teaser-pin pin-hospital" style={{ left: '42%', top: '32%' }}>
+            <div className="teaser-pin pin-hospital">
               <span className="pin-dot moderate" />
               <span className="pin-label">Hospital Dr. Arnaldo (63 dB)</span>
             </div>
-            <div className="teaser-pin pin-loud" style={{ left: '72%', top: '65%' }}>
+            <div className="teaser-pin pin-loud">
               <span className="pin-dot intense" />
               <span className="pin-label">Av. Central (73 dB)</span>
             </div>
@@ -237,7 +243,7 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
               <li className="oasis-item">
                 <div className="oasis-item-info">
                   <strong>Jardim Aurora / Hortênsias</strong>
-                  <span>Alameda residencial · 48 dB</span>
+                  <span>Corredor arborizado público · 48 dB</span>
                 </div>
                 <SoundBadge level="tranquilo" decibels={48} size="sm" />
               </li>
@@ -318,7 +324,6 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
 
           <div className="bars-track-24h">
             {hourlyTrendHistory.map((item) => {
-              const heightPct = Math.min(100, Math.max(15, ((item.avgCity - 30) / 55) * 100))
               const levelClass =
                 item.avgCity < 55 ? 'tranquilo' : item.avgCity < 70 ? 'moderado' : 'intenso'
               return (
@@ -326,8 +331,7 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
                   <span className="hour-val">{item.avgCity} dB</span>
                   <div className="col-bar-track">
                     <div
-                      className={`col-bar ${levelClass}`}
-                      style={{ height: `${heightPct}%` }}
+                      className={`col-bar hour-${item.hour.slice(0, 2)} ${levelClass}`}
                     />
                   </div>
                   <span className="hour-time">{item.hour}</span>
@@ -347,10 +351,10 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
               <span className="dist-tag intense">Intenso: {warningPct}%</span>
             </div>
           </div>
-          <div className="distribution-bar" role="progressbar" aria-valuenow={quietPct} aria-valuemin={0} aria-valuemax={100} aria-label="Distribuição percentual de níveis de ruído na cidade">
-            <div className="dist-segment calm" style={{ width: `${quietPct}%` }} title={`Tranquilo: ${quietPct}%`} />
-            <div className="dist-segment moderate" style={{ width: `${moderatePct}%` }} title={`Moderado: ${moderatePct}%`} />
-            <div className="dist-segment intense" style={{ width: `${warningPct}%` }} title={`Intenso: ${warningPct}%`} />
+          <div className={`distribution-bar distribution-${distributionPeriodClass[period]}`} role="progressbar" aria-valuenow={quietPct} aria-valuemin={0} aria-valuemax={100} aria-label="Distribuição percentual de níveis de ruído na cidade">
+            <div className="dist-segment calm" title={`Tranquilo: ${quietPct}%`} />
+            <div className="dist-segment moderate" title={`Moderado: ${moderatePct}%`} />
+            <div className="dist-segment intense" title={`Intenso: ${warningPct}%`} />
           </div>
         </div>
 

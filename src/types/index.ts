@@ -26,7 +26,6 @@ export type SensorCategory =
   | 'escolar'
   | 'abrigo'
   | 'parque'
-  | 'residencial'
 
 export interface SensorReading {
   decibels: number
@@ -41,7 +40,6 @@ export interface Sensor {
   districtId: DistrictId
   districtName: string
   locationDesc: string
-  position: { x: number; y: number }
   status: 'online' | 'atencao' | 'offline'
   firmware: string
   connectivity: 'LoRaWAN' | 'NB-IoT' | 'Wi-Fi Mesh'
@@ -58,7 +56,6 @@ export type SensitiveZoneType =
   | 'escola'
   | 'abrigo'
   | 'parque'
-  | 'residencial_calmo'
 
 export interface SensitiveZone {
   id: string
@@ -117,7 +114,6 @@ export interface PlaceReading {
   level: NoiseLevel
   decibels: number
   peakDb: number
-  position: { x: number; y: number }
   note: string
   category: SensorCategory
   sensorId: string
