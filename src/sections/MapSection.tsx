@@ -534,6 +534,8 @@ export const MapSection: React.FC<MapSectionProps> = ({
             {/* PONTOS DOS SENSORES (Interativos via HTML sobrepostos para acessibilidade e teclado) */}
           </svg>
 
+          <p className="map-touch-hint">Toque em um ponto para abrir seus detalhes.</p>
+
           {/* SENSOR PIN BUTTONS (HTML Overlay com foco via teclado e eventos ARIA) */}
           <div className="sensors-interactive-overlay" role="group" aria-label="Pontos de monitoramento sonoro interativos">
             {filteredReadings.map((reading) => {

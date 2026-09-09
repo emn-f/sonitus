@@ -314,30 +314,33 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({
         </div>
 
         {/* 24h Hourly Curve Chart */}
-        <div className="chart-container-24h" role="img" aria-label="Gráfico de evolução sonora da cidade ao longo das 24 horas">
-          <div className="chart-grid-lines" aria-hidden="true">
-            <div className="grid-line line-75"><span className="grid-label">75 dB - Crítico</span></div>
-            <div className="grid-line line-65"><span className="grid-label">65 dB - Comercial</span></div>
-            <div className="grid-line line-55"><span className="grid-label">55 dB - Limite OMS</span></div>
-            <div className="grid-line line-45"><span className="grid-label">45 dB - Conforto</span></div>
-          </div>
+        <div className="chart-scroll-area" tabIndex={0} role="region" aria-label="Gráfico de evolução sonora da cidade ao longo das 24 horas">
+          <p className="chart-scroll-hint">Deslize horizontalmente para ver todos os horários.</p>
+          <div className="chart-container-24h" role="img" aria-label="Gráfico de evolução sonora da cidade ao longo das 24 horas">
+            <div className="chart-grid-lines" aria-hidden="true">
+              <div className="grid-line line-75"><span className="grid-label">75 dB - Crítico</span></div>
+              <div className="grid-line line-65"><span className="grid-label">65 dB - Comercial</span></div>
+              <div className="grid-line line-55"><span className="grid-label">55 dB - Limite OMS</span></div>
+              <div className="grid-line line-45"><span className="grid-label">45 dB - Conforto</span></div>
+            </div>
 
-          <div className="bars-track-24h">
-            {hourlyTrendHistory.map((item) => {
-              const levelClass =
-                item.avgCity < 55 ? 'tranquilo' : item.avgCity < 70 ? 'moderado' : 'intenso'
-              return (
-                <div key={item.hour} className="hour-col">
-                  <span className="hour-val">{item.avgCity} dB</span>
-                  <div className="col-bar-track">
-                    <div
-                      className={`col-bar hour-${item.hour.slice(0, 2)} ${levelClass}`}
-                    />
+            <div className="bars-track-24h">
+              {hourlyTrendHistory.map((item) => {
+                const levelClass =
+                  item.avgCity < 55 ? 'tranquilo' : item.avgCity < 70 ? 'moderado' : 'intenso'
+                return (
+                  <div key={item.hour} className="hour-col">
+                    <span className="hour-val">{item.avgCity} dB</span>
+                    <div className="col-bar-track">
+                      <div
+                        className={`col-bar hour-${item.hour.slice(0, 2)} ${levelClass}`}
+                      />
+                    </div>
+                    <span className="hour-time">{item.hour}</span>
                   </div>
-                  <span className="hour-time">{item.hour}</span>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </div>
 

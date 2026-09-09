@@ -1121,6 +1121,10 @@ input:focus-visible,
   padding-top: 1.5rem;
 }
 
+.chart-scroll-hint {
+  display: none;
+}
+
 .chart-grid-lines {
   position: absolute;
   inset: 0 0 25px 0;
@@ -1522,6 +1526,10 @@ input:focus-visible,
   z-index: 10;
 }
 
+.map-touch-hint {
+  display: none;
+}
+
 .pin-core-circle {
   width: 1.85rem;
   height: 1.85rem;
@@ -1588,6 +1596,27 @@ input:focus-visible,
   white-space: nowrap;
   pointer-events: none;
   font-size: 0.72rem;
+}
+
+/* Mantém os rótulos dos pontos próximos às bordas dentro da área visível. */
+.sensor-pin-007 .pin-floating-tag,
+.sensor-pin-008 .pin-floating-tag,
+.sensor-pin-009 .pin-floating-tag {
+  left: 0;
+  transform: none;
+}
+
+.sensor-pin-012 .pin-floating-tag {
+  right: 0;
+  left: auto;
+  transform: none;
+}
+
+.sensor-pin-010 .pin-floating-tag,
+.sensor-pin-011 .pin-floating-tag,
+.sensor-pin-012 .pin-floating-tag {
+  top: auto;
+  bottom: 2rem;
 }
 
 .tag-name {
@@ -3779,6 +3808,17 @@ input:focus-visible,
 }
 
 @media (max-width: 900px) {
+  .app-top-chrome {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
+
+  .app-header,
+  .main-navigation {
+    position: static;
+  }
+
   .city-status-banner,
   .sensitive-hero-banner,
   .sensors-hero-banner,
@@ -3810,6 +3850,15 @@ input:focus-visible,
   .header-controls {
     justify-content: space-between;
     overflow-x: auto;
+    padding-bottom: 0.35rem;
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+  }
+
+  .header-controls > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 }
 
@@ -3828,13 +3877,139 @@ input:focus-visible,
   }
 
   .header-tool-btn {
+    width: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    justify-content: center;
     padding: 0.45rem;
+  }
+
+  .period-selector-label,
+  .system-status-pill .status-text {
+    display: none;
+  }
+
+  .period-btn,
+  .layer-chip,
+  .tool-icon-btn {
+    min-height: 2.75rem;
+  }
+
+  .period-btn {
+    min-width: 2.75rem;
+    padding-inline: 0.55rem;
+  }
+
+  .toolbar-row-primary {
+    align-items: stretch;
+  }
+
+  .search-box,
+  .filter-select-wrapper {
+    min-width: 0;
+  }
+
+  .filter-select-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-select {
+    min-width: 0;
+    max-width: calc(100% - 6.5rem);
+    flex: 1;
+    text-overflow: ellipsis;
+  }
+
+  .map-legend-pills {
+    flex-wrap: wrap;
+  }
+
+  .analytics-section {
+    padding: 1.2rem;
+  }
+
+  .analytics-legend {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .chart-scroll-area {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .chart-scroll-hint {
+    display: block;
+    margin: 0 0 0.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+  }
+
+  .chart-container-24h {
+    min-width: 880px;
+    margin-bottom: 0;
+  }
+
+  .map-viewport-container {
+    min-height: 460px;
+  }
+
+  .map-interactive-pin {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .pin-floating-tag {
+    display: none;
+  }
+
+  .map-interactive-pin.selected .pin-floating-tag {
+    display: flex;
+  }
+
+  .map-touch-hint {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    z-index: 12;
+    display: block;
+    margin: 0;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
   }
 
   .kpi-grid,
   .sensitive-zones-grid,
   .sensors-cards-grid {
     grid-template-columns: 1fr;
+  }
+
+  .overview-split-grid > *,
+  .feature-card {
+    min-width: 0;
+  }
+
+  .card-top {
+    flex-direction: column;
+  }
+
+  .action-link-btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .dist-tags,
+  .footer-badges {
+    flex-wrap: wrap;
   }
 
   .alert-card {
@@ -3864,5 +4039,17 @@ input:focus-visible,
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .map-interactive-pin,
+  .tool-icon-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .preset-btn {
+    min-height: 2.75rem;
   }
 }
