@@ -1,5 +1,5 @@
 import React from 'react'
-import { ShieldCheck, Cpu, HeartHandshake } from 'lucide-react'
+import { ShieldCheck, Cpu, GitFork, HeartHandshake } from 'lucide-react'
 
 export const Footer: React.FC = () => {
   return (
@@ -49,11 +49,16 @@ export const Footer: React.FC = () => {
 
         <div className="footer-bottom-bar">
           <p>© {new Date().getFullYear()} Sonitus — Projeto Acadêmico de Monitoramento Acústico Urbano Inteligente.</p>
-          <div className="footer-badges">
+          <div className="footer-actions">
+            <a className="footer-repo-link" href="https://github.com/emn-f/sonitus" target="_blank" rel="noreferrer">
+              <GitFork size={15} aria-hidden="true" /> Ver repositório
+            </a>
+            <div className="footer-badges">
             <span className="footer-tag">React 19</span>
             <span className="footer-tag">Three.js 3D</span>
             <span className="footer-tag">Acessibilidade WCAG</span>
             <span className="footer-tag">IoT Simulado</span>
+            </div>
           </div>
         </div>
       </div>

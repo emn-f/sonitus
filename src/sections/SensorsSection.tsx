@@ -54,7 +54,7 @@ export const SensorsSection: React.FC<SensorsSectionProps> = ({
               <Radio size={14} aria-hidden="true" />
               Topologia IoT Simulada
             </span>
-            <span className="mesh-tag">12 Pontos Georreferenciados</span>
+            <span className="mesh-tag">18 Pontos Georreferenciados</span>
           </div>
           <h1 id="sensors-title" className="hero-heading">
             Rede de Sensores Urbanos Sonitus

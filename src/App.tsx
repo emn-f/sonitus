@@ -25,7 +25,7 @@ function getInitialTheme(): Theme {
 
 export function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
-  const [period, setPeriod] = useState<Period>('Manhã')
+  const period: Period = 'Manhã'
   const [activeTab, setActiveTab] = useState<NavigationTab>('visao-geral')
   const [selectedPlaceName, setSelectedPlaceName] = useState<string | null>(null)
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
@@ -105,8 +105,6 @@ export function App() {
         onToggleTheme={toggleTheme}
         reducedMotion={reducedMotion}
         onToggleReducedMotion={toggleReducedMotion}
-        currentPeriod={period}
-        onChangePeriod={setPeriod}
         activeTab={activeTab}
         onNavigate={handleNavigate}
         isNavigationOpen={isNavigationOpen}

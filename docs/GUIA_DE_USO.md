@@ -48,10 +48,10 @@ Se a porta 5173 estiver ocupada, o Vite falhará de forma clara sem trocar silen
 A aplicação é organizada através de uma barra de abas acessível no topo:
 
 - **Visão Geral**: centro de comando urbano com KPIs da cidade, radar de ruído, curva de 24 horas e atalhos rápidos.
-- **Mapa Acústico (Protagonista)**: mapa urbano ilustrativo com 12 sensores georreferenciados, heatmap dinâmico, camadas visuais, filtros e gaveta de inspeção detalhada.
+- **Mapa Acústico (Protagonista)**: mapa urbano ilustrativo com 18 sensores georreferenciados, heatmap dinâmico, camadas visuais, filtros e gaveta de inspeção detalhada.
 - **Zonas Sensíveis & Conforto**: instalações de saúde, escolas e abrigos protegidos, além do catálogo de **Oásis de Conforto Acústico** (zonas tranquilas) para descompressão sensorial.
 - **Alertas**: central de detecção de eventos e anomalias simuladas (picos repetitivos, violações de zonas de silêncio), com severidade, causas e ações recomendadas.
-- **Rede de Sensores**: telemetria técnica dos 12 nós (SNS-001 a SNS-012), conectividade (LoRaWAN, NB-IoT), nível de bateria e fontes de alimentação.
+- **Rede de Sensores**: telemetria técnica dos 18 nós (SNS-001 a SNS-018), conectividade (LoRaWAN, NB-IoT), nível de bateria e fontes de alimentação.
 - **Tecnologia & Hardware 3D**: visualizador tridimensional interativo do sensor conceitual (Sonitus Node v1.2), pipeline da arquitetura IoT ponta a ponta e garantias de privacidade.
 - **Sobre o Sonitus**: fundamentação acadêmica, neurodivergência e TEA, metodologia de simulação e roadmap de implantação piloto.
 
@@ -61,9 +61,8 @@ A aplicação é organizada através de uma barra de abas acessível no topo:
 
 A barra superior fixa acompanha toda a navegação e disponibiliza:
 - **Logomarca Sonitus**: atalho de retorno à tela inicial com ícone de ondas acústicas.
-- **Navegação principal**: atalhos em uma única linha para Visão Geral, Mapa Acústico, Zonas de Refúgio e Privacidade e Sensores. As áreas complementares estão reunidas em **Mais opções**; em celulares, ele se transforma em um ícone de menu.
+- **Navegação principal**: em desktop, atalhos em uma única linha para Visão Geral, Mapa Acústico, Zonas de Refúgio e Privacidade e Sensores. Em tablet, o botão **Navegar** abre um painel contextual com todas as áreas; em celulares, ele se torna um ícone de menu.
 - **Status da cidade**: leitura resumida do nível atual na barra superior.
-- **Seletor de Turno (Manhã / Tarde / Noite)**: altera simultaneamente os dados de toda a plataforma (sensores, mapa, gráficos e alertas).
 - **Botão Reduzir Movimento**: exibe explicitamente “Reduzir movimento” ou “Movimento reduzido”; quando ativo, usa fundo verde e indicador de estado. Desativa imediatamente transições, rotações e animações, respeitando também `prefers-reduced-motion`.
 - **Botão Tema Claro / Escuro**: alterna a paleta de cores entre superfícies diurnas e noturnas com persistência em `localStorage`.
 
@@ -80,7 +79,7 @@ A Visão Geral funciona como o painel principal de inteligência acústica da ci
   - *Média Urbana*: média ponderada de todos os sensores no período;
   - *Zonas Tranquilas*: quantidade de pontos abaixo de 55 dB e percentual da cidade;
   - *Zonas em Atenção*: quantidade de pontos acima de 70 dB;
-  - *Rede de Sensores IoT*: contagem de nós simulados operacionais (12/12 online);
+  - *Rede de Sensores IoT*: contagem de nós simulados operacionais (18/18 online);
   - *Alertas 24h*: quantidade de ocorrências críticas detectadas nas últimas 24 horas.
 - **Destaque do Mapa Acústico**: prévia clicável para navegar diretamente ao mapa interativo.
 - **Oásis de Conforto Acústico**: sugestões imediatas de refúgios sensoriais para pessoas com hipersensibilidade auditiva.
@@ -155,7 +154,7 @@ Demonstra como o Sonitus alertaria gestores públicos e cidadãos diante de anom
 
 Visão de engenharia da infraestrutura de monitoramento:
 - **Painel de Telemetria Geral**: contagem de nós conectados, distribuição dos protocolos de rede (LoRaWAN AU915, LTE NB-IoT e Wi-Fi Mesh) e saúde da rede.
-- **Cards dos Sensores (SNS-001 a SNS-012)**:
+- **Cards dos Sensores (SNS-001 a SNS-018)**:
   - Estado operacional (Online / Atenção / Offline);
   - Leitura em dB no turno selecionado e pico do período;
   - Tipo de conectividade e intensidade do sinal;

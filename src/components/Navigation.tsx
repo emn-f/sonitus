@@ -8,6 +8,7 @@ import {
   Radio,
   Cpu,
   Info,
+  X,
 } from 'lucide-react'
 
 interface NavigationProps {
@@ -112,7 +113,16 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       <button className={`sidebar-overlay ${isOpen ? 'visible' : ''}`} type="button" aria-label="Fechar menu de navegação" tabIndex={isOpen ? 0 : -1} onClick={onClose} />
-      <aside ref={sidebarRef} id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Menu lateral">
+      <aside ref={sidebarRef} id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Navegação da plataforma" aria-modal={isOpen} role="dialog">
+        <header className="nav-drawer-header">
+          <div>
+            <span className="nav-drawer-eyebrow">Sonitus</span>
+            <strong>Encontre seu caminho</strong>
+          </div>
+          <button type="button" className="nav-drawer-close" onClick={onClose} aria-label="Fechar navegação">
+            <X size={19} aria-hidden="true" />
+          </button>
+        </header>
         <nav className="sidebar-navigation" aria-label="Navegação da plataforma">
           {(['Planejar', 'Área técnica'] as const).map((group) => (
             <section className="nav-group" key={group} aria-label={group}>
