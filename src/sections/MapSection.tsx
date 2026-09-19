@@ -235,7 +235,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
               aria-pressed={showLabels}
             >
               <Eye size={14} aria-hidden="true" />
-              <span>Rótulos e Nomes</span>
+              <span>Rótulo do ponto ativo</span>
             </button>
 
             <button
@@ -537,7 +537,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                     <span className="pin-sensor-code">{reading.sensorId.replace('SNS-', '')}</span>
                   </span>
 
-                  {showLabels && (
+                  {showLabels && isSelected && (
                     <span className="pin-floating-tag">
                       <span className="tag-name">{reading.name}</span>
                       <strong className="tag-db">{reading.decibels} dB</strong>

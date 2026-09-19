@@ -61,10 +61,14 @@ A aplicação é organizada através de uma barra de abas acessível no topo:
 
 A barra superior fixa acompanha toda a navegação e disponibiliza:
 - **Logomarca Sonitus**: atalho de retorno à tela inicial com ícone de ondas acústicas.
-- **Pílula de Status do Sistema**: indicador visual com pulso atestando "Rede Simulada Ativa".
+- **Navegação principal**: atalhos em uma única linha para Visão Geral, Mapa Acústico, Zonas de Refúgio e Privacidade e Sensores. As áreas complementares estão reunidas em **Mais opções**; em celulares, ele se transforma em um ícone de menu.
+- **Status da cidade**: leitura resumida do nível atual na barra superior.
 - **Seletor de Turno (Manhã / Tarde / Noite)**: altera simultaneamente os dados de toda a plataforma (sensores, mapa, gráficos e alertas).
-- **Botão Reduzir Movimento**: desativa imediatamente transições, rotações e animações (respeitando também `prefers-reduced-motion`).
+- **Botão Reduzir Movimento**: exibe explicitamente “Reduzir movimento” ou “Movimento reduzido”; quando ativo, usa fundo verde e indicador de estado. Desativa imediatamente transições, rotações e animações, respeitando também `prefers-reduced-motion`.
 - **Botão Tema Claro / Escuro**: alterna a paleta de cores entre superfícies diurnas e noturnas com persistência em `localStorage`.
+
+> [!TIP]
+> Todos os controles podem ser alcançados por teclado. O foco recebe contorno visível, e os botões de estado comunicam a seleção por texto, cor e `aria-pressed`.
 
 ---
 
@@ -115,6 +119,12 @@ Ao clicar em qualquer sensor ou marcador no mapa, o painel lateral exibe:
 - **Recomendação Sensorial & Neurodivergência**: orientações práticas para pessoas no espectro autista e hipersensíveis (uso de abafadores, percursos favoráveis);
 - **Diretrizes para Gestão Pública Urbana**: sugestões de intervenção para a prefeitura (escalonamento de carga/descarga, asfalto com absorção acústica, barreiras vegetais);
 - **Telemetria do Sensor**: versão do firmware, protocolo de comunicação (LoRaWAN/NB-IoT), percentual de bateria, tipo de alimentação e latência simulada.
+
+### Leitura confortável em cada tela
+
+- Em desktop e notebook, o mapa prioriza a largura completa da área de conteúdo e os detalhes aparecem abaixo, dando mais espaço aos distritos, vias e rótulos.
+- Em monitores muito largos, a gaveta de detalhes pode ficar ao lado do mapa sem reduzir a legibilidade.
+- Em tablets e celulares, filtros e detalhes se reorganizam verticalmente; os marcadores mantêm área de toque confortável e somente o ponto selecionado exibe seu rótulo completo para evitar sobreposição.
 
 ---
 

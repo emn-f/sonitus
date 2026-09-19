@@ -107,6 +107,8 @@ export function App() {
         onToggleReducedMotion={toggleReducedMotion}
         currentPeriod={period}
         onChangePeriod={setPeriod}
+        activeTab={activeTab}
+        onNavigate={handleNavigate}
         isNavigationOpen={isNavigationOpen}
         onToggleNavigation={() => setIsNavigationOpen((value) => !value)}
         navigationTriggerRef={navigationTriggerRef}
