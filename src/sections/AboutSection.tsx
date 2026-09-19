@@ -97,7 +97,7 @@ export const AboutSection: React.FC = () => {
               </li>
               <li>
                 <CheckCircle2 size={16} className="check-icon" aria-hidden="true" />
-                <span><strong>Dados Realistas Simulados:</strong> 12 sensores modelados com curvas horárias e correlações urbanas plausíveis para validação de layout e experiência.</span>
+                <span><strong>Dados Realistas Simulados:</strong> 18 sensores modelados com curvas horárias e correlações urbanas plausíveis para validação de layout e experiência.</span>
               </li>
               <li>
                 <CheckCircle2 size={16} className="check-icon" aria-hidden="true" />

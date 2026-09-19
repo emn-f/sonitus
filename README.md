@@ -16,7 +16,7 @@ A interface segue a identidade **Sonitus Sensory Sanctuary**, pensada para reduz
 
 Os controles do cabeçalho oferecem alternância de tema e de **movimento reduzido**. Ao ativar a última opção, o botão recebe texto, cor e indicador visual de estado; transições e animações também respeitam essa escolha e a preferência de sistema `prefers-reduced-motion`.
 
-O layout é responsivo para telas pequenas, médias e grandes. Em telas usuais, o mapa ocupa toda a largura disponível para preservar a leitura de rótulos e pontos; em telas muito largas, os detalhes voltam a ocupar um painel lateral. A navegação principal mantém itens em uma única linha e as opções secundárias ficam no botão “Mais opções” (ícone de menu apenas no mobile).
+O layout é responsivo para telas pequenas, médias e grandes. Em telas usuais, o mapa ocupa toda a largura disponível para preservar a leitura de rótulos e pontos; em telas muito largas, os detalhes voltam a ocupar um painel lateral. A navegação principal mantém itens em uma única linha no desktop e usa um painel contextual “Navegar” no tablet e um ícone de menu no mobile.
 
 ## Para quem é
 
@@ -67,7 +67,7 @@ Esta evolução do MVP acadêmico demonstra como o Sonitus se comportaria como u
    - Central de alertas conceituais para detecção de recorrência de ruído abusivo.
 
 3. **Viabilidade Tecnológica**:
-   - Visão da futura rede de sensores IoT (telemetria simulada de 12 nós via LoRaWAN e NB-IoT);
+   - Visão da futura rede de sensores IoT (telemetria simulada de 18 nós via LoRaWAN e NB-IoT);
    - **Protótipo 3D Interativo do Hardware Sonitus Node v1.2** (construído em Three.js, com controles orbitais, detalhes de engenharia de borda e garantia de Privacidade por Concepção).
 
 ---
