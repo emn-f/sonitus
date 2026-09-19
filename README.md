@@ -10,6 +10,14 @@ O primeiro produto será um protótipo web interativo, baseado em dados simulado
 
 O protótipo foi construído com React, Vite, TypeScript e CSS puro. Para entender como navegar pela interface, compreender os indicadores e utilizar os recursos de acessibilidade pelo ponto de vista do usuário, consulte o [Guia de Uso](docs/GUIA_DE_USO.md).
 
+### Experiência visual e acessibilidade
+
+A interface segue a identidade **Sonitus Sensory Sanctuary**, pensada para reduzir sobrecarga visual: superfícies em tons quentes, azul profundo, verde-sálvia, tipografia Plus Jakarta Sans e animações discretas. O modo claro e o modo noturno usam paletas próprias e são persistidos localmente.
+
+Os controles do cabeçalho oferecem alternância de tema e de **movimento reduzido**. Ao ativar a última opção, o botão recebe texto, cor e indicador visual de estado; transições e animações também respeitam essa escolha e a preferência de sistema `prefers-reduced-motion`.
+
+O layout é responsivo para telas pequenas, médias e grandes. Em telas usuais, o mapa ocupa toda a largura disponível para preservar a leitura de rótulos e pontos; em telas muito largas, os detalhes voltam a ocupar um painel lateral. A navegação principal mantém itens em uma única linha e as opções secundárias ficam no botão “Mais opções” (ícone de menu apenas no mobile).
+
 ## Para quem é
 
 O foco principal são pessoas neurodivergentes, especialmente pessoas autistas com sensibilidade auditiva. A plataforma também pode beneficiar idosos, pessoas em tratamento, famílias, cuidadores e qualquer pessoa que queira reduzir a exposição a ambientes muito ruidosos.
