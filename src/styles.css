@@ -4520,3 +4520,59 @@ input:focus-visible,
   .nav-tab-item { min-height: 3.2rem; font-size: .92rem; }
   .nav-drawer-header { padding-top: .3rem; }
 }
+
+/* Smartphones: mantém a área útil, os alvos de toque e a escala do mapa alinhados. */
+@media (max-width: 600px) {
+  html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
+  .sanctuary-status-inner { min-height: 0; padding: .42rem .85rem; justify-content: flex-start; font-size: .61rem; line-height: 1.35; }
+  .sanctuary-status-inner > span:first-child { align-items: flex-start; }
+  .sanctuary-header-inner { min-height: 60px; padding: .65rem .85rem; gap: .45rem; }
+  .sanctuary-brand { min-width: 0; }
+  .sanctuary-brand .brand-name { font-size: 1rem; }
+  .header-controls.sanctuary-controls { gap: .3rem; margin-left: auto; }
+  .sanctuary-tool, .sanctuary-motion-toggle, .sanctuary-menu-toggle { width: 2.35rem; min-width: 2.35rem; height: 2.35rem; }
+  .sanctuary-motion-toggle > i { top: .3rem; right: .3rem; }
+  .main-content-area { padding: 1.25rem .85rem 2.5rem; }
+
+  .sanctuary-hero h1 { font-size: clamp(1.65rem, 8.5vw, 2rem); line-height: 1.18; }
+  .sanctuary-hero > p:not(.sanctuary-eyebrow) { font-size: .88rem; line-height: 1.6; }
+  .sanctuary-search { padding: .55rem; border-radius: .9rem; }
+  .sanctuary-search-row { gap: .45rem; padding-inline: .65rem; }
+  .sanctuary-search-row input { min-width: 0; font-size: .73rem; }
+  .sanctuary-filter-row { padding-top: .5rem; }
+  .sanctuary-dashboard { padding: 1rem; border-radius: 1rem; }
+  .sanctuary-dashboard-heading { gap: .7rem; }
+  .sanctuary-dashboard h2, .sanctuary-guidance h2 { font-size: 1.35rem; }
+  .sanctuary-recommendation, .sanctuary-chart-card, .sanctuary-guidance article { padding: 1rem; }
+  .sanctuary-chart { height: 135px; }
+  .sanctuary-chart-mark { right: 21%; font-size: .54rem; }
+  .sanctuary-chart-times { font-size: .55rem; }
+
+  .map-toolbar-card { margin-bottom: 1rem; padding: .85rem; border-radius: 1rem; }
+  .toolbar-row-primary, .toolbar-row-secondary { gap: .7rem; }
+  .search-box { min-width: 0; width: 100%; flex-basis: 100%; }
+  .filter-select-wrapper { gap: .3rem; }
+  .filter-label { max-width: 38%; white-space: normal; line-height: 1.25; }
+  .filter-select { min-height: 2.7rem; max-width: 60%; font-size: .78rem; }
+  .layers-toggle-group { flex-wrap: nowrap; width: 100%; overflow-x: auto; padding-bottom: .3rem; scrollbar-width: thin; }
+  .layers-label, .layer-chip { flex: 0 0 auto; }
+  .map-legend-pills { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: .45rem; font-size: .68rem; }
+  .legend-item { min-width: 0; }
+  .map-display-layout { gap: 1rem; }
+  .map-viewport-container { min-height: 0; aspect-ratio: 10 / 7; }
+  .map-interactive-pin { width: 2.6rem; height: 2.6rem; }
+  .pin-core-circle { width: 2rem; height: 2rem; border-width: 2px; }
+  .pin-pulse-ring { display: none; }
+  .map-corner-badge { right: .5rem; bottom: .5rem; left: .5rem; justify-content: center; padding: .35rem .45rem; font-size: .62rem; text-align: center; }
+  .map-touch-hint { display: none; }
+  .sensor-detail-drawer { padding: 1rem; border-radius: 1rem; }
+  .drawer-title { font-size: 1.3rem; }
+  .drawer-decibel-display { padding: .9rem; }
+  .db-number { font-size: 2.45rem; }
+  .drawer-telemetry-grid { grid-template-columns: 1fr; }
+
+  .footer-inner { padding: 2rem .85rem 1.25rem; }
+  .footer-bottom-bar { align-items: flex-start; }
+  .footer-actions { width: 100%; justify-content: flex-start; }
+  .footer-badges { flex-wrap: wrap; }
+}
