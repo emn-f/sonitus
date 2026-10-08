@@ -1540,6 +1540,18 @@ input:focus-visible,
   align-items: start;
 }
 
+.fullscreen-map-mode {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: var(--color-bg);
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+
 .fullscreen-map-mode .map-display-layout {
   grid-template-columns: minmax(0, 1fr) 420px;
 }
@@ -1660,7 +1672,8 @@ input:focus-visible,
   transform: none;
 }
 
-.sensor-pin-012 .pin-floating-tag {
+.sensor-pin-012 .pin-floating-tag,
+.sensor-pin-018 .pin-floating-tag {
   right: 0;
   left: auto;
   transform: none;
@@ -1668,7 +1681,8 @@ input:focus-visible,
 
 .sensor-pin-010 .pin-floating-tag,
 .sensor-pin-011 .pin-floating-tag,
-.sensor-pin-012 .pin-floating-tag {
+.sensor-pin-012 .pin-floating-tag,
+.sensor-pin-018 .pin-floating-tag {
   top: auto;
   bottom: 2rem;
 }
@@ -4470,7 +4484,6 @@ input:focus-visible,
   .sanctuary-menu-toggle .mobile-menu-icon { display: block; }
   .map-toolbar-card { padding: 1rem; }
   .map-legend-pills { gap: .65rem; }
-  .map-viewport-container { aspect-ratio: auto; min-height: 500px; }
   .sensor-detail-drawer { padding: 1.25rem; }
   .drawer-decibel-display { align-items: flex-start; flex-direction: column; gap: .8rem; }
   .db-meta { align-items: flex-start; }
@@ -4545,17 +4558,18 @@ input:focus-visible,
   .map-toolbar-card { margin-bottom: 1rem; padding: .85rem; border-radius: 1rem; }
   .toolbar-row-primary, .toolbar-row-secondary { gap: .7rem; }
   .search-box { min-width: 0; width: 100%; flex-basis: 100%; }
-  .filter-select-wrapper { gap: .3rem; }
-  .filter-label { max-width: 38%; white-space: normal; line-height: 1.25; }
-  .filter-select { min-height: 2.7rem; max-width: 60%; font-size: .78rem; }
+  .filter-select-wrapper { display: flex; flex-direction: column; align-items: stretch; gap: .35rem; width: 100%; max-width: 100%; }
+  .filter-label { max-width: 100%; white-space: normal; line-height: 1.25; font-size: .8rem; }
+  .filter-select { min-height: 2.75rem; width: 100%; max-width: 100%; font-size: .82rem; }
   .layers-toggle-group { flex-wrap: nowrap; width: 100%; overflow-x: auto; padding-bottom: .3rem; scrollbar-width: thin; }
   .layers-label, .layer-chip { flex: 0 0 auto; }
   .map-legend-pills { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: .45rem; font-size: .68rem; }
   .legend-item { min-width: 0; }
   .map-display-layout { gap: 1rem; }
   .map-viewport-container { min-height: 0; aspect-ratio: 10 / 7; }
-  .map-interactive-pin { width: 2.6rem; height: 2.6rem; }
-  .pin-core-circle { width: 2rem; height: 2rem; border-width: 2px; }
+  .map-interactive-pin { width: clamp(1.85rem, 6.5vw, 2.5rem); height: clamp(1.85rem, 6.5vw, 2.5rem); }
+  .pin-core-circle { width: clamp(1.45rem, 5vw, 1.9rem); height: clamp(1.45rem, 5vw, 1.9rem); border-width: 2px; }
+  .pin-sensor-code { font-size: clamp(0.52rem, 1.8vw, 0.65rem); }
   .pin-pulse-ring { display: none; }
   .map-corner-badge { right: .5rem; bottom: .5rem; left: .5rem; justify-content: center; padding: .35rem .45rem; font-size: .62rem; text-align: center; }
   .map-touch-hint { display: none; }
