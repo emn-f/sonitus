@@ -22,6 +22,7 @@ const primaryNavigation: Array<{ id: NavigationTab; label: string }> = [
   { id: 'zonas-sensiveis', label: 'Zonas de refúgio' },
   { id: 'comunidade', label: 'Comunidade & Educação' },
   { id: 'alertas', label: 'Alertas & Triagem' },
+  { id: 'sensores', label: 'Rede de Sensores' },
   { id: 'tecnologia', label: 'Privacidade & Sensores' },
   { id: 'sobre', label: 'Sobre o Projeto' },
 ]

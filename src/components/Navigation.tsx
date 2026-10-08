@@ -120,7 +120,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       <button className={`sidebar-overlay ${isOpen ? 'visible' : ''}`} type="button" aria-label="Fechar menu de navegação" tabIndex={isOpen ? 0 : -1} onClick={onClose} />
-      <aside ref={sidebarRef} id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Navegação da plataforma" aria-modal={isOpen} role="dialog">
+      <aside ref={sidebarRef} id="app-sidebar" className={`app-sidebar ${isOpen ? 'open' : ''}`} aria-label="Navegação da plataforma" aria-modal={isOpen} role="dialog" inert={!isOpen}>
         <header className="nav-drawer-header">
           <div>
             <span className="nav-drawer-eyebrow">Sonitus</span>
