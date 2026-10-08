@@ -10,6 +10,7 @@ import { SensitiveZonesSection } from './sections/SensitiveZonesSection'
 import { AlertsSection } from './sections/AlertsSection'
 import { SensorsSection } from './sections/SensorsSection'
 import { AboutSection } from './sections/AboutSection'
+import { CommunityEducationSection } from './sections/CommunityEducationSection'
 
 const TechnologySection = lazy(() =>
   import('./sections/TechnologySection').then((m) => ({ default: m.TechnologySection }))
@@ -25,7 +26,7 @@ function getInitialTheme(): Theme {
 
 export function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
-  const period: Period = 'Manhã'
+  const [period, setPeriod] = useState<Period>('Manhã')
   const [activeTab, setActiveTab] = useState<NavigationTab>('visao-geral')
   const [selectedPlaceName, setSelectedPlaceName] = useState<string | null>(null)
   const [isNavigationOpen, setIsNavigationOpen] = useState(false)
@@ -110,6 +111,8 @@ export function App() {
         isNavigationOpen={isNavigationOpen}
         onToggleNavigation={() => setIsNavigationOpen((value) => !value)}
         navigationTriggerRef={navigationTriggerRef}
+        period={period}
+        onSelectPeriod={setPeriod}
       />
 
       <div className="workspace-layout">
@@ -141,6 +144,14 @@ export function App() {
 
         {activeTab === 'zonas-sensiveis' && (
           <SensitiveZonesSection
+            period={period}
+            onNavigate={handleNavigate}
+            onSelectPlace={handleSelectPlaceAndNavigate}
+          />
+        )}
+
+        {activeTab === 'comunidade' && (
+          <CommunityEducationSection
             period={period}
             onNavigate={handleNavigate}
             onSelectPlace={handleSelectPlaceAndNavigate}

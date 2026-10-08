@@ -50,10 +50,11 @@ A aplicação é organizada através de uma barra de abas acessível no topo:
 - **Visão Geral**: centro de comando urbano com KPIs da cidade, radar de ruído, curva de 24 horas e atalhos rápidos.
 - **Mapa Acústico (Protagonista)**: mapa urbano ilustrativo com 18 sensores georreferenciados, heatmap dinâmico, camadas visuais, filtros e gaveta de inspeção detalhada.
 - **Zonas Sensíveis & Conforto**: instalações de saúde, escolas e abrigos protegidos, além do catálogo de **Oásis de Conforto Acústico** (zonas tranquilas) para descompressão sensorial.
-- **Alertas**: central de detecção de eventos e anomalias simuladas (picos repetitivos, violações de zonas de silêncio), com severidade, causas e ações recomendadas.
+- **Comunidade & Educação (Objetivo Específico 4 & Etapa 6)**: canal de relatos participativos da população (anônimo, sem coleta de dados pessoais conforme a LGPD), cartilha digital sobre efeitos do ruído na saúde, neurodiversidade (TEA) e bem-estar animal, além de boas práticas cidadãs.
+- **Alertas & Triagem (Objetivo Específico 3 & Etapa 5)**: central de apoio preventivo à fiscalização da Sedur com regras metodológicas explícitas (janelas de 10 min, 2 janelas consecutivas para persistência, 3 alertas/hora para reincidência e registro de picos isolados sem acionamento indevido).
 - **Rede de Sensores**: telemetria técnica dos 18 nós (SNS-001 a SNS-018), conectividade (LoRaWAN, NB-IoT), nível de bateria e fontes de alimentação.
-- **Tecnologia & Hardware 3D**: visualizador tridimensional interativo do sensor conceitual (Sonitus Node v1.2), pipeline da arquitetura IoT ponta a ponta e garantias de privacidade.
-- **Sobre o Sonitus**: fundamentação acadêmica, neurodivergência e TEA, metodologia de simulação e roadmap de implantação piloto.
+- **Tecnologia & Hardware 3D**: visualizador tridimensional interativo do sensor conceitual (Sonitus Node v1.2), pipeline da arquitetura IoT ponta a ponta e garantias de privacidade (sem gravação de voz).
+- **Sobre o Sonitus**: contexto institucional (UCSal, Profa. Dra. Janine Melo, equipe discente), dados reais de Salvador (Sedur 2026), fundamentação na Encíclica Laudato Si', arcabouço normativo (NBR 10151, Lei de Crimes Ambientais, Lei Berenice Piana) e comparativo de soluções.
 
 ---
 
@@ -61,10 +62,11 @@ A aplicação é organizada através de uma barra de abas acessível no topo:
 
 A barra superior fixa acompanha toda a navegação e disponibiliza:
 - **Logomarca Sonitus**: atalho de retorno à tela inicial com ícone de ondas acústicas.
-- **Navegação principal**: em desktop, atalhos em uma única linha para Visão Geral, Mapa Acústico, Zonas de Refúgio e Privacidade e Sensores. Em tablet, o botão **Navegar** abre um painel contextual com todas as áreas; em celulares, ele se torna um ícone de menu.
+- **Navegação principal**: atalhos para todas as dimensões da plataforma (Visão Geral, Mapa, Zonas Sensíveis, Comunidade, Alertas, Tecnologia e Sobre).
+- **Seletor de Turno da Simulação (Manhã / Tarde / Noite)**: permite alternar o período para avaliar a variação de tráfego e a aplicação dos limites mais restritivos da NBR 10151 no período noturno.
 - **Status da cidade**: leitura resumida do nível atual na barra superior.
-- **Botão Reduzir Movimento**: exibe explicitamente “Reduzir movimento” ou “Movimento reduzido”; quando ativo, usa fundo verde e indicador de estado. Desativa imediatamente transições, rotações e animações, respeitando também `prefers-reduced-motion`.
-- **Botão Tema Claro / Escuro**: alterna a paleta de cores entre superfícies diurnas e noturnas com persistência em `localStorage`.
+- **Botão Reduzir Movimento**: desativa imediatamente animações e rotação 3D, respeitando acessibilidade.
+- **Botão Tema Claro / Escuro**: alterna paleta diurna e noturna.
 
 > [!TIP]
 > Todos os controles podem ser alcançados por teclado. O foco recebe contorno visível, e os botões de estado comunicam a seleção por texto, cor e `aria-pressed`.
