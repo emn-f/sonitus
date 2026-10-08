@@ -8,6 +8,7 @@ import {
   Radio,
   Cpu,
   Info,
+  MessageSquare,
   X,
 } from 'lucide-react'
 
@@ -78,6 +79,12 @@ export const Navigation: React.FC<NavigationProps> = ({
       id: 'zonas-sensiveis',
       label: 'Zonas tranquilas',
       icon: <HeartPulse size={17} aria-hidden="true" />,
+      group: 'Planejar',
+    },
+    {
+      id: 'comunidade',
+      label: 'Comunidade & Educação',
+      icon: <MessageSquare size={17} aria-hidden="true" />,
       group: 'Planejar',
     },
     {

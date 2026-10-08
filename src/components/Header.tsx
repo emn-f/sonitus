@@ -1,5 +1,5 @@
 import React from 'react'
-import type { NavigationTab } from '../types'
+import type { NavigationTab, Period } from '../types'
 import { Activity, Ear, Menu, Moon, MoreHorizontal, Sun, Wind } from 'lucide-react'
 
 interface HeaderProps {
@@ -12,19 +12,24 @@ interface HeaderProps {
   isNavigationOpen: boolean
   onToggleNavigation: () => void
   navigationTriggerRef: React.RefObject<HTMLButtonElement | null>
+  period: Period
+  onSelectPeriod: (period: Period) => void
 }
 
 const primaryNavigation: Array<{ id: NavigationTab; label: string }> = [
   { id: 'visao-geral', label: 'Visão geral' },
   { id: 'mapa', label: 'Mapa acústico' },
   { id: 'zonas-sensiveis', label: 'Zonas de refúgio' },
-  { id: 'tecnologia', label: 'Privacidade e sensores' },
+  { id: 'comunidade', label: 'Comunidade & Educação' },
+  { id: 'alertas', label: 'Alertas & Triagem' },
+  { id: 'tecnologia', label: 'Privacidade & Sensores' },
+  { id: 'sobre', label: 'Sobre o Projeto' },
 ]
 
 export const Header: React.FC<HeaderProps> = ({
   theme, onToggleTheme, reducedMotion, onToggleReducedMotion, activeTab,
   onNavigate, isNavigationOpen, onToggleNavigation,
-  navigationTriggerRef,
+  navigationTriggerRef, period, onSelectPeriod,
 }) => (
   <header className="app-header sanctuary-header" role="banner">
     <div className="sanctuary-statusbar">
@@ -44,7 +49,21 @@ export const Header: React.FC<HeaderProps> = ({
         ))}
       </nav>
       <div className="header-controls sanctuary-controls">
-        <div className="sanctuary-city-status" role="status"><Activity size={13} aria-hidden="true" /><span>Cidade agora:</span><strong>Moderado suave</strong></div>
+        <div className="period-toggle-group" role="group" aria-label="Turno da simulação acústica">
+          {(['Manhã', 'Tarde', 'Noite'] as Period[]).map((p) => (
+            <button
+              key={p}
+              type="button"
+              className={`period-toggle-btn ${period === p ? 'active' : ''}`}
+              onClick={() => onSelectPeriod(p)}
+              aria-pressed={period === p}
+              title={`Simulação de dados acústicos: turno ${p} (NBR 10151)`}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+        <div className="sanctuary-city-status" role="status"><Activity size={13} aria-hidden="true" /><span>Status:</span><strong>{period === 'Noite' ? 'Noturno NBR 10151' : 'Diurno Ativo'}</strong></div>
         <button type="button" className={`header-tool-btn sanctuary-tool sanctuary-motion-toggle ${reducedMotion ? 'active' : ''}`} onClick={onToggleReducedMotion} aria-pressed={reducedMotion} aria-label={reducedMotion ? 'Movimento reduzido ativo. Clique para desativar.' : 'Movimento reduzido inativo. Clique para ativar.'} title={reducedMotion ? 'Movimento reduzido ativo' : 'Ativar movimento reduzido'}><Wind size={17} aria-hidden="true" /><span>{reducedMotion ? 'Movimento reduzido' : 'Reduzir movimento'}</span><i aria-hidden="true" /></button>
         <button type="button" className="header-tool-btn sanctuary-tool" onClick={onToggleTheme} aria-label={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'} title={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'}>{theme === 'light' ? <Moon size={17} aria-hidden="true" /> : <Sun size={17} aria-hidden="true" />}</button>
         <button type="button" className="nav-menu-toggle sanctuary-menu-toggle" ref={navigationTriggerRef} aria-label={isNavigationOpen ? 'Fechar navegação' : 'Abrir navegação'} aria-expanded={isNavigationOpen} aria-controls="app-sidebar" onClick={onToggleNavigation}><MoreHorizontal className="more-options-icon" size={19} aria-hidden="true" /><Menu className="mobile-menu-icon" size={19} aria-hidden="true" /><span>Navegar</span></button>

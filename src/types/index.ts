@@ -7,6 +7,7 @@ export type NavigationTab =
   | 'mapa'
   | 'zonas-sensiveis'
   | 'alertas'
+  | 'comunidade'
   | 'sensores'
   | 'tecnologia'
   | 'sobre'
@@ -87,6 +88,58 @@ export interface Alert {
   occurrences: number
   status: 'novo' | 'analise' | 'normalizado'
   recommendedAction: string
+  // Regras metodológicas da Etapa 5 do projeto:
+  evaluationWindowMinutes?: number // Janela padrão: 10 min
+  consecutiveWindowsExceeded?: number // Excedido em >= 2 janelas consecutivas
+  isRecurring?: boolean // Reincidência: 3 alertas no mesmo ponto em 1 hora
+  nbr10151LimitDb?: number // Limite normativo de referência diurno/noturno
+}
+
+export interface AcousticEvent {
+  id: string
+  sensorId: string
+  location: string
+  timestamp: string
+  period: Period
+  peakDb: number
+  ambientLaeqDb: number
+  sourceType: 'buzina' | 'sirene' | 'escapamento' | 'evento_noturno' | 'fogos' | 'obra'
+  durationSeconds: number
+  reason: string
+  alertTriggered: false // Conforme metodologia, pico isolado NÃO gera alerta automático
+  methodologyNote: string
+}
+
+export type CommunityImpactType =
+  | 'tea_hipersensibilidade'
+  | 'animais'
+  | 'sono'
+  | 'trabalho_estudo'
+  | 'saude_idosos'
+  | 'geral'
+
+export type CommunitySourceType =
+  | 'trafego'
+  | 'comercio'
+  | 'obras'
+  | 'animais'
+  | 'fogos'
+  | 'som_automotivo'
+  | 'outro'
+
+export interface CommunityReport {
+  id: string
+  anonymousCode: string // Identificador anônimo sem dados pessoais (LGPD)
+  location: string
+  districtId: DistrictId
+  timestamp: string
+  period: Period
+  sourceType: CommunitySourceType
+  impactType: CommunityImpactType
+  intensityPerceived: 'leve' | 'moderado' | 'intenso' | 'severo'
+  description: string
+  status: 'registrado' | 'correlacionado' | 'em_analise'
+  sensorCorrelation?: string
 }
 
 export interface HourlyReading {
