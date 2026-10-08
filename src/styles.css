@@ -6207,8 +6207,7 @@ input:focus-visible,
 .sanctuary-dashboard,
 .sanctuary-dashboard-grid,
 .sanctuary-recommendation,
-.sanctuary-chart-card,
-.main-content-area {
+.sanctuary-chart-card {
   min-width: 0 !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
