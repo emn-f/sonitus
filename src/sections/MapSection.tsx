@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import type {
   Period,
   PlaceReading,
@@ -107,6 +107,38 @@ export const MapSection: React.FC<MapSectionProps> = ({
     levelFilter !== 'todos' ||
     categoryFilter !== 'todas' ||
     searchQuery.trim() !== ''
+
+  const isFullscreenRef = useRef(isFullscreen)
+  isFullscreenRef.current = isFullscreen
+  const fullscreenTriggerRef = useRef<HTMLButtonElement>(null)
+  const drawerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!isFullscreen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsFullscreen(false)
+        fullscreenTriggerRef.current?.focus()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isFullscreen])
+
+  const handleSelectPin = (name: string) => {
+    onSelectPlace(name)
+    if (typeof window !== 'undefined' && window.innerWidth <= 1080 && drawerRef.current) {
+      drawerRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }
 
   const clearFilters = () => {
     setDistrictFilter('todos')
@@ -239,6 +271,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             </button>
 
             <button
+              ref={fullscreenTriggerRef}
               type="button"
               className={`layer-chip ${isFullscreen ? 'active' : ''}`}
               onClick={() => setIsFullscreen((v) => !v)}
@@ -528,7 +561,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
                   key={reading.sensorId}
                   type="button"
                   className={`map-interactive-pin sensor-pin-${reading.sensorId.replace('SNS-', '')} ${reading.level} ${isSelected ? 'selected' : ''}`}
-                  onClick={() => onSelectPlace(reading.name)}
+                  onClick={() => handleSelectPin(reading.name)}
                   aria-pressed={isSelected}
                   aria-label={`${reading.sensorId} - ${reading.name}: ${reading.decibels} decibéis, ${levelLabels[reading.level]}. ${reading.note}`}
                 >
@@ -555,7 +588,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
         </div>
 
         {/* Selected Sensor Detail Drawer / Inspector */}
-        <aside className="sensor-detail-drawer" aria-label="Detalhes do sensor ou região selecionada">
+        <aside ref={drawerRef} className="sensor-detail-drawer" aria-label="Detalhes do sensor ou região selecionada">
           {activeReading ? (
             <div className="drawer-inner">
               <header className="drawer-header">
