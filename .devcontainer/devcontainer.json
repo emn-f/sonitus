@@ -12,7 +12,9 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "Google.google-antigravity",
+        "tomoki1207.pdf"
       ]
     }
   }
