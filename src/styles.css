@@ -4312,16 +4312,16 @@ input:focus-visible,
 .sanctuary-status-inner span { display: inline-flex; align-items: center; gap: .38rem; }
 .sanctuary-status-online { text-transform: none; }
 .sanctuary-status-online i, .sanctuary-now i { width: .48rem; height: .48rem; border-radius: 50%; background: var(--color-secondary); display: inline-block; flex: 0 0 auto; }
-.sanctuary-header-inner { max-width: 1160px; min-height: 80px; padding: .8rem 1.25rem; gap: 1rem; }
+.sanctuary-header-inner { max-width: 1380px; min-height: 80px; margin: 0 auto; padding: .8rem 1.25rem; gap: 1rem; box-sizing: border-box; }
 .sanctuary-brand .brand-mark { width: 2rem; height: 2rem; border-radius: 50%; }
 .sanctuary-brand .brand-name { font-size: 1.22rem; font-weight: 700; color: var(--color-primary); }
 .sanctuary-primary-nav { display: flex; gap: .16rem; align-items: center; padding: .25rem; border-radius: 999px; background: var(--color-surface-secondary); }
-.sanctuary-primary-nav button { border: 0; border-radius: 999px; padding: .6rem .78rem; color: var(--color-text-muted); background: transparent; cursor: pointer; font: 600 .73rem/1.15 inherit; transition: color .2s ease, background-color .2s ease; }
+.sanctuary-primary-nav button { border: 0; border-radius: 999px; padding: 0.42rem 0.52rem; color: var(--color-text-muted); background: transparent; cursor: pointer; font-family: inherit; font-size: 0.8125rem; font-weight: 600; line-height: 1.2; transition: color .2s ease, background-color .2s ease; }
 .sanctuary-primary-nav button { white-space: nowrap; }
 .sanctuary-primary-nav button:hover { color: var(--color-text); background: var(--color-surface-tertiary); }
 .sanctuary-primary-nav button.active { color: var(--color-secondary); background: color-mix(in srgb, var(--color-secondary-soft) 86%, var(--color-surface)); }
 .sanctuary-controls { gap: .4rem; flex: 0 0 auto; }
-.sanctuary-city-status { display: inline-flex; align-items: center; gap: .3rem; padding: .5rem .72rem; border-radius: 999px; background: var(--color-surface-secondary); color: var(--color-text-muted); font-size: .67rem; white-space: nowrap; }
+.sanctuary-city-status { display: none; align-items: center; gap: .3rem; padding: .5rem .72rem; border-radius: 999px; background: var(--color-surface-secondary); color: var(--color-text-muted); font-size: .67rem; white-space: nowrap; }
 .sanctuary-city-status svg { color: var(--color-secondary); }
 .sanctuary-city-status strong { color: var(--color-secondary); font-weight: 700; }
 .sanctuary-periods { border: 0; border-radius: 999px; background: var(--color-surface-secondary); padding: .2rem; }
@@ -4346,9 +4346,9 @@ input:focus-visible,
 .sanctuary-hero > p:not(.sanctuary-eyebrow) { width: 100%; max-width: 610px; margin: 0; color: var(--color-text-muted); font-size: .95rem; line-height: 1.65; word-break: break-word; }
 .sanctuary-search { width: 100%; max-width: 700px; margin-top: 1.65rem; padding: .7rem; border-radius: 1.1rem; background: var(--color-surface); box-shadow: var(--shadow-md); text-align: left; box-sizing: border-box; }
 .sanctuary-search-row { position: relative; display: flex; align-items: center; gap: .65rem; padding: 0 .8rem; border-radius: .8rem; background: var(--color-surface-secondary); color: var(--color-text-subtle); box-sizing: border-box; }
-.sanctuary-search-row input { width: 100%; height: 48px; min-width: 0; border: 0; outline: none; color: var(--color-text); background: transparent; font: 500 .78rem inherit; }
+.sanctuary-search-row input { width: 100%; height: 48px; min-width: 0; border: 0; outline: none; color: var(--color-text); background: transparent; font-family: inherit; font-size: 0.8125rem; font-weight: 500; line-height: 1.2; }
 .sanctuary-search-row input::placeholder { color: var(--color-text-subtle); opacity: .85; }
-.sanctuary-search-row button, .sanctuary-dashboard-footer button { display: inline-flex; align-items: center; justify-content: center; gap: .38rem; border: 0; border-radius: 999px; background: var(--color-primary); color: var(--color-primary-contrast); cursor: pointer; font: 700 .72rem inherit; transition: background-color .2s ease, transform .2s ease; }
+.sanctuary-search-row button, .sanctuary-dashboard-footer button { display: inline-flex; align-items: center; justify-content: center; gap: .38rem; border: 0; border-radius: 999px; background: var(--color-primary); color: var(--color-primary-contrast); cursor: pointer; font-family: inherit; font-size: 0.8125rem; font-weight: 700; line-height: 1.2; transition: background-color .2s ease, transform .2s ease; }
 .sanctuary-search-row button { padding: .6rem .9rem; }
 .sanctuary-search-row button:hover, .sanctuary-dashboard-footer button:hover { background: color-mix(in srgb, var(--color-primary) 86%, #000); transform: translateY(-1px); }
 .sanctuary-filter-row { display: flex; align-items: center; gap: .38rem; padding: .65rem .05rem 0; overflow-x: auto; scrollbar-width: none; }
@@ -4369,7 +4369,7 @@ input:focus-visible,
 .sanctuary-recommendation, .sanctuary-chart-card { padding: 1.2rem; border-radius: 1rem; background: var(--color-surface-secondary); }
 .sanctuary-recommendation h3, .sanctuary-chart-card h3, .sanctuary-guidance h3 { margin: .35rem 0 .55rem; color: var(--color-primary); font-size: 1.12rem; letter-spacing: -.025em; }
 .sanctuary-recommendation > p:not(.sanctuary-card-label), .sanctuary-chart-title p, .sanctuary-guidance article > p:not(.sanctuary-card-label) { margin: 0; color: var(--color-text-muted); font-size: .76rem; line-height: 1.65; }
-.sanctuary-recommendation button { display: flex; width: 100%; align-items: flex-start; gap: .65rem; margin-top: 1.1rem; padding: .75rem; border: 0; border-radius: .75rem; background: var(--color-surface-tertiary); color: var(--color-secondary); cursor: pointer; text-align: left; font: 500 .67rem/1.5 inherit; }
+.sanctuary-recommendation button { display: flex; width: 100%; align-items: flex-start; gap: .65rem; margin-top: 1.1rem; padding: .75rem; border: 0; border-radius: .75rem; background: var(--color-surface-tertiary); color: var(--color-secondary); cursor: pointer; text-align: left; font-family: inherit; font-size: 0.75rem; font-weight: 500; line-height: 1.5; }
 .sanctuary-recommendation button strong { color: var(--color-primary); font-size: .72rem; }
 .sanctuary-chart-title { display: flex; justify-content: space-between; gap: .8rem; }
 .sanctuary-chart-title h3 { margin-top: 0; font-size: .84rem; }
@@ -4390,10 +4390,9 @@ input:focus-visible,
 .app-footer { background: var(--color-surface-secondary); border: 0; }
 .footer-inner { max-width: 1160px; }
 
-@media (max-width: 1080px) {
+@media (max-width: 1399px) {
   .sanctuary-primary-nav { display: none; }
   .sanctuary-header-inner { min-height: 66px; }
-  .sanctuary-city-status { display: none; }
 }
 @media (max-width: 760px) {
   .sanctuary-status-inner { padding-inline: 1rem; font-size: .6rem; }
@@ -4418,19 +4417,14 @@ input:focus-visible,
 .footer-grid { grid-template-columns: 1fr; gap: 1.4rem; }
 }
 
-/* Refinamentos de legibilidade e responsividade da revisão visual. */
-.sanctuary-motion-toggle { position: relative; width: auto; min-width: 2.25rem; padding: 0 .7rem; gap: .38rem; border-radius: 999px; font-size: .67rem; font-weight: 700; white-space: nowrap; }
-.sanctuary-motion-toggle > span { display: inline; }
-.sanctuary-motion-toggle > i { display: block; width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-text-subtle); }
+.sanctuary-motion-toggle { position: relative; width: 2.75rem; min-width: 2.75rem; height: 2.75rem; padding: 0; justify-content: center; gap: .38rem; border-radius: 50%; font-size: .67rem; font-weight: 700; white-space: nowrap; }
+.sanctuary-motion-toggle > span { display: none; }
+.sanctuary-motion-toggle > i { position: absolute; top: .38rem; right: .38rem; width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-text-subtle); }
 .sanctuary-motion-toggle.active { background: var(--color-secondary); color: #fff; box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-secondary) 20%, transparent), var(--shadow-sm); }
 .sanctuary-motion-toggle.active > i { background: #fff; box-shadow: 0 0 0 3px color-mix(in srgb, #fff 32%, transparent); }
-.sanctuary-menu-toggle { display: inline-flex; align-items: center; gap: .35rem; width: auto; min-width: 2.25rem; height: 2.25rem; padding: 0 .75rem; border: 0; border-radius: 999px; background: var(--color-surface-secondary); color: var(--color-primary); cursor: pointer; font: 700 .67rem inherit; white-space: nowrap; }
+.sanctuary-menu-toggle { display: inline-flex; align-items: center; justify-content: center; gap: .35rem; width: auto; min-width: 2.75rem; height: 2.75rem; padding: 0 .75rem; border: 0; border-radius: 999px; background: var(--color-surface-secondary); color: var(--color-primary); cursor: pointer; font-family: inherit; font-size: 0.75rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .sanctuary-menu-toggle:hover { background: var(--color-surface-tertiary); }
 .mobile-menu-icon { display: none; }
-
-@media (min-width: 761px) {
-  .sanctuary-menu-toggle { display: none; }
-}
 
 /* O mapa usa a largura inteira em telas usuais para que rótulos e detalhes respirem. */
 .section-map { display: grid; gap: .25rem; }
@@ -4502,17 +4496,17 @@ input:focus-visible,
 .tab-badge.badge-neutral { margin-left: auto; background: var(--color-surface-tertiary); border: 0; }
 .tab-badge.badge-critical { margin-left: auto; background: var(--color-intense); }
 
-@media (min-width: 1081px) {
+@media (min-width: 1400px) {
   .sanctuary-menu-toggle { display: none; }
 }
 
-@media (min-width: 761px) and (max-width: 1080px) {
+@media (min-width: 761px) and (max-width: 1399px) {
   .sanctuary-header-inner { flex-direction: row; align-items: center; min-height: 68px; padding: .8rem 1.25rem; }
   .sanctuary-controls { margin-left: auto; overflow: visible; padding: 0; }
   .sanctuary-menu-toggle { display: inline-flex; min-width: auto; }
   .sanctuary-menu-toggle .more-options-icon { display: block; }
   .sanctuary-menu-toggle .mobile-menu-icon { display: none; }
-  .sanctuary-motion-toggle { min-height: 2.25rem; }
+  .sanctuary-motion-toggle { min-height: 2.75rem; }
 }
 
 @media (max-width: 760px) {
@@ -5730,7 +5724,7 @@ input:focus-visible,
 
   .sanctuary-header-inner,
   .sanctuary-status-inner {
-    max-width: 1260px;
+    max-width: 1380px;
   }
 
   .practices-grid {
