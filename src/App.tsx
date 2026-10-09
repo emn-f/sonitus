@@ -128,6 +128,8 @@ export function App() {
           sensorsCount={sensorsList.length}
           isOpen={isNavigationOpen}
           onClose={closeNavigation}
+          period={period}
+          onSelectPeriod={setPeriod}
         />
 
         <main ref={mainContentRef} id="conteudo" className="main-content-area" role="region" aria-label="Conteúdo da seção selecionada" tabIndex={-1}>

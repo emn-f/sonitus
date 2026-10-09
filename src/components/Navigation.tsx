@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import type { NavigationTab } from '../types'
+import type { NavigationTab, Period } from '../types'
 import {
   LayoutDashboard,
   Map,
@@ -19,6 +19,8 @@ interface NavigationProps {
   sensorsCount?: number
   isOpen: boolean
   onClose: () => void
+  period: Period
+  onSelectPeriod: (period: Period) => void
 }
 
 interface TabItem {
@@ -37,6 +39,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   sensorsCount = 12,
   isOpen,
   onClose,
+  period,
+  onSelectPeriod,
 }) => {
   const activeItemRef = useRef<HTMLButtonElement>(null)
   const sidebarRef = useRef<HTMLElement>(null)
@@ -124,12 +128,28 @@ export const Navigation: React.FC<NavigationProps> = ({
         <header className="nav-drawer-header">
           <div>
             <span className="nav-drawer-eyebrow">Sonitus</span>
-            <strong>Encontre seu caminho</strong>
+            <strong>Navegação</strong>
           </div>
           <button type="button" className="nav-drawer-close" onClick={onClose} aria-label="Fechar navegação">
             <X size={19} aria-hidden="true" />
           </button>
         </header>
+        <div className="drawer-period-section" role="group" aria-label="Turno da simulação acústica">
+          <span className="drawer-period-label">Turno da simulação:</span>
+          <div className="drawer-period-buttons">
+            {(['Manhã', 'Tarde', 'Noite'] as Period[]).map((p) => (
+              <button
+                key={p}
+                type="button"
+                className={`drawer-period-btn ${period === p ? 'active' : ''}`}
+                onClick={() => onSelectPeriod(p)}
+                aria-pressed={period === p}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        </div>
         <nav className="sidebar-navigation" aria-label="Navegação da plataforma">
           {(['Planejar', 'Área técnica'] as const).map((group) => (
             <section className="nav-group" key={group} aria-label={group}>

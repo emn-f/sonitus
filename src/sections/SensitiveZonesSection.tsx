@@ -98,7 +98,7 @@ export const SensitiveZonesSection: React.FC<SensitiveZonesSectionProps> = ({
           aria-pressed={activeFilter === 'oasis'}
         >
           <Sparkles size={14} aria-hidden="true" />
-          Oásis de Conforto Acústico (Zonas Tranquilas)
+          Zonas Tranquilas (Oásis)
         </button>
         <button
           type="button"

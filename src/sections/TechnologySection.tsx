@@ -31,7 +31,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
           <div className="hero-pill-group">
             <span className="tech-tag">
               <Cpu size={14} aria-hidden="true" />
-              Arquitetura de Hardware & Edge Computing
+              Hardware Urbano e Borda
             </span>
             <span className="prototype-tag">Protótipo Conceitual 3D</span>
           </div>
@@ -39,7 +39,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
             Tecnologia: Sensor Urbano & Pipeline IoT
           </h1>
           <p className="hero-description">
-            Entenda como os dados acústicos seriam coletados em uma futura cidade inteligente. O hardware foi concebido como uma luminária ambiental compacta, com processamento em borda (Edge Computing) que extrai métricas sonoras em decibéis diretamente no poste, sem jamais gravar voz humana ou armazenar conversas.
+            O sensor mede apenas o volume do som, direto no poste. O cálculo de decibéis é feito no próprio chip, sem gravar vozes nem guardar conversas.
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
           <div>
             <span className="card-mini-eyebrow">Visualização Tridimensional</span>
             <h2 id="hardware-model-title" className="card-main-title">
-              Protótipo Conceitual do Sensor Sonitus Node v1.2
+              Sensor Sonitus Node v1.2
             </h2>
           </div>
           <span className="tech-status-badge">
@@ -70,7 +70,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
             Fluxo de Informação Ponta a Ponta: Da Pressão do Ar à Decisão Humana
           </h2>
           <p className="pipeline-description">
-            Como a informação flui desde o estímulo mecânico das ondas sonoras urbanas até apoiar uma pessoa neurodivergente a escolher um trajeto calmo ou um gestor público a fiscalizar uma avenida ruidosa:
+            Do som na rua até a tela do cidadão e do gestor público:
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
             <h3 className="step-title">ESP32 / Edge AI</h3>
             <p className="step-subtitle">Processamento em Borda</p>
             <p className="step-copy">
-              Amostragem digital direta e cálculo do valor RMS ponderado A (dB(A)). O áudio bruto é descartado em nanossegundos na memória volátil.
+              O chip calcula os decibéis na hora. O som captado é apagado imediatamente da memória.
             </p>
             <div className="step-feature-tag privacy">Zero Gravação de Voz</div>
           </div>

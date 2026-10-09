@@ -34,6 +34,16 @@ interface ComponentDetail {
   privacyNote?: string
 }
 
+const componentLabels: Record<HardwareComponentId, string> = {
+  overview: 'Visão Geral',
+  mic: 'Microfone MEMS',
+  esp32: 'ESP32-S3',
+  lora: 'LoRaWAN / NB-IoT',
+  enclosure: 'Cúpula e Grade',
+  led: 'Anel LED',
+  mount: 'Braço Fixação',
+}
+
 const hardwareComponents: ComponentDetail[] = [
   {
     id: 'overview',
@@ -161,9 +171,14 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
     const scene = new THREE.Scene()
     sceneRef.current = scene
 
+    const isMobile = width < 500
     // Câmera
     const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100)
-    camera.position.set(3.2, 2.2, 4.4)
+    if (isMobile) {
+      camera.position.set(3.8, 2.6, 5.2)
+    } else {
+      camera.position.set(3.2, 2.2, 4.4)
+    }
     cameraRef.current = camera
 
     // Renderizador com Antialias e suporte a alta densidade
@@ -198,7 +213,7 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
     controls.maxPolarAngle = Math.PI * 0.85
     controls.autoRotate = !reducedMotion
     controls.autoRotateSpeed = 1.0
-    controls.target.set(0, 0.2, 0)
+    controls.target.set(isMobile ? 0.2 : 0, isMobile ? 0.1 : 0.2, 0)
     controlsRef.current = controls
 
     // Iluminação
@@ -413,6 +428,13 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
       cameraRef.current.aspect = newWidth / newHeight
       cameraRef.current.updateProjectionMatrix()
       rendererRef.current.setSize(newWidth, newHeight)
+      if (newWidth < 500) {
+        cameraRef.current.position.set(3.8, 2.6, 5.2)
+        if (controlsRef.current) {
+          controlsRef.current.target.set(0.2, 0.1, 0)
+          controlsRef.current.update()
+        }
+      }
     }
 
     window.addEventListener('resize', handleResize)
@@ -442,8 +464,14 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
     if (!controlsRef.current || !cameraRef.current) return
 
     if (view === 'default') {
-      cameraRef.current.position.set(3.2, 2.2, 4.4)
-      controlsRef.current.target.set(0, 0.2, 0)
+      const isNarrow = (mountRef.current?.clientWidth || window.innerWidth) < 500
+      if (isNarrow) {
+        cameraRef.current.position.set(3.8, 2.6, 5.2)
+        controlsRef.current.target.set(0.2, 0.1, 0)
+      } else {
+        cameraRef.current.position.set(3.2, 2.2, 4.4)
+        controlsRef.current.target.set(0, 0.2, 0)
+      }
       setSelectedComp('overview')
     } else if (view === 'grille') {
       cameraRef.current.position.set(1.4, 0.8, 2.2)
@@ -597,7 +625,7 @@ export const SensorModel3D: React.FC<SensorModel3DProps> = ({
               className={`comp-chip ${selectedComp === item.id ? 'active' : ''}`}
               onClick={() => setSelectedComp(item.id)}
             >
-              {item.id === 'overview' ? 'Visão Geral' : item.title.split(' ')[0] + ' ' + (item.title.split(' ')[1] || '')}
+              {componentLabels[item.id] || item.title}
             </button>
           ))}
         </div>
