@@ -4404,7 +4404,7 @@ input:focus-visible,
 .app-footer { background: var(--color-surface-secondary); border: 0; }
 .footer-inner { max-width: 1160px; }
 
-@media (max-width: 1399px) {
+@media (max-width: 1499px) {
   .sanctuary-primary-nav { display: none; }
   .sanctuary-header-inner { min-height: 66px; }
 }
@@ -4509,11 +4509,11 @@ input:focus-visible,
 .tab-badge.badge-neutral { margin-left: auto; background: var(--color-surface-tertiary); border: 0; }
 .tab-badge.badge-critical { margin-left: auto; background: var(--color-intense); }
 
-@media (min-width: 1400px) {
+@media (min-width: 1500px) {
   .sanctuary-menu-toggle { display: none; }
 }
 
-@media (min-width: 761px) and (max-width: 1399px) {
+@media (min-width: 761px) and (max-width: 1499px) {
   .sanctuary-header-inner { flex-direction: row; align-items: center; min-height: 68px; padding: .8rem 1.25rem; }
   .sanctuary-controls { margin-left: auto; overflow: visible; padding: 0; }
   .sanctuary-menu-toggle { display: inline-flex; min-width: auto; }
@@ -4530,14 +4530,14 @@ input:focus-visible,
 
 /* Smartphones: mantém a área útil, os alvos de toque e a escala do mapa alinhados. */
 @media (max-width: 600px) {
-  html, body, #root { width: 100%; max-width: 100%; overflow-x: hidden; }
+  html, body, #root { width: 100%; max-width: 100%; }
   .sanctuary-status-inner { min-height: 0; padding: .42rem .85rem; justify-content: flex-start; font-size: .61rem; line-height: 1.35; }
   .sanctuary-status-inner > span:first-child { align-items: flex-start; }
   .sanctuary-header-inner { min-height: 60px; padding: .65rem .85rem; gap: .45rem; }
   .sanctuary-brand { min-width: 0; }
   .sanctuary-brand .brand-name { font-size: 1rem; }
   .header-controls.sanctuary-controls { gap: .3rem; margin-left: auto; }
-  .sanctuary-tool, .sanctuary-motion-toggle, .sanctuary-menu-toggle { width: 2.35rem; min-width: 2.35rem; height: 2.35rem; }
+  .sanctuary-tool, .sanctuary-motion-toggle, .sanctuary-menu-toggle { width: 2.75rem; min-width: 2.75rem; height: 2.75rem; min-height: 2.75rem; }
   .sanctuary-motion-toggle > i { top: .3rem; right: .3rem; }
   .main-content-area { padding: 1.25rem .85rem 2.5rem; }
 
@@ -5045,7 +5045,7 @@ input:focus-visible,
 
 .reports-layout-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.8fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
   gap: 1.5rem;
 }
 
@@ -5111,6 +5111,10 @@ input:focus-visible,
 .form-input,
 .form-select,
 .form-textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   background: var(--color-surface-secondary);
   border: 1px solid var(--color-border);
   border-radius: 0.5rem;
@@ -5716,10 +5720,10 @@ input:focus-visible,
 
 @media (max-width: 900px) {
   .community-hero-banner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .reports-layout-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -5991,10 +5995,6 @@ input:focus-visible,
 
 /* --- 5. Telas Pequenas Compactas: iPhone SE (375px), Androids (360px a 400px) --- */
 @media (max-width: 420px) {
-  html, body {
-    overflow-x: hidden;
-  }
-
   .sanctuary-header-inner {
     padding: 0.55rem 0.65rem;
     gap: 0.35rem;
@@ -6022,9 +6022,10 @@ input:focus-visible,
   .sanctuary-tool,
   .sanctuary-motion-toggle,
   .sanctuary-menu-toggle {
-    width: 2.15rem;
-    min-width: 2.15rem;
-    height: 2.15rem;
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    min-height: 2.75rem;
   }
 
   .main-content-area {
@@ -6260,6 +6261,10 @@ input:focus-visible,
   .mobile-period-btn {
     flex: 1 1 0;
     min-width: 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 0.38rem 0.3rem;
     font-size: 0.76rem;
@@ -6280,12 +6285,6 @@ input:focus-visible,
 }
 
 @media (max-width: 600px) {
-  html, body {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
-
   .sanctuary-header-inner {
     display: flex !important;
     flex-direction: column !important;
