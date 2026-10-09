@@ -101,7 +101,7 @@ export const AboutSection: React.FC = () => {
           Sonitus: Monitoramento Inteligente da Poluição Sonora e Urbana
         </h1>
         <p className="hero-description">
-          Projeto acadêmico sob orientação da <strong>Profa. Dra. Janine Melo</strong>, voltado à análise crítica das questões ambientais no cotidiano urbano de Salvador. O Sonitus integra sensoriamento acústico de baixo custo, visualização acessível, apoio preventivo à fiscalização, zonas sensíveis e canal comunitário com foco prioritário em pessoas neurodivergentes e no bem-estar animal.
+          Projeto acadêmico orientado pela <strong>Profa. Dra. Janine Melo</strong> na UCSal. O Sonitus une sensores de baixo custo, mapa acessível e canal comunitário para proteger pessoas no espectro autista e a fauna urbana em Salvador.
         </p>
       </section>
 
@@ -114,7 +114,7 @@ export const AboutSection: React.FC = () => {
               Contexto Urbano: O Desafio do Ruído em Salvador
             </h2>
             <p className="case-sub">
-              Dados oficiais que demonstram a concretude e a urgência do problema ambiental no município.
+              Dados oficiais da poluição sonora na capital baiana.
             </p>
           </div>
         </div>
@@ -126,20 +126,20 @@ export const AboutSection: React.FC = () => {
             <span className="stat-source">Registradas pela Sedur Salvador entre jan/jun de 2026</span>
           </div>
           <div className="stat-card">
-            <span className="stat-num">400+</span>
+            <span className="stat-num">400</span>
             <span className="stat-label">Equipamentos apreendidos</span>
             <span className="stat-source">Apreensões em ações de fiscalização urbana no semestre</span>
           </div>
           <div className="stat-card">
             <span className="stat-num">Top Fontes</span>
-            <span className="stat-label">Veículos, bares e eventos</span>
+            <span className="stat-label">Veículos particulares, bares e restaurantes</span>
             <span className="stat-source">Principais emissores relatados pela população soteropolitana</span>
           </div>
         </div>
 
         <div className="case-analysis-text">
           <p>
-            Atualmente, a fiscalização municipal em Salvador depende em grande parte da formalização de denúncias durante o flagrante sonoro. Sem um monitoramento contínuo e georreferenciado, torna-se difícil identificar padrões temporais e espaciais para atuar de forma preventiva. O Sonitus propõe a infraestrutura conceitual necessária para que a gestão pública atue com dados empíricos e planejamento de rotas e vistorias.
+            Hoje, a fiscalização em Salvador depende de ligações na hora do barulho. Sem medição contínua, fica difícil saber onde o problema se repete. O Sonitus propõe dados para agir antes do flagrante.
           </p>
         </div>
       </section>
@@ -152,7 +152,7 @@ export const AboutSection: React.FC = () => {
           </div>
           <h3>Neurodivergência & TEA</h3>
           <p>
-            O ruído como barreira de acessibilidade. Pessoas no espectro autista com hipersensibilidade auditiva (Gomes et al., 2008; Posar & Visconti, 2018) sofrem sobrecarga sensorial e dor física em vias barulhentas. O Sonitus apoia rotas calmas e previsão acústica.
+            Barulho excessivo é barreira de acesso. Pessoas no espectro autista com hipersensibilidade sofrem sobrecarga sensorial e desconforto intenso em ruas movimentadas. O Sonitus ajuda a escolher caminhos mais silenciosos.
           </p>
         </article>
 
@@ -172,7 +172,7 @@ export const AboutSection: React.FC = () => {
           </div>
           <h3>Fauna e Bem-Estar Animal</h3>
           <p>
-            Cães e gatos ouvem frequências até 4x mais altas e sofrem pânico agudo e taquicardia com fogos e buzinas. Na fauna silvestre, o ruído urbano causa mascaramento da vocalização reprodutiva e fuga de habitats (Gomes, 2024).
+            Animais domésticos têm audição muito mais sensível e entram em pânico com estampidos e buzinas. Na fauna silvestre, o barulho prejudica a reprodução e afasta as espécies da cidade.
           </p>
         </article>
 

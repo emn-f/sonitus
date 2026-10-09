@@ -52,7 +52,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
           <div className="hero-pill-group">
             <span className="alert-tag">
               <Bell size={14} aria-hidden="true" />
-              Objetivo Específico 3 & Metodologia Etapa 5
+              Monitoramento Contínuo
             </span>
             <span className="status-badge-count">{newAlertsCount} novos alertas</span>
             {recurringAlertsCount > 0 && (
@@ -63,7 +63,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
             Sistema de Alertas & Apoio à Priorização da Fiscalização
           </h1>
           <p className="hero-description">
-            Regras metodológicas automáticas para sinalizar ocorrências persistentes ou reincidentes aos órgãos fiscalizadores (como a Sedur Salvador), baseadas nos limites normativos da <strong>ABNT NBR 10151</strong>. Alertas orientam a triagem operacional inteligente sem configurar sanção autônoma.
+            O sistema analisa o histórico de decibéis para identificar onde o ruído ultrapassa a lei por muito tempo. Os dados orientam vistorias preventivas da prefeitura.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
           onClick={() => setViewMode('alertas')}
         >
           <Bell size={16} aria-hidden="true" />
-          <span>Alertas de Fiscalização ({alertsList.length})</span>
+          <span>Alertas em Aberto ({alertsList.length})</span>
         </button>
         <button
           type="button"
@@ -98,7 +98,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
           onClick={() => setViewMode('picos_isolados')}
         >
           <Zap size={16} aria-hidden="true" />
-          <span>Picos e Eventos Isolados ({acousticEventsList.length})</span>
+          <span>Picos Momentâneos ({acousticEventsList.length})</span>
         </button>
         <button
           type="button"
@@ -108,7 +108,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
           onClick={() => setViewMode('regras')}
         >
           <Layers size={16} aria-hidden="true" />
-          <span>Regras Metodológicas da NBR 10151</span>
+          <span>Regras de Medição</span>
         </button>
       </div>
 
@@ -236,15 +236,7 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
                           <Radio size={13} aria-hidden="true" />
                           Sensor {alert.sensorId}
                         </span>
-                        {alert.evaluationWindowMinutes && (
-                          <span className="alert-window-tag">
-                            Janela: {alert.consecutiveWindowsExceeded}x {alert.evaluationWindowMinutes} min
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="alert-title-row">
-                        <h3 className="alert-title">{alert.title}</h3>
+                        <span className="alert-sim-tag">Dados Simulados</span>
                         <span className={`alert-status-pill status-${alert.status}`}>
                           {alert.status === 'novo'
                             ? 'Novo Alerta'
@@ -252,6 +244,10 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
                             ? 'Em Análise'
                             : 'Normalizado'}
                         </span>
+                      </div>
+
+                      <div className="alert-title-row">
+                        <h3 className="alert-title">{alert.title}</h3>
                       </div>
 
                       <div className="alert-location-row">

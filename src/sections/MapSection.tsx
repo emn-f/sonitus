@@ -550,7 +550,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
             {/* PONTOS DOS SENSORES (Interativos via HTML sobrepostos para acessibilidade e teclado) */}
           </svg>
 
-          <p className="map-touch-hint">Toque em um ponto para abrir seus detalhes.</p>
+          <p className="map-touch-hint">Toque em um ponto para ver detalhes.</p>
 
           {/* SENSOR PIN BUTTONS (HTML Overlay com foco via teclado e eventos ARIA) */}
           <div className="sensors-interactive-overlay" role="group" aria-label="Pontos de monitoramento sonoro interativos">
@@ -583,7 +583,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
 
           <div className="map-corner-badge">
             <Info size={13} aria-hidden="true" />
-            <span>Malha urbana esquemática ilustrativa · Dados 100% simulados</span>
+            <span>Planta ilustrativa · Dados simulados</span>
           </div>
         </div>
 
@@ -684,7 +684,7 @@ export const MapSection: React.FC<MapSectionProps> = ({
           ) : (
             <div className="drawer-empty-state">
               <MapPin size={32} className="empty-icon" aria-hidden="true" />
-              <p>Selecione um ponto no mapa para inspecionar os detalhes acústicos, recomendações e telemetria.</p>
+              <p>Escolha um ponto no mapa para ver medições e alertas.</p>
             </div>
           )}
         </aside>

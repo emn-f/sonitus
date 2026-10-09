@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   <header className="app-header sanctuary-header" role="banner">
     <div className="sanctuary-statusbar">
       <div className="sanctuary-status-inner">
-        <span><Ear size={14} aria-hidden="true" /> Previsibilidade sonora para seus trajetos urbanos sem ruído excessivo.</span>
+        <span><Ear size={14} aria-hidden="true" /> 18 sensores conectados · Salvador, BA</span>
         <span className="sanctuary-status-online"><i aria-hidden="true" /> Zona confortável · monitoramento ativo</span>
       </div>
     </div>
@@ -70,19 +70,6 @@ export const Header: React.FC<HeaderProps> = ({
           <button type="button" className="header-tool-btn sanctuary-tool" onClick={onToggleTheme} aria-label={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'} title={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'}>{theme === 'light' ? <Moon size={17} aria-hidden="true" /> : <Sun size={17} aria-hidden="true" />}</button>
           <button type="button" className="nav-menu-toggle sanctuary-menu-toggle" ref={navigationTriggerRef} aria-label={isNavigationOpen ? 'Fechar navegação' : 'Abrir navegação'} aria-expanded={isNavigationOpen} aria-controls="app-sidebar" onClick={onToggleNavigation}><MoreHorizontal className="more-options-icon" size={19} aria-hidden="true" /><Menu className="mobile-menu-icon" size={19} aria-hidden="true" /><span>Navegar</span></button>
         </div>
-      </div>
-      <div className="mobile-period-subbar" role="group" aria-label="Turno da simulação acústica">
-        {(['Manhã', 'Tarde', 'Noite'] as Period[]).map((p) => (
-          <button
-            key={p}
-            type="button"
-            className={`mobile-period-btn ${period === p ? 'active' : ''}`}
-            onClick={() => onSelectPeriod(p)}
-            aria-pressed={period === p}
-          >
-            {p}
-          </button>
-        ))}
       </div>
     </div>
   </header>

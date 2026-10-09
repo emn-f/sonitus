@@ -108,7 +108,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           <div className="hero-pill-group">
             <span className="community-tag">
               <MessageSquare size={14} aria-hidden="true" />
-              Objetivo Específico 4 & Metodologia Etapa 6
+              Canal de Escuta Cidadã
             </span>
             <span className="privacy-pill">
               <Shield size={14} aria-hidden="true" />
@@ -119,7 +119,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
             Participação Comunitária & Educação Ambiental
           </h1>
           <p className="hero-description">
-            O nível medido em decibéis por sensores técnicos não captura toda a dimensão humana e biológica do ruído urbano. Esta seção viabiliza o <strong>canal de relatos anônimos da comunidade</strong> — especialmente para suporte a pessoas neurodivergentes e proteção animal — e oferece <strong>materiais educativos para prevenção e conscientização</strong>.
+            O decibelímetro mede o volume, mas não mede o estresse. Relate aqui o impacto do barulho perto de você, sem se identificar. Os dados apoiam ações para pessoas autistas e animais.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           <div>
             <strong>Complementaridade Metodológica</strong>
             <p>
-              O relato cidadão <strong>complementa — e não substitui — o monitoramento técnico</strong>. Ele permite identificar impactos subjetivos graves que medições isoladas não conseguem expressar plenamente.
+              O relato dos moradores ajuda a identificar incômodos que o sensor sozinho não consegue registrar.
             </p>
           </div>
         </div>
@@ -144,7 +144,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           onClick={() => setActiveSubTab('relatos')}
         >
           <MessageSquare size={16} aria-hidden="true" />
-          <span>Canal de Relatos Cidadãos ({reports.length})</span>
+          <span>Relatos da População ({reports.length})</span>
         </button>
         <button
           type="button"
@@ -154,7 +154,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           onClick={() => setActiveSubTab('cartilha')}
         >
           <BookOpen size={16} aria-hidden="true" />
-          <span>Cartilha Digital: Ruído, Saúde & Inclusão</span>
+          <span>Cartilha: Saúde e Leis</span>
         </button>
         <button
           type="button"
@@ -164,7 +164,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           onClick={() => setActiveSubTab('educacao')}
         >
           <Sparkles size={16} aria-hidden="true" />
-          <span>Materiais Educativos & Boas Práticas</span>
+          <span>Dicas e Ações</span>
         </button>
       </div>
 
@@ -316,7 +316,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                 <div>
                   <h2 id="feed-title" className="feed-heading">Relatos Registrados pela População</h2>
                   <p className="feed-sub">
-                    Exibição de relatos que enriquecem os dados instrumentais dos sensores.
+                    Relatos que mostram onde o som afeta a rotina das pessoas.
                   </p>
                 </div>
               </header>
@@ -366,6 +366,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                         <div className="report-code-badge">
                           <span className="report-id">{report.id}</span>
                           <span className="report-author">{report.anonymousCode}</span>
+                          <span className="report-sim-badge">Dados Simulados</span>
                         </div>
                         <span className={`report-impact-pill ${impactInfo.className}`}>
                           <ImpactIcon size={13} aria-hidden="true" />
@@ -379,7 +380,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                           <strong>{report.location}</strong>
                           <span className="report-period-tag">Turno: {report.period}</span>
                         </div>
-                        <p className="report-desc-text">"{report.description}"</p>
+                        <p className="report-desc-text">“{report.description}”</p>
 
                         <div className="report-meta-row">
                           <span className={`intensity-badge intensity-${report.intensityPerceived}`}>
