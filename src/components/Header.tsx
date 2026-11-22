@@ -1,6 +1,6 @@
 import React from 'react'
 import type { NavigationTab, Period } from '../types'
-import { Activity, Ear, Menu, Moon, MoreHorizontal, Sun, Wind } from 'lucide-react'
+import { Activity, Ear, Menu, Moon, Sun, Wind } from 'lucide-react'
 
 interface HeaderProps {
   theme: 'light' | 'dark'
@@ -41,10 +41,23 @@ export const Header: React.FC<HeaderProps> = ({
     </div>
     <div className="header-inner sanctuary-header-inner">
       <div className="sanctuary-header-main-row">
-        <a className="brand sanctuary-brand" href="#conteudo" aria-label="Sonitus — ir para o conteúdo principal">
-          <div className="brand-mark" aria-hidden="true"><img src="/sonitus-logo.svg" alt="" /></div>
-          <div className="brand-text"><span className="brand-name">Sonitus</span></div>
-        </a>
+        <div className="sanctuary-header-left">
+          <button
+            type="button"
+            className="nav-menu-toggle sanctuary-menu-toggle"
+            ref={navigationTriggerRef}
+            aria-label={isNavigationOpen ? 'Fechar navegação' : 'Abrir navegação'}
+            aria-expanded={isNavigationOpen}
+            aria-controls="app-sidebar"
+            onClick={onToggleNavigation}
+          >
+            <Menu size={19} aria-hidden="true" />
+          </button>
+          <a className="brand sanctuary-brand" href="#conteudo" aria-label="Sonitus — ir para o conteúdo principal">
+            <div className="brand-mark" aria-hidden="true"><img src="/sonitus-logo.svg" alt="" /></div>
+            <div className="brand-text"><span className="brand-name">Sonitus</span></div>
+          </a>
+        </div>
         <nav className="sanctuary-primary-nav" aria-label="Navegação principal">
           {primaryNavigation.map((item) => (
             <button type="button" key={item.id} className={activeTab === item.id ? 'active' : ''} onClick={() => onNavigate(item.id)} aria-current={activeTab === item.id ? 'page' : undefined}>{item.label}</button>
@@ -68,7 +81,6 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="sanctuary-city-status" role="status"><Activity size={13} aria-hidden="true" /><span>Status:</span><strong>{period === 'Noite' ? 'Noturno NBR 10151' : 'Diurno Ativo'}</strong></div>
           <button type="button" className={`header-tool-btn sanctuary-tool sanctuary-motion-toggle ${reducedMotion ? 'active' : ''}`} onClick={onToggleReducedMotion} aria-pressed={reducedMotion} aria-label={reducedMotion ? 'Movimento reduzido ativo. Clique para desativar.' : 'Movimento reduzido inativo. Clique para ativar.'} title={reducedMotion ? 'Movimento reduzido ativo' : 'Ativar movimento reduzido'}><Wind size={17} aria-hidden="true" /><span>{reducedMotion ? 'Movimento reduzido' : 'Reduzir movimento'}</span><i aria-hidden="true" /></button>
           <button type="button" className="header-tool-btn sanctuary-tool" onClick={onToggleTheme} aria-label={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'} title={theme === 'light' ? 'Ativar tema escuro' : 'Ativar tema claro'}>{theme === 'light' ? <Moon size={17} aria-hidden="true" /> : <Sun size={17} aria-hidden="true" />}</button>
-          <button type="button" className="nav-menu-toggle sanctuary-menu-toggle" ref={navigationTriggerRef} aria-label={isNavigationOpen ? 'Fechar navegação' : 'Abrir navegação'} aria-expanded={isNavigationOpen} aria-controls="app-sidebar" onClick={onToggleNavigation}><MoreHorizontal className="more-options-icon" size={19} aria-hidden="true" /><Menu className="mobile-menu-icon" size={19} aria-hidden="true" /><span>Navegar</span></button>
         </div>
       </div>
     </div>

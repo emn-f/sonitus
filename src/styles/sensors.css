@@ -1,0 +1,408 @@
+/* ==========================================================================
+   SEÇÃO 5: REDE DE SENSORES URBANOS IOT
+   ========================================================================== */
+.sensors-hero-banner {
+  background: linear-gradient(135deg, var(--color-surface) 40%, var(--color-surface-secondary));
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2.1rem 2.35rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.iot-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+.mesh-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.telemetry-stat-pills {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.telem-stat-pill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  min-width: 170px;
+  box-shadow: var(--shadow-sm);
+}
+
+.pill-metric-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.pill-metric-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: block;
+}
+
+.pill-metric-sub {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+}
+
+/* Barra de busca e filtros */
+.sensors-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sensors-toolbar .filter-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.tech-link-shortcut-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tech-link-shortcut-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
+}
+
+/* Grid e cards de sensores */
+.sensors-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.sensor-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.15rem;
+  padding: 1.35rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  transition: box-shadow 0.15s ease;
+}
+
+.sensor-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.sensor-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sensor-code-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+}
+
+.sensor-status-dot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+}
+
+.sensor-status-dot-badge.online {
+  background: var(--color-calm-soft);
+  color: var(--color-calm);
+}
+
+.sensor-status-dot-badge .status-ping {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.sensor-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.sensor-district-line {
+  margin: 0 0 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.sensor-location-detail {
+  margin: 0 0 0.95rem;
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+  line-height: 1.4;
+}
+
+.sensor-reading-summary-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.85rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.95rem;
+}
+
+.db-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.db-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28rem;
+}
+
+.db-big {
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.db-suffix {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.badge-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.peak-sub {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.sensor-meta-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 0.65rem;
+  font-size: 0.78rem;
+  margin-bottom: 1.15rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.spec-label {
+  font-size: 0.71rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.spec-val {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  overflow-wrap: break-word;
+}
+
+.spec-val svg {
+  flex-shrink: 0;
+}
+
+.sensor-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.sensor-action-btn {
+  flex: 1;
+  min-height: 2.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sensor-action-btn.locate {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.sensor-action-btn.locate:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.sensor-action-btn.inspect {
+  background: var(--color-primary-soft);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.sensor-action-btn.inspect:hover {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+@media (max-width: 900px) {
+  .sensors-hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .telemetry-stat-pills {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 760px) {
+  .telemetry-stat-pills {
+    flex-direction: column;
+  }
+
+  .telem-stat-pill {
+    width: 100%;
+  }
+
+  .sensors-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.9rem;
+  }
+
+  .sensors-toolbar .filter-label {
+    width: 100%;
+    margin-bottom: 0.1rem;
+  }
+
+  .tech-link-shortcut-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sensors-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .sensors-hero-banner,
+  .sensor-card {
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sensor-reading-summary-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .badge-block {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+}

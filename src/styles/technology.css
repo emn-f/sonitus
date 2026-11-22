@@ -1,0 +1,690 @@
+/* ==========================================================================
+   SEÇÃO 7: TECNOLOGIA, HARDWARE 3D & PRIVACY BY DESIGN
+   ========================================================================== */
+.tech-hero-banner {
+  background: linear-gradient(135deg, var(--color-surface) 40%, var(--color-surface-secondary));
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2.1rem 2.35rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+.prototype-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* Visualizador 3D */
+.tech-3d-interactive-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+  min-width: 0;
+}
+
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-mini-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  display: block;
+}
+
+.card-main-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.tech-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.sensor-3d-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 420px);
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.viewer-and-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: radial-gradient(circle at center, var(--color-surface-secondary) 0%, var(--color-surface-tertiary) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: 1.15rem;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.canvas-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+}
+
+.canvas-overlay-badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+
+.live-3d-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.pulse-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-calm);
+}
+
+.interaction-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.canvas-toolbar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tool-icon-btn {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--color-text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.tool-icon-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tool-icon-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.camera-presets-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.75rem;
+  max-width: 100%;
+}
+
+.presets-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-right: 0.2rem;
+}
+
+.preset-btn {
+  padding: 0.38rem 0.68rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.preset-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.webgl-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.fallback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 99px;
+  background: var(--color-moderate-soft);
+  color: var(--color-moderate);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.fallback-svg {
+  max-width: 240px;
+  max-height: 280px;
+}
+
+/* Sidebar de componentes do hardware */
+.hardware-details-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.component-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.comp-chip {
+  padding: 0.38rem 0.72rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-secondary);
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.comp-chip.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.selected-component-card {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.3rem;
+}
+
+.comp-header {
+  margin-bottom: 0.85rem;
+}
+
+.comp-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.comp-title {
+  margin: 0 0 0.2rem;
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.comp-subtitle {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.comp-description {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.specs-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-primary);
+}
+
+.specs-list {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.privacy-highlight-box {
+  background: color-mix(in srgb, var(--color-calm-soft), var(--color-surface) 40%);
+  border: 1px solid var(--color-calm-border);
+  border-radius: 0.75rem;
+  padding: 0.85rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.privacy-icon {
+  color: var(--color-calm);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.privacy-highlight-box strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-calm);
+  margin-bottom: 0.2rem;
+}
+
+.privacy-highlight-box p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.privacy-banner-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-calm);
+  border-radius: 1rem;
+  padding: 1.15rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.privacy-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.45rem;
+}
+
+.privacy-shield {
+  color: var(--color-calm);
+  flex-shrink: 0;
+}
+
+.banner-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.banner-tagline {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.banner-body {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+/* Pipeline IoT */
+.pipeline-flow-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.pipeline-header {
+  margin-bottom: 1.65rem;
+}
+
+.pipeline-description {
+  margin: 0.45rem 0 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 860px;
+}
+
+.pipeline-steps-grid {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+.pipeline-step-card {
+  flex: 1;
+  min-width: 190px;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pipeline-step-card.highlight-privacy {
+  border-color: var(--color-calm-border);
+  background: color-mix(in srgb, var(--color-calm-soft), var(--color-surface) 40%);
+}
+
+.step-number-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.step-icon-circle {
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.step-title {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.step-subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.step-copy {
+  margin: 0 0 0.85rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.step-feature-tag {
+  margin-top: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.step-feature-tag.privacy {
+  background: var(--color-calm);
+  color: var(--color-calm-contrast);
+  border-color: var(--color-calm);
+}
+
+.pipeline-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* Pilares de Privacidade */
+.tech-privacy-deep-dive {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.privacy-deep-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.privacy-badge-icon {
+  color: var(--color-calm);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.privacy-deep-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.privacy-deep-sub {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.privacy-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.pillar-item {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.95rem;
+  padding: 1.25rem;
+}
+
+.pillar-item .pillar-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.55rem;
+  background: var(--color-surface);
+  color: var(--color-calm);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.pillar-item h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.pillar-item p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .sensor-3d-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .canvas-container {
+    height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  .pipeline-steps-grid {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .pipeline-step-card {
+    min-width: 0;
+  }
+
+  .pipeline-arrow {
+    transform: rotate(90deg);
+    padding: 0.35rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-hero-banner,
+  .tech-3d-interactive-card,
+  .pipeline-flow-section,
+  .tech-privacy-deep-dive {
+    padding: 1.15rem;
+  }
+
+  .card-main-title {
+    font-size: 1.22rem;
+  }
+
+  .canvas-container {
+    height: 340px;
+  }
+
+  .presets-label {
+    width: 100%;
+    margin: 0 0 0.15rem;
+  }
+
+  .preset-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .tool-icon-btn {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .preset-btn {
+    min-height: 2.5rem;
+  }
+}

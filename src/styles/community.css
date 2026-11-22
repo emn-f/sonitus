@@ -1,0 +1,829 @@
+/* ==========================================================================
+   SEÇÃO 6: COMUNIDADE, RELATOS ANÔNIMOS, CARTILHA & BOAS PRÁTICAS
+   ========================================================================== */
+.section-community-education {
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.community-hero-banner {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.community-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.privacy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.community-concept-callout {
+  background: var(--color-surface-secondary);
+  border-radius: 0.75rem;
+  padding: 1.15rem;
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.community-concept-callout p {
+  margin: 0.2rem 0 0;
+}
+
+/* Sub-abas */
+.subtabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem;
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.subtab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: 0.55rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subtab-btn:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+}
+
+.subtab-btn.active {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* Aba 1: Relatos e Formulário */
+.community-reports-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.reports-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+  gap: 1.5rem;
+}
+
+.report-form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.form-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.3rem;
+}
+
+.form-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+
+.form-success-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-calm-soft);
+  color: var(--color-calm);
+  border: 1px solid var(--color-calm-border);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  margin-top: 0.4rem;
+}
+
+.form-submit-btn:hover {
+  opacity: 0.92;
+}
+
+/* Feed de relatos */
+.reports-feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.feed-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.25rem;
+}
+
+.feed-sub {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.reports-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  min-height: 2.25rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.reports-reset-btn:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+}
+
+.feed-filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  align-items: center;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.feed-filter-select {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0.45rem;
+  padding: 0.38rem 0.65rem;
+  font-size: 0.8rem;
+  color: var(--color-text);
+}
+
+.reports-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.community-report-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.8rem;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.report-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.report-code-badge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--color-text-subtle);
+}
+
+.report-id {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.report-sim-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-subtle);
+  border: 1px solid var(--color-border);
+}
+
+.report-badges-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.report-impact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.22rem 0.58rem;
+  border-radius: 999px;
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.report-impact-pill.impact-tea {
+  background: #f0e6fa;
+  color: #6a1b9a;
+  border-color: #d1b2e6;
+}
+
+.report-impact-pill.impact-animal {
+  background: #e6f4ea;
+  color: #137333;
+  border-color: #b7e1cd;
+}
+
+.report-impact-pill.impact-sono {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-color: #aecbfa;
+}
+
+.report-impact-pill.impact-trabalho {
+  background: #fef7e0;
+  color: #b06000;
+  border-color: #fdd663;
+}
+
+.report-impact-pill.impact-idosos {
+  background: var(--color-intense-soft);
+  color: var(--color-intense);
+  border-color: var(--color-intense-border);
+}
+
+.report-impact-pill.impact-geral {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+.report-period-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--color-surface-secondary);
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.report-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.report-location-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.report-loc-icon {
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+  color: var(--color-primary);
+}
+
+.report-desc-text {
+  font-size: 0.86rem;
+  color: var(--color-text);
+  line-height: 1.45;
+  font-style: italic;
+  margin: 0;
+}
+
+.report-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+}
+
+.intensity-badge {
+  font-weight: 700;
+  padding: 0.18rem 0.48rem;
+  border-radius: 4px;
+}
+
+.intensity-severo {
+  background: var(--color-intense-soft);
+  color: var(--color-intense);
+}
+
+.intensity-intenso {
+  background: var(--color-moderate-soft);
+  color: var(--color-moderate);
+}
+
+.intensity-moderado {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-muted);
+}
+
+.intensity-leve {
+  background: var(--color-calm-soft);
+  color: var(--color-calm);
+}
+
+.correlation-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  background: var(--color-surface-secondary);
+  border: 1px dashed var(--color-border);
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.correlation-box svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.report-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.report-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  min-height: 2.25rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.report-map-btn:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+
+/* Aba 2: Cartilha Digital */
+.digital-guidebook-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.guidebook-heading {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 0.35rem;
+}
+
+.guidebook-lead {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.guidebook-chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.35rem;
+}
+
+.guidebook-chapter-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  padding: 1.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.guidebook-chapter-card.highlight-tea {
+  border-top: 3px solid var(--color-primary);
+}
+
+.guidebook-chapter-card.highlight-animal {
+  border-top: 3px solid var(--color-secondary);
+}
+
+.chapter-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+
+.chapter-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.chapter-copy {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.chapter-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  line-height: 1.45;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.chapter-normative-note {
+  background: var(--color-surface-secondary);
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  margin-top: auto;
+  line-height: 1.4;
+}
+
+/* Aba 3: Materiais e Boas Práticas */
+.educational-materials-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.materials-heading {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 0.35rem;
+}
+
+.materials-sub {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.practice-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.practice-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.6rem;
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.practice-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.practice-card p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.practice-tag {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  background: var(--color-secondary-soft);
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.45rem;
+  line-height: 1.35;
+}
+
+.laudato-si-banner {
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  border-radius: 0.85rem;
+  padding: 1.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.laudato-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.laudato-icon {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.laudato-ref {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.laudato-quote {
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-secondary);
+  padding-left: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 1280px) {
+  .practices-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .guidebook-chapters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1080px) {
+  .reports-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .practices-grid,
+  .guidebook-chapters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .community-hero-banner,
+  .reports-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .subtab-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+    min-height: 40px;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .community-hero-banner {
+    padding: 1.15rem;
+    gap: 1.1rem;
+  }
+
+  .form-grid-two,
+  .guidebook-chapters-grid,
+  .practices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-form-card,
+  .laudato-si-banner,
+  .guidebook-chapter-card {
+    padding: 1.15rem;
+  }
+
+  .community-report-card,
+  .practice-card {
+    padding: 1.05rem;
+  }
+
+  .guidebook-chapter-card {
+    gap: 0.6rem;
+  }
+
+  .practice-card {
+    gap: 0.55rem;
+  }
+
+  .feed-filters-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .feed-filters-row .filter-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    width: 100%;
+  }
+
+  .feed-filter-select {
+    width: 100%;
+    max-width: 100%;
+    min-height: 2.5rem;
+    padding: 0.45rem 0.65rem;
+  }
+}

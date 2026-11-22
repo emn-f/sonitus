@@ -2,6 +2,7 @@ import React from 'react'
 import { SensorModel3D } from '../components/SensorModel3D'
 import {
   ArrowRight,
+  Compass,
   Cpu,
   EyeOff,
   HardDrive,
@@ -9,7 +10,6 @@ import {
   Radio,
   Server,
   ShieldCheck,
-  Sparkles,
   Users,
   Wifi,
 } from 'lucide-react'
@@ -54,7 +54,7 @@ export const TechnologySection: React.FC<TechnologySectionProps> = ({
             </h2>
           </div>
           <span className="tech-status-badge">
-            <Sparkles size={14} aria-hidden="true" />
+            <Compass size={14} aria-hidden="true" />
             Interativo · Três Eixos de Rotação
           </span>
         </div>

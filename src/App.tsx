@@ -101,7 +101,7 @@ export function App() {
     queueMicrotask(() => navigationTriggerRef.current?.focus())
   }
 
-  const periodAwareTabs: NavigationTab[] = ['visao-geral', 'mapa', 'zonas-sensiveis', 'sensores']
+  const periodAwareTabs: NavigationTab[] = ['mapa', 'zonas-sensiveis', 'sensores']
   const showMobilePeriodBar = periodAwareTabs.includes(activeTab)
 
   return (

@@ -1,0 +1,818 @@
+/* ==========================================================================
+   SHELL, HEADER, MENU LATERAL E FOOTER
+   ========================================================================== */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.workspace-layout {
+  display: block;
+  flex: 1;
+  width: 100%;
+}
+
+.main-content-area {
+  width: 100%;
+  max-width: 1160px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 2.15rem 1.25rem 4rem;
+  overflow-x: hidden;
+}
+
+/* Header & Barra de status */
+.app-header.sanctuary-header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px -6px rgba(31, 58, 75, 0.08);
+}
+
+.sanctuary-statusbar {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-muted);
+}
+
+.sanctuary-status-inner {
+  max-width: 1160px;
+  min-height: 31px;
+  margin: 0 auto;
+  padding: 0.35rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.sanctuary-status-inner span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.sanctuary-status-online i {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.header-inner.sanctuary-header-inner {
+  max-width: 1380px;
+  min-height: 74px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.sanctuary-header-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Bloco esquerdo fixo: menu hambúrguer à esquerda da logo */
+.sanctuary-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.nav-menu-toggle.sanctuary-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.nav-menu-toggle.sanctuary-menu-toggle:hover {
+  background: var(--color-surface-tertiary);
+}
+
+.brand.sanctuary-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.55rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.brand-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Navegação inline em desktop largo (>= 1500px) */
+.sanctuary-primary-nav {
+  display: none;
+  gap: 0.16rem;
+  align-items: center;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: var(--color-surface-secondary);
+}
+
+.sanctuary-primary-nav button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.42rem 0.52rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sanctuary-primary-nav button:hover {
+  color: var(--color-text);
+  background: var(--color-surface-tertiary);
+}
+
+.sanctuary-primary-nav button.active {
+  color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary-soft) 86%, var(--color-surface));
+}
+
+/* Controles à direita do header */
+.header-controls.sanctuary-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.period-toggle-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.period-toggle-btn {
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.period-toggle-btn:hover {
+  color: var(--color-text);
+}
+
+.period-toggle-btn.active {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.sanctuary-city-status {
+  display: none;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.72rem;
+  border-radius: 999px;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-muted);
+  font-size: 0.67rem;
+  white-space: nowrap;
+}
+
+.sanctuary-city-status svg {
+  color: var(--color-secondary);
+}
+
+.sanctuary-city-status strong {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.header-tool-btn.sanctuary-tool {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.header-tool-btn.sanctuary-tool:hover,
+.header-tool-btn.sanctuary-tool.active {
+  color: var(--color-primary);
+  background: var(--color-surface-tertiary);
+}
+
+.sanctuary-motion-toggle > span {
+  display: none;
+}
+
+.sanctuary-motion-toggle > i {
+  position: absolute;
+  top: 0.34rem;
+  right: 0.34rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-text-subtle);
+}
+
+.sanctuary-motion-toggle.active {
+  background: var(--color-secondary);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-secondary) 20%, transparent), var(--shadow-sm);
+}
+
+.sanctuary-motion-toggle.active:hover {
+  background: var(--color-secondary);
+  color: #ffffff;
+}
+
+.sanctuary-motion-toggle.active > i {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #ffffff 32%, transparent);
+}
+
+/* Faixa contextual de turno em mobile (somente em abas de telemetria) */
+.mobile-period-strip {
+  display: none;
+}
+
+/* Sidebar Drawer */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  border: 0;
+  background: rgba(8, 21, 29, 0.42);
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 110;
+  width: min(21rem, calc(100vw - 1.5rem));
+  height: 100dvh;
+  padding: 1rem;
+  transform: translateX(-105%);
+  visibility: hidden;
+  transition: transform 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: 16px 0 42px -18px rgba(6, 36, 53, 0.3);
+}
+
+.app-sidebar.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.nav-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.45rem 0.95rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.nav-drawer-header > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.nav-drawer-eyebrow {
+  color: var(--color-secondary);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-drawer-header strong {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  letter-spacing: -0.025em;
+}
+
+.nav-drawer-close {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.nav-drawer-close:hover {
+  background: var(--color-surface-tertiary);
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.nav-group + .nav-group {
+  padding-top: 1.05rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.sidebar-title {
+  margin: 0 0 0.45rem 0.45rem;
+  color: var(--color-text-subtle);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-tab-item {
+  width: 100%;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.85rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-tab-item:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+}
+
+.nav-tab-item.active {
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.nav-tab-item .tab-icon {
+  display: grid;
+  width: 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  border-radius: 0.58rem;
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.nav-tab-item.active .tab-icon {
+  background: var(--color-secondary);
+  color: #ffffff;
+}
+
+.tab-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-badge {
+  margin-left: auto;
+  padding: 0.18rem 0.48rem;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tab-badge.badge-critical {
+  background: var(--color-intense);
+  color: #ffffff;
+}
+
+.tab-badge.badge-neutral {
+  background: var(--color-surface-tertiary);
+  color: var(--color-text-muted);
+}
+
+/* Footer */
+.app-footer {
+  background: var(--color-surface-secondary);
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 2.75rem 1.25rem 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  letter-spacing: -0.03em;
+}
+
+.footer-version {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.footer-description {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 320px;
+}
+
+.footer-heading {
+  margin: 0 0 0.7rem;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.footer-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom-bar p {
+  margin: 0;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-repo-link:hover {
+  background: color-mix(in srgb, var(--color-primary) 84%, #000000);
+  transform: translateY(-1px);
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.footer-tag {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* Breakpoints responsivos do shell */
+@media (min-width: 1500px) {
+  .sanctuary-primary-nav {
+    display: flex;
+  }
+
+  .nav-menu-toggle.sanctuary-menu-toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-content-area {
+    max-width: 1260px;
+    padding: 2.5rem 2rem 5rem;
+  }
+
+  .sanctuary-status-inner,
+  .footer-inner {
+    max-width: 1260px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .sanctuary-statusbar {
+    display: none;
+  }
+
+  .app-header.sanctuary-header {
+    background: var(--color-bg);
+  }
+
+  .header-inner.sanctuary-header-inner {
+    min-height: 62px;
+    padding: 0.6rem 1rem;
+  }
+
+  .sanctuary-brand .brand-mark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  .sanctuary-brand .brand-name {
+    font-size: 1.08rem;
+  }
+
+  .main-content-area {
+    padding: 1.35rem 1rem 3rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .desktop-period-toggle {
+    display: none;
+  }
+
+  .mobile-period-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.45rem 0.65rem;
+    margin-bottom: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .mobile-period-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .mobile-period-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 999px;
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .mobile-period-pill {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.32rem 0.65rem;
+    min-height: 30px;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .mobile-period-pill:hover {
+    color: var(--color-text);
+  }
+
+  .mobile-period-pill.active {
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner.sanctuary-header-inner {
+    min-height: 58px;
+    padding: 0.55rem 0.85rem;
+  }
+
+  .main-content-area {
+    padding: 1.15rem 0.85rem 2.5rem;
+  }
+
+  .footer-inner {
+    padding: 2rem 0.85rem 1.35rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-inner.sanctuary-header-inner {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .sanctuary-header-left {
+    gap: 0.48rem;
+  }
+
+  .sanctuary-brand .brand-mark {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.48rem;
+  }
+
+  .sanctuary-brand .brand-name {
+    font-size: 1rem;
+  }
+
+  .main-content-area {
+    padding: 1rem 0.7rem 2.25rem;
+  }
+
+  .mobile-period-strip {
+    gap: 0.4rem;
+    padding: 0.4rem 0.55rem;
+  }
+
+  .mobile-period-label {
+    font-size: 0.7rem;
+  }
+
+  .mobile-period-pill {
+    padding: 0.3rem 0.52rem;
+    font-size: 0.72rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .nav-menu-toggle.sanctuary-menu-toggle,
+  .header-tool-btn.sanctuary-tool {
+    width: 2.65rem;
+    min-width: 2.65rem;
+    height: 2.65rem;
+    min-height: 2.65rem;
+  }
+}
