@@ -1,150 +1,128 @@
-# Sonitus
+# Sonitus — Monitoramento Acústico Urbano & Acessibilidade Sensorial
 
-## Visão do produto
+> **MVP Acadêmico (v0.2.0) · Protótipo Web Conceitual**  
+> Projeto desenvolvido na **Universidade Católica do Salvador (UCSal)** para a disciplina de extensão **Questões Ambientais na Comunidade (`ELE-EXT009`)**, semestre **2026.2**, sob orientação da **Profa. Dra. Janine Melo**.  
+> Demonstração online: https://sonitus-delta.vercel.app
 
-O Sonitus é uma plataforma comunitária de acessibilidade sensorial. Seu propósito é transformar informações sobre o ruído urbano em orientações simples para que as pessoas possam escolher trajetos, horários e ambientes com mais conforto e previsibilidade.
-
-O primeiro produto será um protótipo web interativo, baseado em dados simulados. Ele não depende de sensores físicos reais nem de integração com órgãos públicos para funcionar.
-
-## Protótipo web
-
-O protótipo foi construído com React, Vite, TypeScript e CSS puro. Para entender como navegar pela interface, compreender os indicadores e utilizar os recursos de acessibilidade pelo ponto de vista do usuário, consulte o [Guia de Uso](docs/GUIA_DE_USO.md).
-
-### Experiência visual e acessibilidade
-
-A interface segue a identidade **Sonitus Sensory Sanctuary**, pensada para reduzir sobrecarga visual: superfícies em tons quentes, azul profundo, verde-sálvia, tipografia Plus Jakarta Sans e animações discretas. O modo claro e o modo noturno usam paletas próprias e são persistidos localmente.
-
-Os controles do cabeçalho oferecem alternância de tema e de **movimento reduzido**. Ao ativar a última opção, o botão recebe texto, cor e indicador visual de estado; transições e animações também respeitam essa escolha e a preferência de sistema `prefers-reduced-motion`.
-
-O layout é responsivo para telas pequenas, médias e grandes. Em telas usuais, o mapa ocupa toda a largura disponível para preservar a leitura de rótulos e pontos; em telas muito largas, os detalhes voltam a ocupar um painel lateral. A navegação principal mantém itens em uma única linha no desktop e usa um painel contextual “Navegar” no tablet e um ícone de menu no mobile.
-
-## Para quem é
-
-O foco principal são pessoas neurodivergentes, especialmente pessoas autistas com sensibilidade auditiva. A plataforma também pode beneficiar idosos, pessoas em tratamento, famílias, cuidadores e qualquer pessoa que queira reduzir a exposição a ambientes muito ruidosos.
-
-## Problema
-
-O ruído urbano afeta a qualidade de vida e torna o deslocamento e a permanência em certos locais menos previsíveis. Para pessoas com maior sensibilidade sonora, um pico de ruído pode causar desconforto, sobrecarga sensorial ou impedir atividades cotidianas. Hoje, raramente existem informações acessíveis e contextualizadas sobre onde e quando o ambiente tende a estar mais silencioso.
-
-## Proposta de valor
-
-O Sonitus oferece uma leitura clara e prática do cenário sonoro da cidade. Em vez de apresentar somente medições técnicas, organiza os dados por localização e horário e os traduz em classificações compreensíveis:
-
-- **Tranquilo**: ambiente com menor intensidade de ruído.
-- **Moderado**: ruído perceptível, com atenção recomendada.
-- **Intenso**: maior probabilidade de desconforto ou sobrecarga.
-
-Assim, a pessoa pode planejar melhor seus compromissos e deslocamentos de acordo com suas necessidades sensoriais.
-
-## Escopo do MVP
-
-O MVP será um protótipo web com dados simulados de ruído. Ele incluirá:
-
-- mapa com ruas ou bairros e sua classificação sonora;
-- visualização por faixa de horário;
-- indicação de picos de ruído;
-- filtros para ajudar a encontrar períodos e regiões mais tranquilos;
-- busca por locais;
-- relatos comunitários opcionais sobre a experiência sensorial em um local ou período.
-
-Os dados simulados serão organizados para permitir demonstração realista de variações por região e horário, sem representar medições reais nem fazer promessas de precisão operacional.
-
-## Experiência esperada
-
-Uma pessoa poderá buscar um destino, consultar o mapa e comparar os horários disponíveis. A interface deve priorizar linguagem direta, contraste adequado, classificação visual consistente e explicações fáceis de entender. O resultado desejado é apoiar uma decisão cotidiana, como escolher uma rota alternativa, remarcar um compromisso ou sair em um horário mais confortável.
-
-## Três Dimensões da Entrega do Protótipo
-
-Esta evolução do MVP acadêmico demonstra como o Sonitus se comportaria como uma plataforma urbana real através de três pilares integrados:
-
-1. **Monitoramento e Cartografia Urbana**:
-   - Centro de monitoramento acústico em tempo real simulado;
-   - Mapa acústico como protagonista com malha viária, distritos, heatmap suave de dispersão sonora e inspeção detalhada de sensores.
-
-2. **Impacto Social e Saúde**:
-   - Mapeamento e proteção de zonas sensíveis (hospitais, clínicas de TEA, escolas e abrigos);
-   - Identificação de **Oásis de Conforto Acústico** (zonas calmas) para descompressão sensorial de pessoas autistas, hipersensíveis e idosos;
-   - Central de alertas conceituais para detecção de recorrência de ruído abusivo.
-
-3. **Viabilidade Tecnológica**:
-   - Visão da futura rede de sensores IoT (telemetria simulada de 18 nós via LoRaWAN e NB-IoT);
-   - **Protótipo 3D Interativo do Hardware Sonitus Node v1.2** (construído em Three.js, com controles orbitais, detalhes de engenharia de borda e garantia de Privacidade por Concepção).
+> [!NOTE]
+> **Natureza Simulada do Protótipo:** Todos os sensores, leituras de decibéis (`dB LAeq`), alertas de triagem e relatos exibidos nesta plataforma são **100% simulados** para fins acadêmicos e demonstração conceitual. Não há hardware instalado em postes reais de Salvador nem envio de multas ou autos de infração automáticos.
 
 ---
 
-## Estrutura Atual do Protótipo
+## Visão do Produto & Problema
 
-A base de código foi refatorada de forma modular e tipada:
+O ruído urbano excessivo prejudica a qualidade de vida e transforma o deslocamento e a permanência em espaços públicos em fontes de sobrecarga sensorial e sofrimento físico. O **Sonitus** propõe uma plataforma de inteligência acústica urbana e acessibilidade sensorial que traduz dados sonoros em orientações claras de conforto para a população — com foco especial em:
+
+- **Pessoas neurodivergentes**, sobretudo no espectro autista (TEA) com hipersensibilidade auditiva;
+- **Pacientes hospitalares, idosos, estudantes e cuidadores**;
+- **Fauna urbana e animais domésticos** (em abrigos, clínicas veterinárias e parques);
+- **Apoio preventivo à fiscalização pública** (priorização de vistorias sem caráter punitivo automatizado).
+
+A leitura ambiental organiza o som por região e período do dia em três faixas compreensíveis:
+
+- **Tranquilo:** ambiente com menor pressão sonora, adequado para permanência e descompressão;
+- **Moderado:** ruído perceptível, exigindo atenção em deslocamentos sensíveis;
+- **Intenso:** nível elevado, com maior risco de estresse, sobrecarga sensorial ou desconforto físico.
+
+---
+
+## Módulos Entregues no MVP (8 Seções)
+
+A interface segue a identidade **Sonitus Sensory Sanctuary** (tema claro/escuro persistido localmente, contraste acessível WCAG, tipografia *Plus Jakarta Sans*, modo de movimento reduzido e responsividade para desktop, tablet e celular):
+
+1. **Planejar meu conforto (`OverviewSection`):** diagnóstico acústico resumido do período, janela mais calma do dia, curva horária estimada e orientações sensoriais práticas.
+2. **Mapa Acústico (`MapSection`):** visualização interativa de Salvador com 18 pontos monitorados simulados, manchas de calor sonoro (`LAeq`), camadas de zonas sensíveis, filtros por distrito/intensidade/categoria e gaveta de inspeção detalhada por turno (**Manhã**, **Tarde** e **Noite**).
+3. **Zonas Tranquilas & Sensíveis (`SensitiveZonesSection`):** monitoramento conceitual de hospitais, clínicas, escolas, abrigos de animais e **Oásis de Conforto Acústico** recomendados para pausa sensorial — respeitando o princípio ético de **jamais mapear residências particulares ou indivíduos**.
+4. **Comunidade & Educação (`CommunityEducationSection`):**
+   - **Relatos da População:** canal participativo **100% anônimo (LGPD)** com persistência local simulada e correlação conceitual com a malha de sensores;
+   - **Cartilha Digital (Saúde e Leis):** síntese acessível sobre efeitos extra-auditivos (OMS / Revista CEFAC), neurodivergência e hipersensibilidade auditiva (Lei Berenice Piana e LBI) e impactos sobre a fauna urbana;
+   - **Dicas e Boas Práticas:** ações cotidianas de convivência sonora e reflexão de ecologia integral (*Laudato Si'*).
+5. **Alertas & Apoio à Fiscalização (`AlertsSection`):** separa ocorrências em três modos:
+   - **Alertas em Aberto:** eventos persistentes simulados para apoio à priorização preventiva da Sedur;
+   - **Picos Momentâneos:** eventos transitórios curtos (buzinas, sirenes) registrados apenas para diagnóstico, sem disparo automático de fiscalização;
+   - **Regras de Medição (Etapa 5):** critérios baseados na **ABNT NBR 10151:2019** em 4 faixas (`45` / `55` / `65` / `70 dB`), **Lei Municipal de Salvador nº 5.354/1998** (`70 dB` das 7h às 22h · `60 dB` das 22h às 7h), persistência de **2 janelas consecutivas de 10 min** e reincidência crítica com **3 ou mais episódios em 7 dias**.
+6. **Rede de Sensores (`SensorsSection`):** catálogo dos 18 nós IoT simulados (`Sonitus Node v1.2`) com protocolo (LoRaWAN, NB-IoT e Wi-Fi Mesh), autonomia, firmware e leitura por turno.
+7. **Como Funciona / Tecnologia (`TechnologySection`):** visualizador **3D interativo em Three.js** do protótipo conceitual de hardware (ESP32-S3 + microfone MEMS), fluxo de dados de borda e garantia de **Privacy by Design** (cálculo local de decibéis sem gravar áudio ou conversas).
+8. **Sobre o Sonitus (`AboutSection`):** dados públicos de contexto em Salvador (Sedur), pilares socioambientais, fundamentação jurídica, benchmarks (*NoiseCapture*, *SONYC*, *Radar Sonoro*), limitações do projeto parcial e equipe autora.
+
+---
+
+## Estrutura Atual do Projeto
 
 ```text
 src/
-├── types/          # Interfaces de domínio (Sensor, SensitiveZone, Alert, etc.)
-├── data/           # Base unificada de dados simulados (noiseData.ts)
-├── components/     # Componentes reutilizáveis (Header, Navigation, SoundBadge, SensorModel3D, MetricCard, Footer)
-├── sections/       # Telas funcionais (Overview, Map, SensitiveZones, Alerts, Sensors, Technology, About)
-├── styles.css      # Design system com tokens, acessibilidade, temas claro/escuro e redução de movimento
-├── App.tsx         # Shell de aplicação com lazy-loading e estado global
+├── components/     # Header, Navigation, SoundBadge, SensorModel3D, Footer
+├── data/           # Base simulada unificada e parâmetros normativos (noiseData.ts)
+├── sections/       # OverviewSection, MapSection, SensitiveZonesSection,
+│                   # CommunityEducationSection, AlertsSection, SensorsSection,
+│                   # TechnologySection e AboutSection
+├── styles/         # Arquitetura CSS modular por domínio (index.css, tokens.css,
+│                   # layout.css, overview.css, map.css, zones.css, alerts.css,
+│                   # sensors.css, community.css, technology.css, about.css)
+├── types/          # Contratos TypeScript de domínio (index.ts)
+├── App.tsx         # Shell da aplicação, estado global e lazy loading do 3D
 └── main.tsx        # Ponto de montagem React 19
 ```
 
----
-
-## Arquitetura Conceitual e Privacidade por Concepção
-
-Na versão atual, a aplicação consome uma base local de dados simulados coerentes e os distribui por todos os módulos.
-
-O conceito tecnológico prevê que futuros nós de sensoriamento (Sonitus Node v1.2) baseados no microcontrolador **ESP32-S3** calculem as métricas de decibéis ponderados (dB LAeq) localmente na memória volátil, descartando o áudio bruto instantaneamente. **O Sonitus não grava, não armazena e não transmite conversas de voz humana**.
-
-Além disso, a plataforma preserva rigorosamente a dignidade de grupos vulneráveis: mapeia exclusivamente instalações de circulação pública, **jamais residências particulares ou indivíduos PCDs**.
+Documentação de apoio em [`docs/`](docs/):
+- [Guia de Uso](docs/GUIA_DE_USO.md)
+- [Contexto Conceitual e Restrições](docs/sonitus-context.md)
+- [Arquitetura e Recursos](docs/ARQUITETURA_E_RECURSOS.md)
+- [Requisitos](docs/REQUISITOS.md)
 
 ---
 
-## Fora do escopo inicial
+## Contexto Acadêmico, Orientação & Equipe
 
-- sensores físicos instalados em postes e medições acústicas reais de campo;
-- integração operacional em tempo real com a Sedur, órgãos públicos ou serviços de emergência;
-- emissão automática de multas ou sanções administrativas;
-- mapeamento de casas, perfis pessoais ou localização individual de PCDs;
-- uso do produto como ferramenta punitiva automatizada.
+- **Instituição:** Universidade Católica do Salvador (UCSal) — Campus Pituaçu · Salvador, BA
+- **Disciplina:** Questões Ambientais na Comunidade (`ELE-EXT009`) · Semestre **2026.2**
+- **Docente Orientadora:** Profa. Dra. Janine Melo
 
-*(Obs.: no protótipo acadêmico atual, os módulos de **alertas conceituais baseados na NBR 10151 / Lei Municipal nº 5.354/1998** e o **canal comunitário anônimo + cartilha educativa** já estão implementados em modo **simulado/local** para validação demonstrativa.)*
+### Equipe de Estudantes Autores
 
-## Etapas de construção
+- Adilson Miranda Junior
+- Alison Andrade Rocha
+- Caio Vinícius dos Santos e Santos
+- Emanuel Arlan Sousa Silva Ferreira
+- Fernanda Lopes Matos
+- Guilherme Araujo de Souza
+- Jefferson Luiz Santos Fernandes
+- Joao Henrique Mendes dos Santos
+- Julia Alves de Oliveira Costa
+- Marcos Vinicius Sousa Batista
+- Raissa Moura dos Santos
+- Udimile Macedo de Oliveira
 
-1. Definir áreas, horários e cenários que comporão os dados simulados.
-2. Modelar a estrutura dos dados de localização, intensidade e período.
-3. Criar a interface web com mapa, legendas, busca e filtros.
-4. Implementar a visualização de picos, zonas sensíveis e detalhes por local/horário.
-5. Integrar canal de relatos comunitários anônimos (LGPD) e materiais educativos de prevenção.
-6. Testar a clareza da experiência com foco em acessibilidade sensorial e ajustar a interface.
+---
 
-## Desenvolvimento
+## Escopo Não Contemplado Nesta Entrega Acadêmica
 
-### Desenvolvimento local
+- Sensores físicos instalados em via pública ou medições acústicas reais em campo;
+- Integração operacional em tempo real com a Sedur ou outros órgãos públicos;
+- Aplicação automática de multas ou sanções administrativas;
+- Qualquer coleta de dados pessoais ou mapeamento de residências particulares.
+
+---
+
+## Desenvolvimento Local (`pnpm`)
+
+### Execução no terminal
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-O terminal exibirá o endereço local fornecido pelo Vite (por padrão, `http://localhost:5173`).
+Para validar tipagem, lint e build de produção:
 
-### Dev Container
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+```
 
-Para executar o projeto em um ambiente padronizado via VS Code:
+### Dev Container (VS Code)
 
 1. Instale a extensão **Dev Containers** no VS Code;
-2. Abra a pasta do projeto no VS Code;
-3. Execute `Dev Containers: Reopen in Container` (via `Ctrl+Shift+P` ou `Cmd+Shift+P`);
-4. Aguarde a instalação das dependências;
-5. No terminal integrado, execute:
-   ```bash
-   pnpm lint
-   pnpm typecheck
-   pnpm dev
-   ```
-6. Acesse a porta encaminhada do Sonitus (`http://localhost:5173`).
-
-## Possibilidades futuras
-
-Depois de validado o protótipo, o Sonitus poderá explorar dados coletados por sensores públicos, indicadores históricos, rotas com menor exposição sonora, colaboração com instituições e recursos de apoio à gestão urbana. Esses caminhos ampliam o impacto da plataforma, mas não alteram sua prioridade: apoiar a autonomia das pessoas no planejamento do cotidiano.
+2. Abra a pasta do projeto e execute `Dev Containers: Reopen in Container` (`Ctrl+Shift+P` / `Cmd+Shift+P`);
+3. No terminal integrado, rode `pnpm lint`, `pnpm typecheck` e `pnpm dev` e acesse `http://localhost:5173`.
