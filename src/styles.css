@@ -4737,6 +4737,20 @@ input:focus-visible,
   text-transform: uppercase;
 }
 
+.municipal-law-tag {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--color-moderate-soft);
+  color: var(--color-moderate);
+  border: 1px solid var(--color-moderate-border);
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .alert-window-tag {
   display: inline-flex;
   align-items: center;
@@ -5003,6 +5017,21 @@ input:focus-visible,
   background: var(--color-surface-secondary);
 }
 
+.limits-law-note {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.55rem;
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.limits-law-note strong {
+  color: var(--color-text);
+}
+
 /* ==========================================================================
    SEÇÃO COMUNIDADE & EDUCAÇÃO AMBIENTAL
    ========================================================================== */
@@ -5219,6 +5248,35 @@ input:focus-visible,
   gap: 1rem;
 }
 
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.reports-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  min-height: 2.25rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.reports-reset-btn:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+}
+
 .feed-heading {
   font-size: 1.2rem;
   font-weight: 700;
@@ -5399,6 +5457,34 @@ input:focus-visible,
   font-size: 0.75rem;
   color: var(--color-text-muted);
   margin-top: 0.5rem;
+}
+
+.report-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.report-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  min-height: 2.25rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-secondary);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.report-map-btn:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
 }
 
 /* Cartilha Digital */

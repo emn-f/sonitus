@@ -101,19 +101,21 @@ Além disso, a plataforma preserva rigorosamente a dignidade de grupos vulneráv
 
 ## Fora do escopo inicial
 
-- sensores físicos instalados e coleta de dados reais;
-- integração com fiscalização, órgãos públicos ou serviços de emergência;
-- alertas automáticos para gestão pública;
+- sensores físicos instalados em postes e medições acústicas reais de campo;
+- integração operacional em tempo real com a Sedur, órgãos públicos ou serviços de emergência;
+- emissão automática de multas ou sanções administrativas;
 - mapeamento de casas, perfis pessoais ou localização individual de PCDs;
-- uso do produto como ferramenta principal de fiscalização ou venda para governos.
+- uso do produto como ferramenta punitiva automatizada.
+
+*(Obs.: no protótipo acadêmico atual, os módulos de **alertas conceituais baseados na NBR 10151 / Lei Municipal nº 5.354/1998** e o **canal comunitário anônimo + cartilha educativa** já estão implementados em modo **simulado/local** para validação demonstrativa.)*
 
 ## Etapas de construção
 
 1. Definir áreas, horários e cenários que comporão os dados simulados.
 2. Modelar a estrutura dos dados de localização, intensidade e período.
 3. Criar a interface web com mapa, legendas, busca e filtros.
-4. Implementar a visualização de picos e detalhes por local/horário.
-5. Adicionar relatos comunitários opcionais em uma versão posterior do protótipo.
+4. Implementar a visualização de picos, zonas sensíveis e detalhes por local/horário.
+5. Integrar canal de relatos comunitários anônimos (LGPD) e materiais educativos de prevenção.
 6. Testar a clareza da experiência com foco em acessibilidade sensorial e ajustar a interface.
 
 ## Desenvolvimento

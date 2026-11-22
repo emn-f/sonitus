@@ -1,24 +1,17 @@
 import React, { useState } from 'react'
 import type { NavigationTab } from '../types'
-import { acousticEventsList, alertsList } from '../data/noiseData'
+import { acousticEventsList, alertsList, sensorsList } from '../data/noiseData'
 import {
-  AlertCircle,
   AlertTriangle,
   Bell,
   CheckCircle,
   Clock,
   ExternalLink,
-  Flame,
-  HelpCircle,
   Info,
   Layers,
   MapPin,
   Radio,
-  RotateCcw,
-  Shield,
   ShieldAlert,
-  Volume2,
-  VolumeX,
   Zap,
 } from 'lucide-react'
 
@@ -214,12 +207,20 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
 
                     <div className="alert-decibel-gauge">
                       <span className="gauge-val">{alert.decibels} dB</span>
-                      <span className="gauge-limit">Norma: {alert.nbr10151LimitDb || alert.threshold} dB</span>
+                      <span className="gauge-limit">NBR 10151: {alert.nbr10151LimitDb || alert.threshold} dB</span>
+                      {alert.municipalLawLimitDb && (
+                        <span className="gauge-limit">Lei 5.354/98: {alert.municipalLawLimitDb} dB</span>
+                      )}
                     </div>
 
                     {alert.isRecurring && (
-                      <span className="recurrent-tag" title="3 alertas no mesmo ponto dentro de 1 hora">
+                      <span className="recurrent-tag" title="3 ou mais episódios no mesmo ponto em 7 dias">
                         Reincidente
+                      </span>
+                    )}
+                    {alert.exceededMunicipalLaw && (
+                      <span className="municipal-law-tag" title="Ultrapassou também o limite da Lei Municipal nº 5.354/1998">
+                        Acima da Lei Municipal
                       </span>
                     )}
                   </div>
@@ -274,7 +275,10 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
                         type="button"
                         className="view-in-map-btn"
                         onClick={() => {
-                          onSelectPlace(alert.location.split(',')[0].replace(' (Centro Comercial)', '').replace(' (Distrito Saúde)', ''))
+                          const matchedPlace =
+                            sensorsList.find((s) => s.id === alert.sensorId)?.name.replace('Sensor ', '') ??
+                            alert.location
+                          onSelectPlace(matchedPlace)
                           onNavigate('mapa')
                         }}
                         aria-label={`Ver ${alert.location} no mapa acústico`}
@@ -383,8 +387,8 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
 
             <article className="rule-card">
               <div className="rule-step-number">3</div>
-              <h3>Reincidência Crítica: 3 Alertas em 1h</h3>
-              <p>Ocorrências com 3 alertas gerados no mesmo ponto em 1 hora recebem prioridade máxima vermelha para despacho imediato da Sedur ou planejamento de blitz.</p>
+              <h3>Reincidência Crítica: 3 Episódios em 7 Dias</h3>
+              <p>Pontos com 3 ou mais episódios de excedência em 7 dias recebem prioridade máxima vermelha. Alertas que também superam a Lei Municipal nº 5.354/1998 (70 dB das 7h às 22h · 60 dB das 22h às 7h) são destacados para fiscalização da Sedur.</p>
               <div className="rule-card-footer">
                 <span>Prioridade Operacional Máxima</span>
               </div>
@@ -405,32 +409,35 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Área de Hospitais e Clínicas</strong></td>
+                    <td><strong>Área estritamente residencial urbana, hospitais e escolas</strong></td>
                     <td>50 dB(A)</td>
                     <td>45 dB(A)</td>
-                    <td>Repouso de pacientes e pessoas no espectro autista</td>
+                    <td>Repouso de pacientes, escolas e pessoas no espectro autista</td>
                   </tr>
                   <tr>
-                    <td><strong>Área Estritamente Residencial</strong></td>
+                    <td><strong>Área mista, predominantemente residencial</strong></td>
                     <td>55 dB(A)</td>
                     <td>50 dB(A)</td>
-                    <td>Descanso noturno e convivência familiar</td>
+                    <td>Descanso noturno e convivência comunitária</td>
                   </tr>
                   <tr>
-                    <td><strong>Área Mista com Comércio e Lazer</strong></td>
-                    <td>65 dB(A)</td>
+                    <td><strong>Área mista, com predominância comercial ou administrativa</strong></td>
+                    <td>60 dB(A)</td>
                     <td>55 dB(A)</td>
-                    <td>Bares, feiras e restaurantes (fiscalização noturna)</td>
+                    <td>Bares, feiras e estabelecimentos (fiscalização noturna)</td>
                   </tr>
                   <tr>
-                    <td><strong>Vias Arteriais de Grande Circulação</strong></td>
+                    <td><strong>Área predominantemente industrial</strong></td>
                     <td>70 dB(A)</td>
                     <td>60 dB(A)</td>
-                    <td>Tráfego de ônibus e caminhões em corredores urbanos</td>
+                    <td>Corredores pesados e zonas logísticas</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            <p className="limits-law-note">
+              <strong>Linha de referência legal em Salvador (Lei Municipal nº 5.354/1998):</strong> admite até 70 dB das 7h às 22h e até 60 dB das 22h às 7h (com exigência de alvará sonoro acima de 50 dB em atividades não residenciais). Picos isolados são registrados como eventos sem disparo automático, conforme a ABNT NBR 10151 e a Resolução CONAMA nº 1/1990.
+            </p>
           </div>
         </section>
       )}

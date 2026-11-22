@@ -1,27 +1,42 @@
 import React, { useState } from 'react'
 import type { CommunityImpactType, CommunityReport, CommunitySourceType, DistrictId, NavigationTab, Period } from '../types'
-import { districtsList, initialCommunityReports } from '../data/noiseData'
+import { districtsList, initialCommunityReports, sensorsList } from '../data/noiseData'
 import {
-  AlertTriangle,
   Award,
   BookOpen,
   Brain,
   CheckCircle2,
-  Download,
-  FileText,
+  ExternalLink,
   Heart,
-  HelpCircle,
   Info,
   Layers,
   MapPin,
   MessageSquare,
   PawPrint,
+  RotateCcw,
   Send,
   Shield,
   Sparkles,
   Volume2,
   VolumeX,
 } from 'lucide-react'
+
+const REPORTS_STORAGE_KEY = 'sonitus-community-reports-v1'
+const initialReportIds = new Set(initialCommunityReports.map((r) => r.id))
+
+function loadStoredReports(): CommunityReport[] {
+  try {
+    const raw = localStorage.getItem(REPORTS_STORAGE_KEY)
+    if (!raw) return initialCommunityReports
+    const parsed: unknown = JSON.parse(raw)
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed as CommunityReport[]
+    }
+  } catch {
+    // Ignora falha de leitura no armazenamento local
+  }
+  return initialCommunityReports
+}
 
 interface CommunityEducationSectionProps {
   period: Period
@@ -36,8 +51,8 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
 }) => {
   const [activeSubTab, setActiveSubTab] = useState<'relatos' | 'educacao' | 'cartilha'>('relatos')
 
-  // Estado dos relatos comunitários
-  const [reports, setReports] = useState<CommunityReport[]>(initialCommunityReports)
+  // Estado dos relatos comunitários (com persistência local simulada)
+  const [reports, setReports] = useState<CommunityReport[]>(loadStoredReports)
   const [filterImpact, setFilterImpact] = useState<string>('todos')
   const [filterDistrict, setFilterDistrict] = useState<string>('todos')
 
@@ -47,7 +62,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
   const [formPeriod, setFormPeriod] = useState<Period>(period)
   const [formSource, setFormSource] = useState<CommunitySourceType>('som_automotivo')
   const [formImpact, setFormImpact] = useState<CommunityImpactType>('tea_hipersensibilidade')
-  const [formIntensity, setFormIntensity] = useState<'leve' | 'moderado' | 'intenso' | 'severo'>('intenso')
+  const [formIntensity, setFormIntensity] = useState<CommunityReport['intensityPerceived']>('intenso')
   const [formDescription, setFormDescription] = useState('')
   const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -70,11 +85,34 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
       sensorCorrelation: 'Em processamento de correlação com malha de sensores da área',
     }
 
-    setReports([newReport, ...reports])
+    const updatedReports = [newReport, ...reports]
+    setReports(updatedReports)
+    try {
+      localStorage.setItem(REPORTS_STORAGE_KEY, JSON.stringify(updatedReports))
+    } catch {
+      // Ignora erro de gravação em modo privado/quota
+    }
     setFormLocation('')
     setFormDescription('')
     setFormSubmitted(true)
     setTimeout(() => setFormSubmitted(false), 5000)
+  }
+
+  const hasCustomReports = reports.some((r) => !initialReportIds.has(r.id))
+
+  const handleResetReports = () => {
+    setReports(initialCommunityReports)
+    try {
+      localStorage.removeItem(REPORTS_STORAGE_KEY)
+    } catch {
+      // Ignora erro de acesso ao localStorage
+    }
+  }
+
+  const handleViewDistrictOnMap = (districtId: DistrictId) => {
+    const matchedSensor = sensorsList.find((s) => s.districtId === districtId) ?? sensorsList[0]
+    onSelectPlace(matchedSensor.name.replace('Sensor ', ''))
+    onNavigate('mapa')
   }
 
   const filteredReports = reports.filter((r) => {
@@ -279,7 +317,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                     <select
                       id="report-intensity"
                       value={formIntensity}
-                      onChange={(e) => setFormIntensity(e.target.value as any)}
+                      onChange={(e) => setFormIntensity(e.target.value as CommunityReport['intensityPerceived'])}
                       className="form-select"
                     >
                       <option value="leve">Leve (perceptível mas suportável)</option>
@@ -319,6 +357,16 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                     Relatos que mostram onde o som afeta a rotina das pessoas.
                   </p>
                 </div>
+                {hasCustomReports && (
+                  <button
+                    type="button"
+                    className="reports-reset-btn"
+                    onClick={handleResetReports}
+                  >
+                    <RotateCcw size={14} aria-hidden="true" />
+                    <span>Restaurar exemplos</span>
+                  </button>
+                )}
               </header>
 
               {/* Filtros de Relatos */}
@@ -396,6 +444,17 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                           </div>
                         )}
                       </div>
+
+                      <footer className="report-card-footer">
+                        <button
+                          type="button"
+                          className="report-map-btn"
+                          onClick={() => handleViewDistrictOnMap(report.districtId)}
+                        >
+                          <span>Ver bairro no mapa</span>
+                          <ExternalLink size={13} aria-hidden="true" />
+                        </button>
+                      </footer>
                     </article>
                   )
                 })}

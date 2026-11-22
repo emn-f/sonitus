@@ -2,22 +2,16 @@ import React from 'react'
 import {
   AlertCircle,
   Award,
-  BookOpen,
   Brain,
   Building2,
   CheckCircle2,
-  FileText,
   GraduationCap,
-  Heart,
   Hospital,
   Info,
   Layers,
   MapPin,
   PawPrint,
   Scale,
-  Shield,
-  Sparkles,
-  Users,
 } from 'lucide-react'
 
 export const AboutSection: React.FC = () => {
@@ -33,6 +27,7 @@ export const AboutSection: React.FC = () => {
     'Julia Alves de Oliveira Costa',
     'Marcos Vinicius Sousa Batista',
     'Raissa Moura dos Santos',
+    'Udimile Macedo de Oliveira',
   ]
 
   const legalFramework = [
@@ -51,6 +46,10 @@ export const AboutSection: React.FC = () => {
     {
       title: 'Resolução CONAMA nº 1/1990 & ABNT NBR 10151:2019',
       desc: 'Estabelece critérios de medição, limites de LAeq por tipo de zona e períodos diurno e noturno para proteção de áreas habitadas.',
+    },
+    {
+      title: 'Lei Municipal nº 5.354/1998 (Salvador — Silêncio Urbano)',
+      desc: 'Admite até 70 dB das 7h às 22h e até 60 dB das 22h às 7h em Salvador, além de exigir alvará sonoro para atividades não residenciais acima de 50 dB.',
     },
     {
       title: 'Lei Berenice Piana (Lei nº 12.764/2012) & LBI (Lei nº 13.146/2015)',
@@ -94,7 +93,7 @@ export const AboutSection: React.FC = () => {
           </span>
           <span className="location-tag">
             <MapPin size={13} aria-hidden="true" />
-            Salvador - BA · Outubro de 2026
+            Salvador - BA · Semestre 2026.2
           </span>
         </div>
         <h1 id="about-title" className="hero-heading">
@@ -244,7 +243,7 @@ export const AboutSection: React.FC = () => {
               </li>
               <li>
                 <CheckCircle2 size={16} className="check-icon" aria-hidden="true" />
-                <span><strong>Regras de Alerta da Etapa 5:</strong> Janelas de 10 minutos, exigência de 2 janelas consecutivas para persistência e reincidência de 3 alertas/hora.</span>
+                <span><strong>Regras de Alerta da Etapa 5:</strong> Janelas de 10 minutos, exigência de 2 janelas consecutivas para persistência e reincidência de 3 episódios em 7 dias.</span>
               </li>
               <li>
                 <CheckCircle2 size={16} className="check-icon" aria-hidden="true" />

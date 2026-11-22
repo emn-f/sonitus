@@ -108,8 +108,6 @@ export const MapSection: React.FC<MapSectionProps> = ({
     categoryFilter !== 'todas' ||
     searchQuery.trim() !== ''
 
-  const isFullscreenRef = useRef(isFullscreen)
-  isFullscreenRef.current = isFullscreen
   const fullscreenTriggerRef = useRef<HTMLButtonElement>(null)
   const drawerRef = useRef<HTMLElement>(null)
 

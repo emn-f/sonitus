@@ -91,8 +91,10 @@ export interface Alert {
   // Regras metodológicas da Etapa 5 do projeto:
   evaluationWindowMinutes?: number // Janela padrão: 10 min
   consecutiveWindowsExceeded?: number // Excedido em >= 2 janelas consecutivas
-  isRecurring?: boolean // Reincidência: 3 alertas no mesmo ponto em 1 hora
+  isRecurring?: boolean // Reincidência: >= 3 episódios em 7 dias
   nbr10151LimitDb?: number // Limite normativo de referência diurno/noturno
+  municipalLawLimitDb?: number // Lei Municipal nº 5.354/1998 de Salvador (70 dB dia / 60 dB noite)
+  exceededMunicipalLaw?: boolean // Indica se ultrapassou também o limite legal municipal (prioridade)
 }
 
 export interface AcousticEvent {
