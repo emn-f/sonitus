@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import type { NavigationTab, Period } from '../types'
+import type { NavigationTab } from '../types'
 import {
   LayoutDashboard,
   Map,
@@ -19,8 +19,6 @@ interface NavigationProps {
   sensorsCount?: number
   isOpen: boolean
   onClose: () => void
-  period: Period
-  onSelectPeriod: (period: Period) => void
 }
 
 interface TabItem {
@@ -39,8 +37,6 @@ export const Navigation: React.FC<NavigationProps> = ({
   sensorsCount = 12,
   isOpen,
   onClose,
-  period,
-  onSelectPeriod,
 }) => {
   const activeItemRef = useRef<HTMLButtonElement>(null)
   const sidebarRef = useRef<HTMLElement>(null)
@@ -134,22 +130,6 @@ export const Navigation: React.FC<NavigationProps> = ({
             <X size={19} aria-hidden="true" />
           </button>
         </header>
-        <div className="drawer-period-section" role="group" aria-label="Turno da simulação acústica">
-          <span className="drawer-period-label">Turno da simulação:</span>
-          <div className="drawer-period-buttons">
-            {(['Manhã', 'Tarde', 'Noite'] as Period[]).map((p) => (
-              <button
-                key={p}
-                type="button"
-                className={`drawer-period-btn ${period === p ? 'active' : ''}`}
-                onClick={() => onSelectPeriod(p)}
-                aria-pressed={period === p}
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-        </div>
         <nav className="sidebar-navigation" aria-label="Navegação da plataforma">
           {(['Planejar', 'Área técnica'] as const).map((group) => (
             <section className="nav-group" key={group} aria-label={group}>

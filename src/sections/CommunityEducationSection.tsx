@@ -10,13 +10,13 @@ import {
   Heart,
   Info,
   Layers,
+  Lightbulb,
   MapPin,
   MessageSquare,
   PawPrint,
   RotateCcw,
   Send,
   Shield,
-  Sparkles,
   Volume2,
   VolumeX,
 } from 'lucide-react'
@@ -201,7 +201,7 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
           className={`subtab-btn ${activeSubTab === 'educacao' ? 'active' : ''}`}
           onClick={() => setActiveSubTab('educacao')}
         >
-          <Sparkles size={16} aria-hidden="true" />
+          <Lightbulb size={16} aria-hidden="true" />
           <span>Dicas e Ações</span>
         </button>
       </div>
@@ -416,17 +416,19 @@ export const CommunityEducationSection: React.FC<CommunityEducationSectionProps>
                           <span className="report-author">{report.anonymousCode}</span>
                           <span className="report-sim-badge">Dados Simulados</span>
                         </div>
-                        <span className={`report-impact-pill ${impactInfo.className}`}>
-                          <ImpactIcon size={13} aria-hidden="true" />
-                          <span>{impactInfo.label}</span>
-                        </span>
+                        <div className="report-badges-row">
+                          <span className={`report-impact-pill ${impactInfo.className}`}>
+                            <ImpactIcon size={13} aria-hidden="true" />
+                            <span>{impactInfo.label}</span>
+                          </span>
+                          <span className="report-period-tag">Turno: {report.period}</span>
+                        </div>
                       </header>
 
                       <div className="report-card-body">
                         <div className="report-location-line">
-                          <MapPin size={14} aria-hidden="true" />
+                          <MapPin size={14} className="report-loc-icon" aria-hidden="true" />
                           <strong>{report.location}</strong>
-                          <span className="report-period-tag">Turno: {report.period}</span>
                         </div>
                         <p className="report-desc-text">“{report.description}”</p>
 

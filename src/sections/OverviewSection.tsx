@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import type { NavigationTab, Period } from '../types'
 import { computeCityMetrics, hourlyTrendHistory } from '../data/noiseData'
-import { ArrowRight, Coffee, Heart, Map, Search, SlidersHorizontal, Sparkles, Trees, Volume2 } from 'lucide-react'
+import { ArrowRight, Clock, Coffee, Heart, Map, Radio, Search, SlidersHorizontal, Trees, Volume2 } from 'lucide-react'
 
 interface OverviewSectionProps {
   period: Period
@@ -10,7 +10,7 @@ interface OverviewSectionProps {
 }
 
 const quickFilters = [
-  { label: 'Agora', icon: Sparkles },
+  { label: 'Agora', icon: Clock },
   { label: 'Próximas 2h' },
   { label: 'Parques e jardins', icon: Trees },
   { label: 'Cafés silenciosos', icon: Coffee },
@@ -35,7 +35,7 @@ export const OverviewSection: React.FC<OverviewSectionProps> = ({ period, onNavi
   return (
     <div className="section-overview sanctuary-overview">
       <section className="sanctuary-hero" aria-labelledby="overview-heading">
-        <p className="sanctuary-eyebrow"><Sparkles size={15} aria-hidden="true" /> Previsão sonora urbana</p>
+        <p className="sanctuary-eyebrow"><Radio size={15} aria-hidden="true" /> Previsão sonora urbana</p>
         <h1 id="overview-heading">Como está o som ao seu redor agora?</h1>
         <p>Dados de ruído para planejar saídas calmas e proteger quem tem sensibilidade ao som.</p>
         <form className="sanctuary-search" onSubmit={(event) => { event.preventDefault(); onNavigate('mapa') }}>

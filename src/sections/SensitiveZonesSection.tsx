@@ -11,7 +11,7 @@ import {
   ShieldCheck,
   Compass,
   Clock,
-  Sparkles,
+  Leaf,
   ArrowRight,
 } from 'lucide-react'
 
@@ -97,7 +97,7 @@ export const SensitiveZonesSection: React.FC<SensitiveZonesSectionProps> = ({
           onClick={() => setActiveFilter('oasis')}
           aria-pressed={activeFilter === 'oasis'}
         >
-          <Sparkles size={14} aria-hidden="true" />
+          <Leaf size={14} aria-hidden="true" />
           Zonas Tranquilas (Oásis)
         </button>
         <button
@@ -156,7 +156,7 @@ export const SensitiveZonesSection: React.FC<SensitiveZonesSectionProps> = ({
 
                 {zone.isQuietOasis ? (
                   <span className="oasis-pill">
-                    <Sparkles size={13} aria-hidden="true" />
+                    <Leaf size={13} aria-hidden="true" />
                     Oásis Recomendado
                   </span>
                 ) : isAboveLimit ? (

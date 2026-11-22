@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react'
+import { Clock } from 'lucide-react'
 import type { NavigationTab, Period } from './types'
 import { alertsList, sensorsList } from './data/noiseData'
 import { Header } from './components/Header'
@@ -100,6 +101,9 @@ export function App() {
     queueMicrotask(() => navigationTriggerRef.current?.focus())
   }
 
+  const periodAwareTabs: NavigationTab[] = ['visao-geral', 'mapa', 'zonas-sensiveis', 'sensores']
+  const showMobilePeriodBar = periodAwareTabs.includes(activeTab)
+
   return (
     <div className="app-shell">
       <a className="skip-link" href="#conteudo">
@@ -128,11 +132,30 @@ export function App() {
           sensorsCount={sensorsList.length}
           isOpen={isNavigationOpen}
           onClose={closeNavigation}
-          period={period}
-          onSelectPeriod={setPeriod}
         />
 
         <main ref={mainContentRef} id="conteudo" className="main-content-area" role="region" aria-label="Conteúdo da seção selecionada" tabIndex={-1}>
+        {showMobilePeriodBar && (
+          <div className="mobile-period-strip" role="group" aria-label="Turno da simulação acústica">
+            <span className="mobile-period-label">
+              <Clock size={14} aria-hidden="true" />
+              Turno simulado
+            </span>
+            <div className="mobile-period-pills">
+              {(['Manhã', 'Tarde', 'Noite'] as Period[]).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  className={`mobile-period-pill ${period === p ? 'active' : ''}`}
+                  onClick={() => setPeriod(p)}
+                  aria-pressed={period === p}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         {activeTab === 'visao-geral' && (
           <OverviewSection
             period={period}

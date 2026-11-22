@@ -195,40 +195,56 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
               filteredAlerts.map((alert) => (
                 <article key={alert.id} className={`alert-card ${alert.severity}`}>
                   <div className="alert-left-column">
-                    <div className={`alert-severity-icon-badge ${alert.severity}`}>
-                      {alert.severity === 'critica' ? (
-                        <AlertTriangle size={22} aria-hidden="true" />
-                      ) : alert.severity === 'atencao' ? (
-                        <ShieldAlert size={22} aria-hidden="true" />
-                      ) : (
-                        <Info size={22} aria-hidden="true" />
-                      )}
+                    <div className="alert-metric-cluster">
+                      <div className={`alert-severity-icon-badge ${alert.severity}`}>
+                        {alert.severity === 'critica' ? (
+                          <AlertTriangle size={22} aria-hidden="true" />
+                        ) : alert.severity === 'atencao' ? (
+                          <ShieldAlert size={22} aria-hidden="true" />
+                        ) : (
+                          <Info size={22} aria-hidden="true" />
+                        )}
+                      </div>
+
+                      <div className="alert-decibel-gauge">
+                        <span className="gauge-val">{alert.decibels} dB</span>
+                        <span className="gauge-limit">NBR 10151: {alert.nbr10151LimitDb || alert.threshold} dB</span>
+                        {alert.municipalLawLimitDb && (
+                          <span className="gauge-limit">Lei 5.354/98: {alert.municipalLawLimitDb} dB</span>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="alert-decibel-gauge">
-                      <span className="gauge-val">{alert.decibels} dB</span>
-                      <span className="gauge-limit">NBR 10151: {alert.nbr10151LimitDb || alert.threshold} dB</span>
-                      {alert.municipalLawLimitDb && (
-                        <span className="gauge-limit">Lei 5.354/98: {alert.municipalLawLimitDb} dB</span>
-                      )}
-                    </div>
-
-                    {alert.isRecurring && (
-                      <span className="recurrent-tag" title="3 ou mais episódios no mesmo ponto em 7 dias">
-                        Reincidente
-                      </span>
-                    )}
-                    {alert.exceededMunicipalLaw && (
-                      <span className="municipal-law-tag" title="Ultrapassou também o limite da Lei Municipal nº 5.354/1998">
-                        Acima da Lei Municipal
-                      </span>
+                    {(alert.isRecurring || alert.exceededMunicipalLaw) && (
+                      <div className="alert-flags-cluster">
+                        {alert.isRecurring && (
+                          <span className="recurrent-tag" title="3 ou mais episódios no mesmo ponto em 7 dias">
+                            Reincidente
+                          </span>
+                        )}
+                        {alert.exceededMunicipalLaw && (
+                          <span className="municipal-law-tag" title="Ultrapassou também o limite da Lei Municipal nº 5.354/1998">
+                            Acima da Lei Municipal
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
 
                   <div className="alert-body">
                     <header className="alert-header">
-                      <div className="alert-meta-top">
+                      <div className="alert-meta-primary">
                         <span className="alert-id-code">{alert.id}</span>
+                        <span className={`alert-status-pill status-${alert.status}`}>
+                          {alert.status === 'novo'
+                            ? 'Novo Alerta'
+                            : alert.status === 'analise'
+                            ? 'Em Análise'
+                            : 'Normalizado'}
+                        </span>
+                      </div>
+
+                      <div className="alert-meta-secondary">
                         <span className="alert-time">
                           <Clock size={13} aria-hidden="true" />
                           {alert.timestamp}
@@ -238,13 +254,6 @@ export const AlertsSection: React.FC<AlertsSectionProps> = ({
                           Sensor {alert.sensorId}
                         </span>
                         <span className="alert-sim-tag">Dados Simulados</span>
-                        <span className={`alert-status-pill status-${alert.status}`}>
-                          {alert.status === 'novo'
-                            ? 'Novo Alerta'
-                            : alert.status === 'analise'
-                            ? 'Em Análise'
-                            : 'Normalizado'}
-                        </span>
                       </div>
 
                       <div className="alert-title-row">
